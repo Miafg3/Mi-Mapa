@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Rutas</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="encabezado">
+        <div class="contenedor">
+            <h1>Mapa de Rutas</h1>
+            <p>
+                Transporte público
+            </p>
+        </div>
+    </header>
+
+    <main class="contenedor">
+        <section class="buscador">
+            <h2>¿A dónde necesitas ir?</h2>
+            <input type="search" id="busqueda" placeholder="Buscar una zona o lugar...">
+        </section>
+
+        <section class="municipios">
+            <h2>Selecciona un municipio</h2>
+            <div id="lista-municipios" class="grid-municipios"></div>
+        </section>
+
+        <section id="seccion-zonas" class="oculto">
+            <div class="titulo-seccion">
+                <h2 id="titulo-municipio"></h2>
+                <button id="volver-municipios">Volver</button>
+            </div>
+
+            <div id="lista-zonas" class="grid-zonas"></div>
+        </section>
+
+        <section id="seccion-rutas" class="oculto">
+            <div class="titulo-seccion">
+                <h2 id="titulo-zona"></h2>
+                <button id="volver-zonas">Volver</button>
+            </div>
+
+            <div id="lista-rutas"></div>
+        </section>
+
+        <section id="seccion-recorrido" class="oculto">
+            <div class="titulo-seccion">
+                <h2 id="titulo-ruta"></h2>
+                <button id="volver-rutas">Volver</button>
+            </div>
+
+            <div class="recorrido">
+                <div class="ida">
+                    <h3>Ida</h3>
+                    <div id="recorrido-ida"></div>
+                </div>
+
+                <div class="regreso">
+                    <h3>Regreso</h3>
+                    <div id="recorrido-regreso"></div>
+                </div>
+
+                <div id="mapa" class="mapa">
+                    <!-- Aquí posteriormente irá el mapa -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Mapa de Rutas · Morelos</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
