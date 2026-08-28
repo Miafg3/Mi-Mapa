@@ -3,75 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa de Rutas</title>
+    <title>Mi Mapa</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header class="encabezado">
-        <div class="contenedor">
-            <h1>Mapa de Rutas</h1>
-            <p>
-                Transporte público
-            </p>
+    <div class="app">
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">📍</span>
+                <div>
+                    <h1>MI MAPA</h1>
+                    <p>Mis rutas, mis lugares, mi ciudad</p>
+                </div>
+            </div>
+
+            <div class="search">
+                <input type="text" placeholder="Buscar lugar, ruta o referencia...">
+                <button type="button">⌕</button>
+            </div>
+
+            <div class="header-actions">
+                <button type="button">☀</button>
+                <button type="button">⚙ Ajustes</button>
+                <button type="button">ⓘ Acerca de</button>
+            </div>
+        </header>
+
+        <div class="main-layout">
+            <aside class="sidebar">
+                <nav class="main-nav">
+                    <button class="nav-item active">🗺️<span>Mapa</span></button>
+                    <button class="nav-item">🛣️<span>Mis Rutas</span></button>
+                    <button class="nav-item">📍<span>Lugares</span></button>
+                    <button class="nav-item">🚚<span>Entregas</span></button>
+                    <button class="nav-item">⭐<span>Favoritos</span></button>
+                    <button class="nav-item">📝<span>Notas</span></button>
+                </nav>
+
+                <div class="categories">
+                    <h2>CATEGORÍAS</h2>
+                    <button class="category active">◉<span>Todos</span></button>
+                    <button class="category">🛒<span>Entregas</span></button>
+                    <button class="category">🛍️<span>Mercados</span></button>
+                    <button class="category">🏪<span>Tiendas</span></button>
+                    <button class="category">🌳<span>Parques</span></button>
+                    <button class="category">●<span>Otros</span></button>
+                </div>
+
+                <button class="menu-button">☰<span>Menú</span></button>
+            </aside>
+
+            <main class="map-area">
+
+                <div class="map-placeholder">
+                    <div>
+                        <span>🗺️</span>
+                        <h2>Mi mapa</h2>
+                        <p>...</p>
+                    </div>
+                </div>
+
+                <aside class="routes-panel">
+                    <div class="panel-header">
+                        <h2>🔗 MIS RUTAS</h2>
+                        <button type="button">×</button>
+                    </div>
+
+                    <div class="route-list">
+
+                        <article class="route">
+                            <div class="route-title">
+                                <span class="route-dot blue"></span>
+                                <h3>Ruta a Cuernavaca</h3>
+                                <span>3.2 km</span>
+                            </div>
+
+                            <div class="route-info">
+                                <span>◷ 15 - 30 min</span>
+                                <span>📍 10 lugares</span>
+                            </div>
+                        </article>
+
+                        <article class="route">
+                            <div class="route-title">
+                                <span class="route-dot yellow"></span>
+                                <h3>Ruta Jiutepec</h3>
+                                <span>5.7 km</span>
+                            </div>
+
+                            <div class="route-info">
+                                <span>◷ 20 - 30 min</span>
+                                <span>📍 8 lugares</span>
+                            </div>
+                        </article>
+
+                        <article class="route">
+                            <div class="route-title">
+                                <span class="route-dot purple"></span>
+                                <h3>Ruta Emiliano Zapata</h3>
+                                <span>4.1 km</span>
+                            </div>
+
+                            <div class="route-info">
+                                <span>◷ 12 - 18 min</span>
+                                <span>📍 4 lugares</span>
+                            </div>
+                        </article>
+
+                        <article class="route">
+                            <div class="route-title">
+                                <span class="route-dot purple"></span>
+                                <h3>Ruta Temixco</h3>
+                                <span>6.7 km</span>
+                            </div>
+
+                            <div class="route-info">
+                                <span>◷ 12 - 18 min</span>
+                                <span>📍 4 lugares</span>
+                            </div>
+                        </article>
+                    </div>
+
+                    <button class="view-routes">Ver todas las rutas</button>
+                </aside>
+            </main>
         </div>
-    </header>
-
-    <main class="contenedor">
-        <section class="buscador">
-            <h2>¿A dónde necesitas ir?</h2>
-            <input type="search" id="busqueda" placeholder="Buscar una zona o lugar...">
-        </section>
-
-        <section class="municipios">
-            <h2>Selecciona un municipio</h2>
-            <div id="lista-municipios" class="grid-municipios"></div>
-        </section>
-
-        <section id="seccion-zonas" class="oculto">
-            <div class="titulo-seccion">
-                <h2 id="titulo-municipio"></h2>
-                <button id="volver-municipios">Volver</button>
-            </div>
-
-            <div id="lista-zonas" class="grid-zonas"></div>
-        </section>
-
-        <section id="seccion-rutas" class="oculto">
-            <div class="titulo-seccion">
-                <h2 id="titulo-zona"></h2>
-                <button id="volver-zonas">Volver</button>
-            </div>
-
-            <div id="lista-rutas"></div>
-        </section>
-
-        <section id="seccion-recorrido" class="oculto">
-            <div class="titulo-seccion">
-                <h2 id="titulo-ruta"></h2>
-                <button id="volver-rutas">Volver</button>
-            </div>
-
-            <div class="recorrido">
-                <div class="ida">
-                    <h3>Ida</h3>
-                    <div id="recorrido-ida"></div>
-                </div>
-
-                <div class="regreso">
-                    <h3>Regreso</h3>
-                    <div id="recorrido-regreso"></div>
-                </div>
-
-                <div id="mapa" class="mapa">
-                    <!-- Aquí posteriormente irá el mapa -->
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>Mapa de Rutas · Morelos</p>
-    </footer>
+    </div>
 
     <script src="js/script.js"></script>
 </body>
