@@ -1,20 +1,95 @@
-# 🧭 Mi Mapa
+# 📌 Sobre el proyecto
 
-**Mi Mapa** es una plataforma web de desarrollo personal diseñada para centralizar, analizar y dominar la infraestructura vial de mi ciudad y sus municipios colindantes. El proyecto surge de la curiosidad técnica de construir herramientas propias y de la necesidad de explorar el entorno urbano de forma estratégica, consolidando rutas tradicionales y alternativas viales en un solo lugar seguro.
+**Mi Mapa** es un proyecto personal creado para aprender y practicar
+desarrollo web mientras se construye una website útil para organizar
+rutas y lugares.
 
-Este espacio funciona como un laboratorio de uso estrictamente privado. Está diseñado completamente a mi medida para transformar datos geográficos en una guía visual intuitiva, permitiéndome consolidar mi propio conocimiento del territorio y navegar con total autonomía en mis actividades diarias.
+La idea es tener en un solo lugar los sitios importantes, las rutas
+habituales y los puntos relacionados con entregas, compras y actividades
+del día a día.
 
-## 🎯 Objetivos Clave
+El proyecto está pensado para funcionar tanto en **computadora como en
+dispositivos móviles**, con una interfaz oscura, moderna y enfocada en
+mapas.
 
-* **Optimización de Navegación:** Facilitar el desplazamiento eficiente a través de zonas desconocidas.
+## 🎨 Diseño
 
-* **Guía Visual de Transporte:** Cartografiar redes de transporte público y privado para trazar conexiones precisas entre puntos clave.
+La interfaz utiliza una identidad visual basada principalmente en:
 
-* **Centralización Geográfica:** Crear una base de datos propia para reducir la dependencia de terceros y dominar el territorio local.
+-   🌑 Azul marino oscuro
+-   🟡 Dorado
+-   🔵🔴🟢🟣 Colores diferentes para identificar rutas y categorías
+-   📍 Marcadores para los lugares
+-   🗺️ Mapas como elemento principal de navegación
 
+### Vista conceptual
 
-## 🎨 Diseño de la Interfaz (Mockup)
+La siguiente imagen representa la dirección visual que se busca para el
+proyecto:
 
-A continuación, muestro el diseño visual que planifiqué y estructuré para el panel de control:
+![Vista conceptual de Mi Mapa](img/image.png)
 
-![Diseño de la Interfaz de Mi Mapa](./img/diseño.png)
+## ✨ Funcionalidades planeadas
+
+### 🗺️ Mapa
+
+-   Visualizar lugares y rutas.
+-   Mostrar diferentes marcadores.
+-   Identificar las rutas mediante colores.
+-   Consultar información de los lugares.
+
+### 🛣️ Mis rutas
+
+-   Crear rutas personalizadas.
+-   Guardar diferentes puntos de una ruta.
+-   Consultar distancia y tiempo estimado.
+-   Organizar las paradas.
+-   Agregar notas y referencias.
+
+### 📍 Lugares
+
+-   Registrar nuevos lugares.
+-   Guardar nombre, categoría, dirección y referencias.
+-   Añadir notas.
+-   Marcar lugares como favoritos.
+
+### 🚚 Entregas
+
+-   Organizar lugares relacionados con entregas.
+-   Crear rutas para varias entregas.
+-   Facilitar la planificación de recorridos.
+
+### ⭐ Favoritos
+
+-   Guardar lugares importantes.
+-   Acceder rápidamente a ellos.
+
+### 📝 Notas
+
+-   Guardar información adicional relacionada con lugares o rutas.
+
+## 📱 Diseño adaptable
+
+Uno de los objetivos del proyecto es crear una interfaz **responsive**,
+para que pueda utilizarse cómodamente desde:
+
+-   💻 Computadora
+-   📱 Teléfono
+-   💻 Pantallas de diferentes tamaños
+
+La estructura puede cambiar conforme el proyecto vaya creciendo.
+
+## 🎯 Objetivo
+
+El objetivo principal de este proyecto es crear una website propia
+mientras se practica y fortalece el aprendizaje de:
+
+-   Desarrollo web
+-   Diseño de interfaces
+-   Diseño responsive
+-   Manejo de datos
+-   Organización de proyectos
+-   Git y GitHub
+
+Más adelante se podrán incorporar nuevas funcionalidades conforme avance
+el desarrollo.
