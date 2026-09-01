@@ -27,7 +27,7 @@ La interfaz utiliza una identidad visual basada principalmente en:
 La siguiente imagen representa la dirección visual que se busca para el
 proyecto:
 
-![Vista conceptual de Mi Mapa](img/image.png)
+![Vista conceptual de Mi Mapa](./assets/images/image.png)
 
 ## ✨ Funcionalidades planeadas
 

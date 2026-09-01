@@ -2,134 +2,144 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Mapa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/icons/favicon.png">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <div class="app">
-        <header class="header">
+
+        <aside class="sidebar">
             <div class="logo">
                 <span class="logo-icon">📍</span>
+
                 <div>
-                    <h1>MI MAPA</h1>
-                    <p>Mis rutas, mis lugares, mi ciudad</p>
+                    <h1>Mi Mapa</h1>
+                    <p>Mis rutas, mis lugares</p>
                 </div>
             </div>
 
-            <div class="search">
-                <input type="text" placeholder="Buscar lugar, ruta o referencia...">
-                <button type="button">⌕</button>
+            <nav class="menu">
+                <button class="menu-item active">
+                    <span>🗺️</span>
+                    <span>Mapa</span>
+                </button>
+
+                <button class="menu-item">
+                    <span>🛣️</span>
+                    <span>Mis rutas</span>
+                </button>
+
+                <button class="menu-item">
+                    <span>📍</span>
+                    <span>Lugares</span>
+                </button>
+
+                <button class="menu-item">
+                    <span>⭐</span>
+                    <span>Favoritos</span>
+                </button>
+
+                <button class="menu-item">
+                    <span>📝</span>
+                    <span>Notas</span>
+                </button>
+            </nav>
+
+            <div class="categories">
+                <p class="section-title">Categorías</p>
+                <button class="category active">Todos</button>
+                <button class="category">🚚 Entregas</button>
+                <button class="category">🛒 Favoritos</button>
+                <button class="category">🏪 Tiendas</button>
+                <button class="category">🌳 Parques</button>
             </div>
+        </aside>
 
-            <div class="header-actions">
-                <button type="button">☀</button>
-                <button type="button">⚙ Ajustes</button>
-                <button type="button">ⓘ Acerca de</button>
-            </div>
-        </header>
+        <main class="main">
 
-        <div class="main-layout">
-            <aside class="sidebar">
-                <nav class="main-nav">
-                    <button class="nav-item active">🗺️<span>Mapa</span></button>
-                    <button class="nav-item">🛣️<span>Mis Rutas</span></button>
-                    <button class="nav-item">📍<span>Lugares</span></button>
-                    <button class="nav-item">🚚<span>Entregas</span></button>
-                    <button class="nav-item">⭐<span>Favoritos</span></button>
-                    <button class="nav-item">📝<span>Notas</span></button>
-                </nav>
+            <header class="header">
+            <!-- 
+                <div class="brand">
+                    <span>📍</span>
+                    <strong>Mi Mapa</strong>
+                </div> 
+            -->
 
-                <div class="categories">
-                    <h2>CATEGORÍAS</h2>
-                    <button class="category active">◉<span>Todos</span></button>
-                    <button class="category">🛒<span>Entregas</span></button>
-                    <button class="category">🛍️<span>Mercados</span></button>
-                    <button class="category">🏪<span>Tiendas</span></button>
-                    <button class="category">🌳<span>Parques</span></button>
-                    <button class="category">●<span>Otros</span></button>
+                <div class="search">
+                    <input id="search-input" type="search" placeholder="Buscar lugar, ruta o referencia...">
+                    <button id="search-button">🔍</button>
                 </div>
 
-                <button class="menu-button">☰<span>Menú</span></button>
-            </aside>
-
-            <main class="map-area">
-
-                <div class="map-placeholder">
-                    <div>
-                        <span>🗺️</span>
-                        <h2>Mi mapa</h2>
-                        <p>...</p>
-                    </div>
+                <div class="header-actions">
+                    <button>☀️</button>
+                    <button>⚙️ Configuración</button>
+                    <button>❓ Ayuda</button>
+                    <button class="add-place" id="add-place-button">+ Agregar lugar</button>
                 </div>
+
+            </header>
+
+            <section class="map-container">
+
+                <button class="show-routes" id="show-routes">🛣️</button>
+
+                <div id="map"></div>
 
                 <aside class="routes-panel">
+
                     <div class="panel-header">
-                        <h2>🔗 MIS RUTAS</h2>
-                        <button type="button">×</button>
+                        <h2>Mis rutas</h2>
+                        <button id="close-routes">×</button>
                     </div>
 
-                    <div class="route-list">
+                    <div class="route">
+                        <span class="route-color blue"></span>
 
-                        <article class="route">
-                            <div class="route-title">
-                                <span class="route-dot blue"></span>
-                                <h3>Ruta a Cuernavaca</h3>
-                                <span>3.2 km</span>
-                            </div>
+                        <div>
+                            <strong>R</strong>
+                            <small>12 – 20 min</small>
+                        </div>
 
-                            <div class="route-info">
-                                <span>◷ 15 - 30 min</span>
-                                <span>📍 10 lugares</span>
-                            </div>
-                        </article>
-
-                        <article class="route">
-                            <div class="route-title">
-                                <span class="route-dot yellow"></span>
-                                <h3>Ruta Jiutepec</h3>
-                                <span>5.7 km</span>
-                            </div>
-
-                            <div class="route-info">
-                                <span>◷ 20 - 30 min</span>
-                                <span>📍 8 lugares</span>
-                            </div>
-                        </article>
-
-                        <article class="route">
-                            <div class="route-title">
-                                <span class="route-dot purple"></span>
-                                <h3>Ruta Emiliano Zapata</h3>
-                                <span>4.1 km</span>
-                            </div>
-
-                            <div class="route-info">
-                                <span>◷ 12 - 18 min</span>
-                                <span>📍 4 lugares</span>
-                            </div>
-                        </article>
-
-                        <article class="route">
-                            <div class="route-title">
-                                <span class="route-dot purple"></span>
-                                <h3>Ruta Temixco</h3>
-                                <span>6.7 km</span>
-                            </div>
-
-                            <div class="route-info">
-                                <span>◷ 12 - 18 min</span>
-                                <span>📍 4 lugares</span>
-                            </div>
-                        </article>
+                        <span>3.2 km</span>
                     </div>
 
-                    <button class="view-routes">Ver todas las rutas</button>
+                    <div class="route">
+                        <span class="route-color purple"></span>
+
+                        <div>
+                            <strong>C</strong>
+                            <small>12 – 14 min</small>
+                        </div>
+
+                        <span>4.1 km</span>
+                    </div>
+
+                    <div class="route">
+                        <span class="route-color green"></span>
+
+                        <div>
+                            <strong>T</strong>
+                            <small>30 – 40 min</small>
+                        </div>
+
+                        <span>7.8 km</span>
+                    </div>
+
+                    <button class="view-routes" id="view-routes">
+                        Ver todas las rutas →
+                    </button>
+
                 </aside>
-            </main>
-        </div>
+            </section>
+        </main>
     </div>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="js/script.js"></script>
+
 </body>
 </html>
