@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
+
     <div class="app">
 
         <aside class="sidebar">
+
             <div class="logo">
                 <span class="logo-icon">📍</span>
 
@@ -23,27 +24,32 @@
             </div>
 
             <nav class="menu">
-                <button class="menu-item active">
+                <button class="menu-item active" type="button">
                     <span>🗺️</span>
                     <span>Mapa</span>
                 </button>
 
-                <button class="menu-item">
+                <button class="menu-item" type="button">
                     <span>🛣️</span>
                     <span>Mis rutas</span>
                 </button>
 
-                <button class="menu-item">
+                <button class="menu-item" type="button">
                     <span>📍</span>
                     <span>Lugares</span>
                 </button>
 
-                <button class="menu-item">
+                <button class="menu-item" type="button">
+                    <span>🚚</span>
+                    <span>Entregas</span>
+                </button>
+
+                <button class="menu-item" type="button">
                     <span>⭐</span>
                     <span>Favoritos</span>
                 </button>
 
-                <button class="menu-item">
+                <button class="menu-item" type="button">
                     <span>📝</span>
                     <span>Notas</span>
                 </button>
@@ -51,90 +57,111 @@
 
             <div class="categories">
                 <p class="section-title">Categorías</p>
-                <button class="category active">Todos</button>
-                <button class="category">🚚 Entregas</button>
-                <button class="category">🛒 Favoritos</button>
-                <button class="category">🏪 Tiendas</button>
-                <button class="category">🌳 Parques</button>
+                <button class="category active" type="button">Todos</button>
+                <button class="category" type="button">🚚 Entregas</button>
+                <button class="category" type="button">🛒 Mis Rutas</button>
+                <button class="category" type="button">🏪 Tiendas</button>
+                <button class="category" type="button">🌳 Parques</button>
             </div>
+
         </aside>
 
         <main class="main">
 
             <header class="header">
-            <!-- 
+
                 <div class="brand">
                     <span>📍</span>
                     <strong>Mi Mapa</strong>
-                </div> 
-            -->
+                </div>
 
                 <div class="search">
                     <input id="search-input" type="search" placeholder="Buscar lugar, ruta o referencia...">
-                    <button id="search-button">🔍</button>
+                    <button id="search-button" type="button">🔍</button>
                 </div>
 
                 <div class="header-actions">
-                    <button>☀️</button>
-                    <button>⚙️ Configuración</button>
-                    <button>❓ Ayuda</button>
-                    <button class="add-place" id="add-place-button">+ Agregar lugar</button>
+                    <button type="button">☀️</button>
+                    <button type="button">⚙️ Configuración</button>
+                    <button type="button">❓ Ayuda</button>
+                    <button class="add-place" id="add-place-button" type="button">+ Agregar lugar</button>
                 </div>
 
             </header>
 
             <section class="map-container">
 
-                <button class="show-routes" id="show-routes">🛣️</button>
+                <div class="directions-panel">
+
+                    <div class="directions-header">
+                        <div>
+                            <span class="panel-kicker">NAVEGACIÓN</span>
+                            <h2>¿A dónde quieres ir?</h2>
+                        </div>
+                    </div>
+
+                    <div class="location-input">
+                        <span class="location-icon origin">●</span>
+                        <input id="origin-input" type="text" placeholder="Desde..." autocomplete="off">
+                    </div>
+
+                    <div class="location-input">
+                        <span class="location-icon destination">●</span>
+                        <input id="destination-input" type="text" placeholder="¿A dónde quieres ir?" autocomplete="off">
+                    </div>
+
+                    <button class="route-button" id="route-button" type="button">
+                        🧭 <span>Cómo llegar</span>
+                    </button>
+
+                    <div class="transport-options">
+                        <button class="transport-option active" type="button" data-mode="car">
+                            🚗 <span>Auto</span>
+                        </button>
+
+                        <button class="transport-option" type="button" data-mode="public">
+                            🚌 <span>Público</span>
+                        </button>
+
+                        <button class="transport-option" type="button" data-mode="walk">
+                            🚶 <span>Caminar</span>
+                        </button>
+                    </div>
+
+                </div>
 
                 <div id="map"></div>
 
-                <aside class="routes-panel">
+                <aside class="routes-panel" id="routes-panel">
 
                     <div class="panel-header">
-                        <h2>Mis rutas</h2>
-                        <button id="close-routes">×</button>
-                    </div>
-
-                    <div class="route">
-                        <span class="route-color blue"></span>
-
                         <div>
-                            <strong>R</strong>
-                            <small>12 – 20 min</small>
+                            <span class="panel-kicker">RESULTADOS</span>
+                            <h2>Tu ruta</h2>
                         </div>
 
-                        <span>3.2 km</span>
+                        <button id="close-routes" type="button" aria-label="Cerrar resultados">×</button>
                     </div>
 
-                    <div class="route">
-                        <span class="route-color purple"></span>
-
-                        <div>
-                            <strong>C</strong>
-                            <small>12 – 14 min</small>
-                        </div>
-
-                        <span>4.1 km</span>
+                    <div class="route-empty" id="route-empty">
+                        <div class="empty-icon">🧭</div>
+                        <h3>Busca una ruta</h3>
+                        <p>
+                            Introduce un origen y un destino
+                            para ver las opciones disponibles.
+                        </p>
                     </div>
 
-                    <div class="route">
-                        <span class="route-color green"></span>
-
-                        <div>
-                            <strong>T</strong>
-                            <small>30 – 40 min</small>
-                        </div>
-
-                        <span>7.8 km</span>
-                    </div>
-
-                    <button class="view-routes" id="view-routes">
-                        Ver todas las rutas →
-                    </button>
+                    <div class="route-results" id="route-results"></div>
 
                 </aside>
+
+                <button class="show-routes" id="show-routes" type="button" aria-label="Mostrar resultados">
+                    🧭
+                </button>
+
             </section>
+
         </main>
     </div>
 
