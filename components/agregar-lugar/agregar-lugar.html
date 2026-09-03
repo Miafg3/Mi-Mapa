@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Lugar</title>
+    <!-- <link rel="stylesheet" href="agregar-lugar.css"> -->
+</head>
+<body>
+
+    <div class="add-place-overlay" id="add-place-overlay">
+        <div role="dialog" class="add-place-modal" aria-modal="true" aria-labelledby="add-place-title">
+        
+            <div class="add-place-header">
+                <div>
+                    <span class="add-place-kicker">MIS LUGARES</span>
+                    <h2 id="add-place-title">Agregar nuevo lugar</h2>
+                    <p>
+                        Guarda un lugar para encontrarlo
+                        fácilmente después.
+                    </p>
+                </div>
+        
+                <button class="add-place-close" id="add-place-close" type="button" aria-label="Cerrar">
+                    X
+                </button>
+            </div>
+
+            <form class="add-place-form" id="add-place-form">
+        
+                <div class="form-group">
+                    <label for="place-name">Nombre del lugar</label>
+                    <input id="place-name" name="name" type="text" placeholder="Ej. Mi tienda" autocomplete="off" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="place-category">Categoría</label>
+                    <select id="place-category" name="category">
+                        <option value="otro">📍 Otro</option>
+                        <option value="entrega">🚚 Entrega</option>
+                        <option value="mercado">🛒 Todo</option>
+                        <option value="tienda">🏪 Tienda</option>
+                        <option value="parque">🌳 Parque</option>
+                        <option value="favorito">⭐ Favorito</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="place-reference">Referencia</label>
+                    <input id="place-reference" name="reference" type="text" placeholder="Ej. Frente a la plaza" autocomplete="off">
+                </div>
+        
+                <div class="form-group">
+                    <label for="place-address">Dirección</label>
+                    <input id="place-address" name="address" type="text" placeholder="Ej. Cuernavaca, Morelos" autocomplete="street-address" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="place-notes">Notas</label>
+                    <textarea id="place-notes" name="notes" rows="4" placeholder="Agrega alguna nota sobre este lugar..."></textarea>
+                </div>
+        
+                <div class="form-group">
+                    <label>Elegir color y marcador</label>
+        
+                    <div class="marker-options" id="marker-options">
+                        <button type="button" class="marker-option selected" data-color="#ef4444" data-icon="📍" aria-label="Rojo">
+                            📍
+                        </button>
+                        <button type="button" class="marker-option" data-color="#f97316" data-icon="🛒" aria-label="Naranja">
+                            🛒
+                        </button>
+                        <button type="button" class="marker-option" data-color="#eab308" data-icon="⭐" aria-label="Amarillo">
+                            ⭐
+                        </button>
+                        <button type="button" class="marker-option" data-color="#22c55e" data-icon="🌳" aria-label="Verde">
+                            🌳
+                        </button>
+                        <button type="button" class="marker-option" data-color="#06b6d4" data-icon="🏪" aria-label="Cian">
+                            🏪
+                        </button>
+                        <button type="button" class="marker-option" data-color="#8b5cf6" data-icon="📌" aria-label="Morado">
+                            📌
+                        </button>
+                    </div>
+                </div>
+
+                
+                <label class="favorite-option">
+                    <span class="favorite-icon">☆</span>
+                    <span class="favorite-text">
+                        <strong>Agregar a favoritos</strong>
+                        <small>Acceso rápido desde el menú</small>
+                    </span>
+            
+                    <input id="place-favorite" name="favorite" type="checkbox">
+                    <span class="toggle"></span>
+                </label>
+            
+                <div class="form-message" id="form-message" aria-live="polite"></div>
+            
+                <div class="form-actions">
+                    <button class="cancel-button" id="cancel-add-place" type="button">
+                        Cancelar
+                    </button>
+            
+                    <button class="save-place-button" type="submit">
+                        ✓ <span>Guardar lugar</span>
+                    </button>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+
+    <!-- <script src="agregar-lugar.js"></script> -->
+
+</body>
+</html>
