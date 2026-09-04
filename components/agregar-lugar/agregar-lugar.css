@@ -1,0 +1,357 @@
+.add-place-overlay {
+    position: fixed;
+    inset: 0;
+    opacity: 1; 
+    display: flex;
+    padding: 20px;
+    z-index: 5000;
+    visibility: visible;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(6px);
+    background: rgba(2, 6, 23, 0.72);
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.add-place-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.add-place-modal {
+    width: 100%;
+    max-width: 620px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 18px;
+    background: rgba(10, 15, 29, 0.98);
+    transform: translateY(0) scale(1);
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
+    transition: transform 0.2s ease;
+}
+
+.add-place-overlay.visible
+.add-place-modal {
+    transform: translateY(0) scale(1);
+}
+
+.add-place-header {
+    display: flex;
+    gap: 20px;
+    padding: 24px;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.add-place-kicker {
+    display: block;
+    font-size: 10px;
+    color: #ffd700;
+    font-weight: 700;
+    margin-bottom: 5px;
+    letter-spacing: 0.12em;
+}
+
+.add-place-header h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #f1f5f9;
+}
+
+.add-place-header p {
+    margin-top: 6px;
+    color: #64748b;
+    font-size: 12px;
+}
+
+.add-place-close {
+    width: 36px;
+    height: 36px;
+    line-height: 1;
+    flex-shrink: 0;
+    font-size: 25px;
+    color: #94a3b8;
+    border-radius: 9px;
+    background: transparent;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.add-place-close:hover {
+    color: #f1f5f9;
+    background: #1e293b;
+}
+
+.add-place-form {
+    padding: 24px;
+}
+
+.form-group {
+    margin-bottom: 17px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 12px;
+    color: #cbd5e1;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    font-size: 13px;
+    color: #f1f5f9;
+    border-radius: 9px;
+    background: #0f172a;
+    border: 1px solid rgba(148, 163, 184, 0.16);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input,
+.form-group select {
+    height: 43px;
+    padding: 0 13px;
+}
+
+.form-group textarea {
+    min-height: 90px;
+    resize: vertical;
+    line-height: 1.5;
+    padding: 12px 13px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ffd700;
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.08);
+}
+
+.form-group select {
+    cursor: pointer;
+}
+
+.form-group option {
+    color: #f1f5f9;
+    background: #0f172a;
+}
+
+.marker-options {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.marker-option {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    font-size: 17px;
+    border-radius: 50%;
+    align-items: center;
+    background: #111827;
+    justify-content: center;
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.marker-option:hover {
+    background: #1e293b;
+    transform: translateY(-2px);
+}
+
+.marker-option.selected {
+    border-color: #ffd700;
+    background: rgba(255, 215, 0, 0.1);
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.08);
+}
+
+.favorite-option {
+    position: relative;
+    display: flex;
+    gap: 12px;
+    cursor: pointer;
+    margin-top: 5px;
+    min-height: 60px;
+    padding: 12px 13px;
+    border-radius: 10px;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.favorite-icon {
+    color: #ffd700;
+    font-size: 23px;
+}
+
+.favorite-text {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 3px;
+}
+
+.favorite-text strong {
+    font-size: 12px;
+    color: #f1f5f9;
+}
+
+.favorite-text small {
+    font-size: 10px;
+    color: #64748b;
+}
+
+.favorite-option input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.toggle {
+    position: relative;
+    width: 42px;
+    height: 23px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #1e293b;
+    transition: background 0.2s ease;
+}
+
+.toggle::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background: #94a3b8;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.favorite-option input:checked
++ .toggle {
+    background: #ffd700;
+}
+
+.favorite-option input:checked
++ .toggle::after {
+    background: #111827;
+    transform: translateX(19px);
+}
+
+.form-message {
+    font-size: 11px;
+    min-height: 18px;
+    margin-top: 14px;
+    color: #94a3b8;
+}
+
+.form-message.error {
+    color: #ef4444;
+}
+
+.form-message.success {
+    color: #22c55e;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 15px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.cancel-button,
+.save-place-button {
+    height: 43px;
+    padding: 0 17px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 9px;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.cancel-button {
+    color: #94a3b8;
+    background: transparent;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.cancel-button:hover {
+    color: #f1f5f9;
+    background: #1e293b;
+}
+
+.save-place-button {
+    display: flex;
+    gap: 7px;
+    color: #111827;
+    align-items: center;
+    background: #ffd700;
+    justify-content: center;
+}
+
+.save-place-button:hover {
+    background: #ffdf33;
+}
+
+.save-place-button:active,
+.cancel-button:active {
+    transform: translateY(1px);
+}
+
+.add-place-modal::-webkit-scrollbar {
+    width: 6px;
+}
+
+.add-place-modal::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.add-place-modal::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(148, 163, 184, 0.2);
+}
+
+@media (max-width: 600px) {
+
+    .add-place-overlay {
+        padding: 0;
+        align-items: flex-end;
+    }
+
+    .add-place-modal {
+        max-height: 94vh;
+        border-radius: 18px 18px 0 0;
+    }
+
+
+    .add-place-header,
+    .add-place-form {
+        padding: 20px;
+    }
+
+    .add-place-header h2 {
+        font-size: 19px;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .cancel-button,
+    .save-place-button {
+        width: 100%;
+    }
+}
