@@ -698,6 +698,58 @@ input::placeholder {
     background: white;
 }
 
+/*  */
+
+.vista {
+    display: none;
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.vista.activa {
+    display: flex;
+}
+
+.vista-placeholder {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--color-fondo);
+}
+
+.vista-placeholder-icon {
+    display: flex;
+    width: 70px;
+    height: 70px;
+    font-size: 28px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-oro);
+    background: rgba(255, 215, 0, 0.08);
+}
+
+.vista-placeholder h2 {
+    font-size: 22px;
+    margin-bottom: 8px;
+    color: var(--color-texto);
+}
+
+.vista-placeholder p {
+    font-size: 13px;
+    color: var(--color-texto-secundario);
+}
+
+/*  */
+
 @media (max-width: 1200px) {
 
     .sidebar {

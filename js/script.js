@@ -1,6 +1,7 @@
 const NOMINATIM_URL = "https://nominatim.openstreetmap.org/search";
 const OSRM_URL = "https://router.project-osrm.org/route/v1";
 const DEFAULT_LOCATION = "Morelos, México";
+
 const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
 const originInput = document.getElementById("origin-input");
@@ -25,7 +26,6 @@ let originCoordinates = null;
 let destinationCoordinates = null;
 
 function initializeMap() {
-
   map = L.map("map").setView([18.6813, -99.1013], 10);
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -42,7 +42,6 @@ function initializeApp() {
 }
 
 function setupEvents() {
-
   if (searchButton) {
     searchButton.addEventListener("click", handleSearch);
   }
@@ -126,6 +125,7 @@ async function handleSearch() {
   }
 
   destinationCoordinates = location;
+
   showLocationOnMap(location);
   setDestinationMarker(location);
   showLocationResult(location);
@@ -133,7 +133,6 @@ async function handleSearch() {
 
 async function geocodeAddress(address) {
   try {
-
     const query = `${address}, ${DEFAULT_LOCATION}`;
     const url = new URL(NOMINATIM_URL);
 
@@ -173,7 +172,6 @@ function showLocationOnMap(location) {
 }
 
 function setOriginMarker(location) {
-
   if (originMarker) {
     map.removeLayer(originMarker);
   }
@@ -186,7 +184,6 @@ function setOriginMarker(location) {
 }
 
 function setDestinationMarker(location) {
-
   if (destinationMarker) {
     map.removeLayer(destinationMarker);
   }
@@ -232,6 +229,7 @@ async function calculateRoute() {
 
   originCoordinates = originLocation;
   destinationCoordinates = destinationLocation;
+
   setOriginMarker(originLocation);
   setDestinationMarker(destinationLocation);
 
@@ -251,7 +249,6 @@ async function calculateRoute() {
 
 async function getRoute(origin, destination) {
   try {
-
     const coordinates =
       `${origin.lng},${origin.lat};` + `${destination.lng},${destination.lat}`;
 
@@ -282,7 +279,6 @@ async function getRoute(origin, destination) {
 }
 
 function drawRoute(route) {
-
   if (routeLayer) {
     map.removeLayer(routeLayer);
   }
@@ -313,7 +309,6 @@ function fitMapToRoute(route) {
 }
 
 function showRouteResults(route, origin, destination) {
-
   routeEmpty.style.display = "none";
   routeResults.innerHTML = "";
 
@@ -322,7 +317,6 @@ function showRouteResults(route, origin, destination) {
   const card = document.createElement("article");
 
   card.className = "route-card active";
-
   card.innerHTML = `
 
       <div class="route-card-header">
@@ -336,6 +330,7 @@ function showRouteResults(route, origin, destination) {
       </div>
 
       <div class="route-card-info">
+
         <div class="route-info">
             <span class="route-info-label">
               Distancia
@@ -406,13 +401,11 @@ function formatDuration(minutes) {
 }
 
 function selectTransportMode(selectedButton) {
-
   transportOptions.forEach(function (button) {
     button.classList.remove("active");
   });
 
   selectedButton.classList.add("active");
-
   currentTransportMode = selectedButton.dataset.mode;
 
   if (currentTransportMode === "public") {
@@ -451,25 +444,21 @@ function getTransportLabel() {
 
 function showLocationResult(location) {
   routeEmpty.style.display = "none";
-
   routeResults.innerHTML = "";
 
   const card = document.createElement("article");
 
   card.className = "route-card active";
-
   card.innerHTML = `
 
       <div class="route-card-header">
+        <span class="route-card-title">
+            Ubicación encontrada
+        </span>
 
-          <span class="route-card-title">
-              Ubicación encontrada
-          </span>
-
-          <span class="route-card-badge">
-              Lugar
-          </span>
-
+        <span class="route-card-badge">
+            Lugar
+        </span>
       </div>
 
       <p style=" color: var(--color-texto-secundario); font-size: 12px; line-height: 1.5;">
@@ -479,28 +468,23 @@ function showLocationResult(location) {
     `;
 
   routeResults.appendChild(card);
-
   showRoutesPanel();
 }
 
 function showLoading() {
   routesPanel.classList.remove("mobile-visible");
-
   routeEmpty.style.display = "none";
-
   routeResults.innerHTML = `
 
       <div class="route-message">
-
-          <div class="route-message-icon">
-            🧭
-          </div>
-
-          <p>
-            Buscando ubicaciones
-            y calculando la ruta...
-          </p>
-
+        <div class="route-message-icon">
+          🧭
+        </div>
+        
+        <p>
+          Buscando ubicaciones
+          y calculando la ruta...
+        </p>
       </div>
 
     `;
@@ -510,19 +494,16 @@ function showLoading() {
 
 function showMessage(message) {
   routeEmpty.style.display = "none";
-
   routeResults.innerHTML = `
 
       <div class="route-message">
+        <div class="route-message-icon">
+          🧭
+        </div>
 
-          <div class="route-message-icon">
-            🧭
-          </div>
-
-          <p>
-            ${escapeHTML(message)}
-          </p>
-
+        <p>
+          ${escapeHTML(message)}
+        </p>
       </div>
 
     `;
@@ -532,19 +513,13 @@ function showMessage(message) {
 
 function showError(message) {
   routeEmpty.style.display = "none";
-
   routeResults.innerHTML = `
 
       <div class="route-message error">
-
-        <div class="route-message-icon">
-          ⚠️
-        </div>
-
+        <div class="route-message-icon">⚠️</div>
         <p>
           ${escapeHTML(message)}
         </p>
-
       </div>
 
     `;
@@ -569,12 +544,58 @@ function hideRoutesPanel() {
 }
 
 function selectMenuItem(selectedItem) {
+  const viewName = selectedItem.dataset.view;
+
+  if (!viewName) {
+    return;
+  }
+
   menuItems.forEach(function (item) {
     item.classList.remove("active");
   });
 
   selectedItem.classList.add("active");
+
+  const vistas = document.querySelectorAll(".vista");
+
+  vistas.forEach(function (vista) {
+    vista.classList.remove("activa");
+  });
+
+  const vistaSeleccionada = document.getElementById(
+    `vista${capitalizar(viewName)}`,
+  );
+
+  if (vistaSeleccionada) {
+    vistaSeleccionada.classList.add("activa");
+  }
+
+  if (viewName === "mapa" && map) {
+    setTimeout(function () {
+      map.invalidateSize();
+    }, 100);
+  }
 }
+
+function capitalizar(texto) {
+  return texto.charAt(0).toUpperCase() + texto.slice(1);
+}
+
+document.addEventListener("mostrar-vista", function (event) {
+  const viewName = event.detail?.vista;
+
+  if (!viewName) {
+    return;
+  }
+
+  const menuItem = document.querySelector(
+    `.menu-item[data-view="${viewName}"]`,
+  );
+
+  if (menuItem) {
+    selectMenuItem(menuItem);
+  }
+});
 
 function selectCategory(selectedCategory) {
   categories.forEach(function (category) {
@@ -604,7 +625,6 @@ function shortenLocation(name) {
 
 function escapeHTML(text) {
   const element = document.createElement("div");
-
   element.textContent = text ?? "";
 
   return element.innerHTML;
