@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function inicializarMisRutas() {
   const btnIrMapa = document.getElementById("btnIrMapa");
+
   const btnNuevaRuta = document.getElementById("btnNuevaRuta");
 
   if (btnIrMapa) {
@@ -42,13 +43,7 @@ function inicializarMisRutas() {
 
   if (btnNuevaRuta) {
     btnNuevaRuta.addEventListener("click", () => {
-      document.dispatchEvent(
-        new CustomEvent("mostrar-vista", {
-          detail: {
-            vista: "mapa",
-          },
-        }),
-      );
+      prepararNuevaRuta();
     });
   }
 }

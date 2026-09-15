@@ -317,6 +317,7 @@ function showRouteResults(route, origin, destination) {
   const card = document.createElement("article");
 
   card.className = "route-card active";
+
   card.innerHTML = `
 
       <div class="route-card-header">
@@ -370,6 +371,7 @@ function showRouteResults(route, origin, destination) {
               ${escapeHTML(shortenLocation(destination.displayName))}
             </span>
         </div>
+
       </div>
 
     `;
@@ -449,6 +451,7 @@ function showLocationResult(location) {
   const card = document.createElement("article");
 
   card.className = "route-card active";
+
   card.innerHTML = `
 
       <div class="route-card-header">
@@ -474,6 +477,7 @@ function showLocationResult(location) {
 function showLoading() {
   routesPanel.classList.remove("mobile-visible");
   routeEmpty.style.display = "none";
+
   routeResults.innerHTML = `
 
       <div class="route-message">
@@ -494,6 +498,7 @@ function showLoading() {
 
 function showMessage(message) {
   routeEmpty.style.display = "none";
+
   routeResults.innerHTML = `
 
       <div class="route-message">
@@ -513,10 +518,14 @@ function showMessage(message) {
 
 function showError(message) {
   routeEmpty.style.display = "none";
+
   routeResults.innerHTML = `
 
       <div class="route-message error">
-        <div class="route-message-icon">⚠️</div>
+        <div class="route-message-icon">
+          ⚠️
+        </div>
+
         <p>
           ${escapeHTML(message)}
         </p>
@@ -596,6 +605,64 @@ document.addEventListener("mostrar-vista", function (event) {
     selectMenuItem(menuItem);
   }
 });
+
+function prepararNuevaRuta() {
+  if (originInput) {
+    originInput.value = "";
+  }
+
+  if (destinationInput) {
+    destinationInput.value = "";
+  }
+
+  if (originMarker && map) {
+    map.removeLayer(originMarker);
+    originMarker = null;
+  }
+
+  if (destinationMarker && map) {
+    map.removeLayer(destinationMarker);
+    destinationMarker = null;
+  }
+
+  if (routeLayer && map) {
+    map.removeLayer(routeLayer);
+    routeLayer = null;
+  }
+
+  originCoordinates = null;
+  destinationCoordinates = null;
+
+  if (routeEmpty) {
+    routeEmpty.style.display = "block";
+  }
+
+  if (routeResults) {
+    routeResults.innerHTML = "";
+  }
+
+  hideRoutesPanel();
+
+  if (searchInput) {
+    searchInput.value = "";
+  }
+
+  if (map) {
+    map.setView([18.6813, -99.1013], 10);
+  }
+
+  const mapaMenuItem = document.querySelector('.menu-item[data-view="mapa"]');
+
+  if (mapaMenuItem) {
+    selectMenuItem(mapaMenuItem);
+  }
+
+  if (originInput) {
+    setTimeout(function () {
+      originInput.focus();
+    }, 150);
+  }
+}
 
 function selectCategory(selectedCategory) {
   categories.forEach(function (category) {
