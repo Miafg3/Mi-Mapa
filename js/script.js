@@ -1,54 +1,23 @@
-// =========================================================
-// CONFIGURACIÓN
-// =========================================================
-
 const NOMINATIM_URL = "https://nominatim.openstreetmap.org/search";
-
 const OSRM_URL = "https://router.project-osrm.org/route/v1";
-
 const DEFAULT_LOCATION = "Morelos, México";
-
-// =========================================================
-// ELEMENTOS DEL DOM
-// =========================================================
-
 const searchInput = document.getElementById("search-input");
-
 const searchButton = document.getElementById("search-button");
-
 const menuItems = document.querySelectorAll(".menu-item");
-
 const categoryItems = document.querySelectorAll(".category-item");
-
 const addPlaceButton = document.getElementById("add-place-button");
-
 const modal = document.getElementById("add-place-modal");
-
 const closeModalButton = document.getElementById("close-modal");
-
 const cancelModalButton = document.getElementById("cancel-modal");
-
 const placeForm = document.getElementById("place-form");
-
 const locateButton = document.getElementById("locate-button");
-
 const zoomInButton = document.getElementById("zoom-in");
-
 const zoomOutButton = document.getElementById("zoom-out");
-
 const mapCenterButton = document.getElementById("map-center");
-
-// =========================================================
-// MAPA
-// =========================================================
 
 const map = L.map("map", {
   zoomControl: false,
 }).setView([18.6813, -99.1013], 10);
-
-// =========================================================
-// MAPA OPENSTREETMAP
-// =========================================================
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution:
@@ -57,63 +26,45 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
 }).addTo(map);
 
-// =========================================================
-// VARIABLES
-// =========================================================
-
 let searchMarker = null;
-
 let routeLayer = null;
-
 let savedPlaces = [];
-
-// =========================================================
-// ICONOS PERSONALIZADOS
-// =========================================================
 
 function createMarkerIcon(color = "#ffd166", icon = "fa-location-dot") {
   return L.divIcon({
     className: "custom-map-marker",
 
     html: `
-            <div
-                style="
-                    width: 34px;
-                    height: 34px;
-                    border-radius: 50% 50% 50% 0;
-                    transform: rotate(-45deg);
-                    background: ${color};
-                    border: 3px solid white;
-                    box-shadow: 0 4px 12px rgba(0,0,0,.30);
-                    display:flex;
-                    align-items:center;
-                    justify-content:center;
-                "
-            >
+      <div
+        style="
+            width: 34px;
+            height: 34px;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            background: ${color};
+            border: 3px solid white;
+            box-shadow: 0 4px 12px rgba(0,0,0,.30);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        "
+      >
 
-                <i
-                    class="fa-solid ${icon}"
-                    style="
-                        transform: rotate(45deg);
-                        color: white;
-                        font-size: 13px;
-                    "
-                ></i>
-
-            </div>
-        `,
+        <i class="fa-solid ${icon}"
+            style="
+              transform: rotate(45deg);
+              color: white;
+              font-size: 13px;
+            "
+        ></i>
+      </div>
+    `,
 
     iconSize: [34, 34],
-
     iconAnchor: [17, 34],
-
     popupAnchor: [0, -34],
   });
 }
-
-// =========================================================
-// MARCADORES DE EJEMPLO
-// =========================================================
 
 const examplePlaces = [
   {
@@ -135,10 +86,10 @@ const examplePlaces = [
   },
 
   {
-    name: "Chedraui Flores Magón",
+    name: "Teopanzolco",
     lat: 18.909,
     lon: -99.225,
-    category: "Tienda",
+    category: "Centro Cultural",
     color: "#a72cff",
     icon: "fa-shop",
   },
@@ -162,10 +113,6 @@ const examplePlaces = [
   },
 ];
 
-// =========================================================
-// MOSTRAR MARCADORES DE EJEMPLO
-// =========================================================
-
 function loadExampleMarkers() {
   examplePlaces.forEach((place) => {
     const marker = L.marker([place.lat, place.lon], {
@@ -173,22 +120,18 @@ function loadExampleMarkers() {
     }).addTo(map);
 
     marker.bindPopup(`
-            <strong>
-                ${place.name}
-            </strong>
+      <strong>
+        ${place.name}
+      </strong>
 
-            <br>
+      <br>
 
-            <span>
-                ${place.category}
-            </span>
-        `);
+      <span>
+        ${place.category}
+      </span>
+    `);
   });
 }
-
-// =========================================================
-// BÚSQUEDA NOMINATIM
-// =========================================================
 
 async function geocodeAddress(query) {
   if (!query || !query.trim()) {
@@ -223,13 +166,8 @@ async function geocodeAddress(query) {
   }
 }
 
-// =========================================================
-// MOSTRAR RESULTADO DE BÚSQUEDA
-// =========================================================
-
 function showSearchResult(result) {
   const latitude = parseFloat(result.lat);
-
   const longitude = parseFloat(result.lon);
 
   if (searchMarker) {
@@ -243,19 +181,15 @@ function showSearchResult(result) {
   searchMarker
     .bindPopup(
       `
-            <strong>
-                ${result.display_name}
-            </strong>
-        `,
+        <strong>
+          ${result.display_name}
+        </strong>
+      `,
     )
     .openPopup();
 
   map.setView([latitude, longitude], 15);
 }
-
-// =========================================================
-// EJECUTAR BÚSQUEDA
-// =========================================================
 
 async function performSearch() {
   if (!searchInput) {
@@ -269,15 +203,10 @@ async function performSearch() {
   }
 
   searchButton.disabled = true;
-
   const originalHTML = searchButton.innerHTML;
-
   searchButton.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i>`;
-
   const results = await geocodeAddress(query);
-
   searchButton.disabled = false;
-
   searchButton.innerHTML = originalHTML;
 
   if (!results) {
@@ -288,10 +217,6 @@ async function performSearch() {
 
   showSearchResult(results[0]);
 }
-
-// =========================================================
-// EVENTOS BUSCADOR
-// =========================================================
 
 if (searchButton) {
   searchButton.addEventListener("click", performSearch);
@@ -305,10 +230,6 @@ if (searchInput) {
   });
 }
 
-// =========================================================
-// CAMBIAR VISTA
-// =========================================================
-
 function changeView(viewName) {
   const views = document.querySelectorAll(".vista");
 
@@ -317,7 +238,6 @@ function changeView(viewName) {
   });
 
   const viewId = `vista${viewName.charAt(0).toUpperCase()}${viewName.slice(1)}`;
-
   const targetView = document.getElementById(viewId);
 
   if (targetView) {
@@ -335,10 +255,6 @@ function changeView(viewName) {
   }
 }
 
-// =========================================================
-// EVENTOS MENÚ
-// =========================================================
-
 menuItems.forEach((item) => {
   item.addEventListener("click", () => {
     const view = item.dataset.view;
@@ -351,10 +267,6 @@ menuItems.forEach((item) => {
   });
 });
 
-// =========================================================
-// CATEGORÍAS
-// =========================================================
-
 categoryItems.forEach((category) => {
   category.addEventListener("click", () => {
     categoryItems.forEach((item) => {
@@ -362,24 +274,14 @@ categoryItems.forEach((category) => {
     });
 
     category.classList.add("active");
-
     const selectedCategory = category.dataset.category;
-
     filterCategory(selectedCategory);
   });
 });
 
-// =========================================================
-// FILTRAR CATEGORÍA
-// =========================================================
-
 function filterCategory(category) {
   console.log("Categoría seleccionada:", category);
 }
-
-// =========================================================
-// ZOOM
-// =========================================================
 
 if (zoomInButton) {
   zoomInButton.addEventListener("click", () => {
@@ -393,10 +295,6 @@ if (zoomOutButton) {
   });
 }
 
-// =========================================================
-// CENTRAR MAPA
-// =========================================================
-
 function centerMap() {
   map.setView([18.6813, -99.1013], 10);
 }
@@ -408,10 +306,6 @@ if (mapCenterButton) {
 if (locateButton) {
   locateButton.addEventListener("click", centerMap);
 }
-
-// =========================================================
-// OBTENER COORDENADAS
-// =========================================================
 
 async function getCoordinates(query) {
   const results = await geocodeAddress(query);
@@ -429,14 +323,9 @@ async function getCoordinates(query) {
   };
 }
 
-// =========================================================
-// OBTENER RUTA
-// =========================================================
-
 async function getRoute(origin, destination) {
   const coordinates = [
     `${origin.longitude},${origin.latitude}`,
-
     `${destination.longitude},${destination.latitude}`,
   ].join(";");
 
@@ -462,10 +351,6 @@ async function getRoute(origin, destination) {
     return null;
   }
 }
-
-// =========================================================
-// DIBUJAR RUTA
-// =========================================================
 
 function drawRoute(routes) {
   if (!routes || !routes.length) {
@@ -494,9 +379,7 @@ function drawRoute(routes) {
 
       return {
         color: mainRoute ? "#ffd166" : "#6b7d96",
-
         weight: mainRoute ? 6 : 4,
-
         opacity: mainRoute ? 0.95 : 0.55,
       };
     },
@@ -509,10 +392,6 @@ function drawRoute(routes) {
   return routeLayer;
 }
 
-// =========================================================
-// FORMATEAR DISTANCIA
-// =========================================================
-
 function formatDistance(distance) {
   const kilometers = distance / 1000;
 
@@ -523,15 +402,9 @@ function formatDistance(distance) {
   return `${kilometers.toFixed(1)} km`;
 }
 
-// =========================================================
-// FORMATEAR DURACIÓN
-// =========================================================
-
 function formatDuration(duration) {
   const minutes = Math.round(duration / 60);
-
   const hours = Math.floor(minutes / 60);
-
   const remainingMinutes = minutes % 60;
 
   if (hours === 0) {
@@ -544,10 +417,6 @@ function formatDuration(duration) {
 
   return `${hours} h ${remainingMinutes} min`;
 }
-
-// =========================================================
-// MODAL AGREGAR LUGAR
-// =========================================================
 
 function openModal() {
   if (!modal) {
@@ -585,22 +454,14 @@ if (modal) {
   });
 }
 
-// =========================================================
-// GUARDAR LUGAR
-// =========================================================
-
 if (placeForm) {
   placeForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const name = document.getElementById("place-name").value.trim();
-
     const category = document.getElementById("place-category").value;
-
     const reference = document.getElementById("place-reference").value.trim();
-
     const address = document.getElementById("place-address").value.trim();
-
     const notes = document.getElementById("place-notes").value.trim();
 
     if (!name) {
@@ -615,22 +476,15 @@ if (placeForm) {
 
     const place = {
       id: Date.now(),
-
       name,
-
       category,
-
       reference,
-
       address,
-
       notes,
-
       coordinates,
     };
 
     savedPlaces.push(place);
-
     console.log("Lugar guardado:", place);
 
     if (coordinates) {
@@ -639,29 +493,24 @@ if (placeForm) {
       }).addTo(map);
 
       marker.bindPopup(`
-                    <strong>
-                        ${name}
-                    </strong>
+        <strong>
+          ${name}
+        </strong>
 
-                    <br>
+        <br>
 
-                    <span>
-                        ${category}
-                    </span>
-                `);
+        <span>
+          ${category}
+        </span>
+      `);
 
       map.setView([coordinates.latitude, coordinates.longitude], 15);
     }
 
     placeForm.reset();
-
     closeModal();
   });
 }
-
-// =========================================================
-// BOTÓN "VER TODAS LAS RUTAS"
-// =========================================================
 
 const viewRoutesButton = document.querySelector(".view-routes-button");
 
@@ -671,10 +520,6 @@ if (viewRoutesButton) {
   });
 }
 
-// =========================================================
-// CARGAR UBICACIÓN INICIAL
-// =========================================================
-
 async function loadDefaultLocation() {
   const results = await geocodeAddress(DEFAULT_LOCATION);
 
@@ -683,14 +528,8 @@ async function loadDefaultLocation() {
   }
 
   const result = results[0];
-
   map.setView([parseFloat(result.lat), parseFloat(result.lon)], 10);
 }
 
-// =========================================================
-// INICIALIZACIÓN
-// =========================================================
-
 loadExampleMarkers();
-
 loadDefaultLocation();

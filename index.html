@@ -16,1173 +16,492 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
     <div class="app">
 
-        <!-- =================================================
-             SIDEBAR
-        ================================================== -->
-
         <aside class="sidebar">
-
-            <!-- LOGO -->
-
             <div class="sidebar-logo">
-
                 <div class="logo-mark">
                     <i class="fa-solid fa-location-dot"></i>
                 </div>
 
                 <div class="logo-text">
-
                     <h1>Mi Mapa</h1>
-
-                    <p>
-                        Mis rutas, mis lugares
-                    </p>
-
+                    <p>Mis rutas, mis lugares</p>
                 </div>
-
             </div>
 
-
-            <!-- MENÚ -->
-
             <nav class="sidebar-menu">
+                <p class="menu-title">MENÚ</p>
 
-                <p class="menu-title">
-                    MENÚ
-                </p>
-
-                <button
-                    class="menu-item active"
-                    type="button"
-                    data-view="mapa"
-                >
-
+                <button class="menu-item active" type="button" data-view="mapa">
                     <i class="fa-solid fa-map"></i>
-
-                    <span>
-                        Mapa
-                    </span>
-
+                    <span>Mapa</span>
                 </button>
 
-
-                <button
-                    class="menu-item"
-                    type="button"
-                    data-view="rutas"
-                >
-
+                <button class="menu-item" type="button" data-view="rutas">
                     <i class="fa-solid fa-route"></i>
-
-                    <span>
-                        Mis rutas
-                    </span>
-
+                    <span>Mis rutas</span>
                 </button>
 
-
-                <button
-                    class="menu-item"
-                    type="button"
-                    data-view="lugares"
-                >
-
+                <button class="menu-item" type="button" data-view="lugares">
                     <i class="fa-solid fa-location-dot"></i>
-
-                    <span>
-                        Lugares
-                    </span>
-
+                    <span>Lugares</span>
                 </button>
 
-
-                <button
-                    class="menu-item"
-                    type="button"
-                    data-view="entregas"
-                >
-
+                <button class="menu-item" type="button" data-view="entregas">
                     <i class="fa-solid fa-truck"></i>
-
-                    <span>
-                        Entregas
-                    </span>
-
+                    <span>Entregas</span>
                 </button>
 
-
-                <button
-                    class="menu-item"
-                    type="button"
-                    data-view="favoritos"
-                >
-
+                <button class="menu-item" type="button" data-view="favoritos">
                     <i class="fa-regular fa-star"></i>
-
-                    <span>
-                        Favoritos
-                    </span>
-
+                    <span>Favoritos</span>
                 </button>
 
-
-                <button
-                    class="menu-item"
-                    type="button"
-                    data-view="actividad"
-                >
-
+                <button class="menu-item" type="button" data-view="actividad">
                     <i class="fa-solid fa-chart-column"></i>
-
-                    <span>
-                        Actividad
-                    </span>
-
+                    <span>Actividad</span>
                 </button>
-
             </nav>
 
-
-            <!-- CATEGORÍAS -->
-
             <div class="sidebar-categories">
+                <p class="menu-title">CATEGORÍAS</p>
 
-                <p class="menu-title">
-                    CATEGORÍAS
-                </p>
-
-
-                <button
-                    class="category-item active"
-                    type="button"
-                    data-category="todos"
-                >
-
+                <button class="category-item active" type="button" data-category="todos">
                     <span class="category-icon todos">
                         <i class="fa-solid fa-layer-group"></i>
                     </span>
 
-                    <span>
-                        Todos
-                    </span>
-
+                    <span>Todos</span>
                 </button>
 
 
-                <button
-                    class="category-item"
-                    type="button"
-                    data-category="entregas"
-                >
-
+                <button class="category-item" type="button" data-category="entregas">
                     <span class="category-icon entrega">
                         <i class="fa-solid fa-truck"></i>
                     </span>
 
-                    <span>
-                        Entregas
-                    </span>
-
+                    <span>Entregas</span>
                 </button>
 
-
-                <button
-                    class="category-item"
-                    type="button"
-                    data-category="mercados"
-                >
-
+                <button class="category-item" type="button" data-category="mercados">
                     <span class="category-icon mercado">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </span>
 
-                    <span>
-                        Mercados
-                    </span>
-
+                    <span>Mercados</span>
                 </button>
 
 
-                <button
-                    class="category-item"
-                    type="button"
-                    data-category="tiendas"
-                >
-
+                <button class="category-item" type="button" data-category="tiendas">
                     <span class="category-icon tienda">
                         <i class="fa-solid fa-shop"></i>
                     </span>
 
-                    <span>
-                        Tiendas
-                    </span>
-
+                    <span>Tiendas</span>
                 </button>
 
-
-                <button
-                    class="category-item"
-                    type="button"
-                    data-category="parques"
-                >
-
+                <button class="category-item" type="button" data-category="parques">
                     <span class="category-icon parque">
                         <i class="fa-solid fa-tree"></i>
                     </span>
 
-                    <span>
-                        Parques
-                    </span>
-
+                    <span>Parques</span>
                 </button>
 
-
-                <button
-                    class="category-item"
-                    type="button"
-                    data-category="otros"
-                >
-
+                <button class="category-item" type="button" data-category="otros">
                     <span class="category-icon otros">
                         <i class="fa-solid fa-ellipsis"></i>
                     </span>
 
-                    <span>
-                        Otros
-                    </span>
-
+                    <span>Otros</span>
                 </button>
-
             </div>
-
-
-            <!-- PARTE INFERIOR -->
 
             <div class="sidebar-bottom">
-
-                <button
-                    class="sidebar-menu-button"
-                    type="button"
-                >
-
+                <button class="sidebar-menu-button" type="button">
                     <i class="fa-solid fa-bars"></i>
-
-                    <span>
-                        Menú
-                    </span>
-
+                    <span>Menú</span>
                 </button>
-
             </div>
-
         </aside>
-
-
-        <!-- =================================================
-             CONTENIDO PRINCIPAL
-        ================================================== -->
 
         <main class="main">
 
-            <!-- =================================================
-                 HEADER
-            ================================================== -->
-
             <header class="topbar">
 
-                <!-- MARCA -->
-
                 <div class="topbar-brand">
-
                     <div class="topbar-logo">
                         <i class="fa-solid fa-location-dot"></i>
                     </div>
 
                     <div>
-
-                        <strong>
-                            Mi Mapa
-                        </strong>
-
-                        <span>
-                            Mis rutas, mis lugares, mi ciudad
-                        </span>
-
+                        <strong>Mi Mapa</strong>
+                        <span>Mis rutas, mis lugares, mi ciudad</span>
                     </div>
-
                 </div>
-
-
-                <!-- BUSCADOR -->
 
                 <div class="search-box">
-
                     <i class="fa-solid fa-magnifying-glass"></i>
-
-                    <input
-                        id="search-input"
-                        type="text"
-                        placeholder="Buscar lugar, ruta o referencia..."
-                        autocomplete="off"
-                    >
-
-                    <button
-                        id="search-button"
-                        type="button"
-                        aria-label="Buscar"
-                    >
-
+                    <input id="search-input" type="text" placeholder="Buscar lugar, ruta o referencia..." autocomplete="off">
+                    <button id="search-button" type="button" aria-label="Buscar">
                         <i class="fa-solid fa-magnifying-glass"></i>
-
                     </button>
-
                 </div>
 
-
-                <!-- ACCIONES -->
-
                 <div class="topbar-actions">
-
-                    <button
-                        class="icon-button"
-                        type="button"
-                        title="Tema"
-                    >
-
+                    <button class="icon-button" type="button" title="Tema">
                         <i class="fa-solid fa-sun"></i>
-
                     </button>
 
-
-                    <button
-                        class="action-link"
-                        type="button"
-                    >
-
+                    <button class="action-link" type="button">
                         <i class="fa-solid fa-gear"></i>
-
-                        <span>
-                            Configuración
-                        </span>
-
+                        <span>Configuración</span>
                     </button>
 
-
-                    <button
-                        class="action-link"
-                        type="button"
-                    >
-
+                    <button class="action-link" type="button">
                         <i class="fa-regular fa-circle-question"></i>
-
-                        <span>
-                            Ayuda
-                        </span>
-
+                        <span>Ayuda</span>
                     </button>
 
-
-                    <button
-                        id="add-place-button"
-                        class="add-place-button"
-                        type="button"
-                    >
-
+                    <button id="add-place-button" class="add-place-button" type="button">
                         <i class="fa-solid fa-plus"></i>
-
                         Agregar lugar
-
                     </button>
-
                 </div>
 
             </header>
 
-
-            <!-- =================================================
-                 VISTAS
-            ================================================== -->
-
-            <section
-                id="vistaMapa"
-                class="vista activa"
-            >
-
-                <!-- MAPA -->
+            <section id="vistaMapa" class="vista activa">
 
                 <div class="map-area">
 
                     <div id="map"></div>
 
-
-                    <!-- BOTÓN UBICACIÓN -->
-
-                    <button
-                        id="locate-button"
-                        class="map-control locate-control"
-                        type="button"
-                        title="Centrar mapa"
-                    >
-
+                    <button id="locate-button" class="map-control locate-control" type="button" title="Centrar mapa">
                         <i class="fa-solid fa-location-arrow"></i>
-
                     </button>
-
-
-                    <!-- PANEL DERECHO -->
 
                     <aside class="map-sidebar">
 
-                        <!-- MIS RUTAS -->
-
                         <section class="floating-panel">
-
                             <div class="panel-header">
-
                                 <div>
-
                                     <h2>
-                                        <i class="fa-solid fa-route"></i>
-                                        Mis rutas
+                                        <i class="fa-solid fa-route"></i> Mis rutas
                                     </h2>
-
                                 </div>
 
-                                <button
-                                    class="panel-close"
-                                    type="button"
-                                >
+                                <button class="panel-close" type="button">
                                     <i class="fa-solid fa-xmark"></i>
                                 </button>
-
                             </div>
-
 
                             <div class="route-list">
 
-                                <!-- RUTA 1 -->
-
-                                <article
-                                    class="route-item"
-                                    data-route="mercado"
-                                >
-
+                                <article class="route-item" data-route="mercado">
                                     <span class="route-dot blue"></span>
 
                                     <div class="route-info">
-
-                                        <strong>
-                                            Ruta al Mercado
-                                        </strong>
-
+                                        <strong>Ruta al Mercado</strong>
                                         <div class="route-meta">
-
-                                            <span>
-                                                <i class="fa-regular fa-clock"></i>
-                                                12 - 20 min
-                                            </span>
-
-                                            <span>
-                                                <i class="fa-solid fa-location-dot"></i>
-                                                5 lugares
-                                            </span>
-
+                                            <span><i class="fa-regular fa-clock"></i>12 - 20 min</span>
+                                            <span><i class="fa-solid fa-location-dot"></i>5 lugares</span>
                                         </div>
-
                                     </div>
 
-                                    <span class="route-distance">
-                                        3.2 km
-                                    </span>
-
+                                    <span class="route-distance">3.2 km</span>
                                 </article>
 
-
-                                <!-- RUTA 2 -->
-
-                                <article
-                                    class="route-item"
-                                    data-route="jiutepec"
-                                >
-
+                                <article class="route-item" data-route="jiutepec">
                                     <span class="route-dot orange"></span>
 
                                     <div class="route-info">
-
-                                        <strong>
-                                            Entrega Jiutepec
-                                        </strong>
-
+                                        <strong>Entrega Jiutepec</strong>
                                         <div class="route-meta">
-
-                                            <span>
-                                                <i class="fa-regular fa-clock"></i>
-                                                20 - 30 min
-                                            </span>
-
-                                            <span>
-                                                <i class="fa-solid fa-location-dot"></i>
-                                                5 lugares
-                                            </span>
-
+                                            <span><i class="fa-regular fa-clock"></i>20 - 30 min</span>
+                                            <span><i class="fa-solid fa-location-dot"></i>5 lugares</span>
                                         </div>
-
                                     </div>
 
-                                    <span class="route-distance">
-                                        5.7 km
-                                    </span>
-
+                                    <span class="route-distance">5.7 km</span>
                                 </article>
 
-
-                                <!-- RUTA 3 -->
-
-                                <article
-                                    class="route-item"
-                                    data-route="centro"
-                                >
-
+                                <article class="route-item" data-route="centro">
                                     <span class="route-dot purple"></span>
 
                                     <div class="route-info">
-
-                                        <strong>
-                                            Centro - Plan de Ayala
-                                        </strong>
-
+                                        <strong>Centro - Plan de Ayala</strong>
                                         <div class="route-meta">
-
-                                            <span>
-                                                <i class="fa-regular fa-clock"></i>
-                                                12 - 14 min
-                                            </span>
-
-                                            <span>
-                                                <i class="fa-solid fa-location-dot"></i>
-                                                4 lugares
-                                            </span>
-
+                                            <span><i class="fa-regular fa-clock"></i>12 - 14 min</span>
+                                            <span><i class="fa-solid fa-location-dot"></i>4 lugares</span>
                                         </div>
-
                                     </div>
 
-                                    <span class="route-distance">
-                                        4.1 km
-                                    </span>
-
+                                    <span class="route-distance">4.1 km</span>
                                 </article>
 
-
-                                <!-- RUTA 4 -->
-
-                                <article
-                                    class="route-item"
-                                    data-route="mercados"
-                                >
-
+                                <article class="route-item" data-route="mercados">
                                     <span class="route-dot green"></span>
 
                                     <div class="route-info">
-
-                                        <strong>
-                                            Mercados de la mañana
-                                        </strong>
-
+                                        <strong>Mercados de la mañana</strong>
                                         <div class="route-meta">
-
-                                            <span>
-                                                <i class="fa-regular fa-clock"></i>
-                                                30 - 40 min
-                                            </span>
-
-                                            <span>
-                                                <i class="fa-solid fa-location-dot"></i>
-                                                13 lugares
-                                            </span>
-
+                                            <span><i class="fa-regular fa-clock"></i>30 - 40 min</span>
+                                            <span><i class="fa-solid fa-location-dot"></i>13 lugares</span>
                                         </div>
-
                                     </div>
 
-                                    <span class="route-distance">
-                                        7.8 km
-                                    </span>
-
+                                    <span class="route-distance">7.8 km</span>
                                 </article>
 
                             </div>
 
-
-                            <button
-                                class="view-routes-button"
-                                type="button"
-                                data-view="rutas"
-                            >
-
+                            <button class="view-routes-button" type="button" data-view="rutas">
                                 Ver todas las rutas
-
                                 <i class="fa-solid fa-arrow-right"></i>
-
                             </button>
-
                         </section>
-
-
-                        <!-- LUGARES RECIENTES -->
 
                         <section class="floating-panel recent-panel">
 
                             <div class="panel-header">
-
-                                <h2>
-                                    Lugares recientes
-                                </h2>
-
-                                <button
-                                    class="view-all-button"
-                                    type="button"
-                                >
-                                    Ver todos
-                                </button>
-
+                                <h2>Lugares recientes</h2>
+                                <button class="view-all-button" type="button">Ver todos</button>
                             </div>
-
 
                             <div class="recent-list">
 
                                 <article class="recent-item">
-
                                     <span class="place-marker yellow">
                                         <i class="fa-solid fa-location-dot"></i>
                                     </span>
 
                                     <div>
-                                        <strong>
-                                            Mercado Adolfo López
-                                        </strong>
-
-                                        <span>
-                                            Mercado
-                                        </span>
+                                        <strong>Mercado Adolfo López</strong>
+                                        <span>Mercado</span>
                                     </div>
 
                                     <button type="button">
                                         <i class="fa-solid fa-ellipsis-vertical"></i>
                                     </button>
-
                                 </article>
 
-
                                 <article class="recent-item">
-
                                     <span class="place-marker green">
                                         <i class="fa-solid fa-tree"></i>
                                     </span>
 
                                     <div>
-                                        <strong>
-                                            Parque Alameda
-                                        </strong>
-
-                                        <span>
-                                            Parque
-                                        </span>
+                                        <strong>Parque Alameda</strong>
+                                        <span>Parque</span>
                                     </div>
 
                                     <button type="button">
                                         <i class="fa-solid fa-ellipsis-vertical"></i>
                                     </button>
-
                                 </article>
 
-
                                 <article class="recent-item">
-
                                     <span class="place-marker purple">
                                         <i class="fa-solid fa-shop"></i>
                                     </span>
 
                                     <div>
-                                        <strong>
-                                            Chedraui Flores Magón
-                                        </strong>
-
-                                        <span>
-                                            Tienda
-                                        </span>
+                                        <strong>Teopanzolco</strong>
+                                        <span>Centro Cultural</span>
                                     </div>
 
                                     <button type="button">
                                         <i class="fa-solid fa-ellipsis-vertical"></i>
                                     </button>
-
                                 </article>
 
-
                                 <article class="recent-item">
-
                                     <span class="place-marker blue">
                                         <i class="fa-solid fa-location-dot"></i>
                                     </span>
 
                                     <div>
-                                        <strong>
-                                            IMSS Plan de Ayala
-                                        </strong>
-
-                                        <span>
-                                            Referencia
-                                        </span>
+                                        <strong>IMSS Plan de Ayala</strong>
+                                        <span>Referencia</span>
                                     </div>
 
                                     <button type="button">
                                         <i class="fa-solid fa-ellipsis-vertical"></i>
                                     </button>
-
                                 </article>
-
                             </div>
-
                         </section>
 
                     </aside>
 
-
-                    <!-- ZOOM -->
-
                     <div class="map-zoom">
-
-                        <button
-                            id="zoom-in"
-                            type="button"
-                        >
+                        <button id="zoom-in" type="button">
                             <i class="fa-solid fa-plus"></i>
                         </button>
 
-                        <button
-                            id="zoom-out"
-                            type="button"
-                        >
+                        <button id="zoom-out" type="button">
                             <i class="fa-solid fa-minus"></i>
                         </button>
 
-                        <button
-                            id="map-center"
-                            type="button"
-                        >
+                        <button id="map-center" type="button">
                             <i class="fa-solid fa-crosshairs"></i>
                         </button>
-
                     </div>
-
-
-                    <!-- ESCALA -->
 
                     <div class="map-scale">
                         <span></span>
-                        <small>
-                            1 km
-                        </small>
+                        <small>1 km</small>
                     </div>
 
-
-                    <!-- CATEGORÍAS SOBRE MAPA -->
-
                     <div class="map-categories">
-
-                        <button
-                            class="map-category blue"
-                            type="button"
-                        >
-
+                        <button class="map-category blue" type="button">
                             <i class="fa-solid fa-truck"></i>
-
                             Entregas
-
                         </button>
 
-
-                        <button
-                            class="map-category orange"
-                            type="button"
-                        >
-
+                        <button class="map-category orange" type="button">
                             <i class="fa-solid fa-cart-shopping"></i>
-
                             Mercados
-
                         </button>
 
-
-                        <button
-                            class="map-category purple"
-                            type="button"
-                        >
-
+                        <button class="map-category purple" type="button">
                             <i class="fa-solid fa-shop"></i>
-
                             Tiendas
-
                         </button>
 
-
-                        <button
-                            class="map-category green"
-                            type="button"
-                        >
-
+                        <button class="map-category green" type="button">
                             <i class="fa-solid fa-tree"></i>
-
                             Parques
-
                         </button>
 
-
-                        <button
-                            class="map-category red"
-                            type="button"
-                        >
-
+                        <button class="map-category red" type="button">
                             <i class="fa-solid fa-star"></i>
-
                             Favoritos
-
                         </button>
 
-
-                        <button
-                            class="map-category home"
-                            type="button"
-                        >
-
+                        <button class="map-category home" type="button">
                             <i class="fa-solid fa-house"></i>
-
                             Casa
-
                         </button>
-
                     </div>
 
                 </div>
-
             </section>
 
-
-            <!-- =================================================
-                 VISTA RUTAS
-            ================================================== -->
-
-            <section
-                id="vistaRutas"
-                class="vista"
-            >
-
+            <section id="vistaRutas" class="vista">
                 <div class="placeholder-view">
-
                     <i class="fa-solid fa-route"></i>
-
-                    <h2>
-                        Mis rutas
-                    </h2>
-
+                    <h2>Mis rutas</h2>
                     <p>
                         Aquí aparecerán las rutas que hayas creado y guardado.
                     </p>
-
                 </div>
-
             </section>
 
-
-            <!-- =================================================
-                 VISTA LUGARES
-            ================================================== -->
-
-            <section
-                id="vistaLugares"
-                class="vista"
-            >
-
+            <section id="vistaLugares" class="vista">
                 <div class="placeholder-view">
-
                     <i class="fa-solid fa-location-dot"></i>
-
-                    <h2>
-                        Mis lugares
-                    </h2>
-
+                    <h2>Mis lugares</h2>
                     <p>
                         Aquí aparecerán tus lugares guardados.
                     </p>
-
                 </div>
-
             </section>
 
-
-            <!-- =================================================
-                 VISTA ENTREGAS
-            ================================================== -->
-
-            <section
-                id="vistaEntregas"
-                class="vista"
-            >
-
+            <section id="vistaEntregas" class="vista">
                 <div class="placeholder-view">
-
                     <i class="fa-solid fa-truck"></i>
-
-                    <h2>
-                        Entregas
-                    </h2>
-
+                    <h2>Entregas</h2>
                     <p>
                         Aquí podrás administrar tus entregas.
                     </p>
-
                 </div>
-
             </section>
 
-
-            <!-- =================================================
-                 VISTA FAVORITOS
-            ================================================== -->
-
-            <section
-                id="vistaFavoritos"
-                class="vista"
-            >
-
+            <section id="vistaFavoritos" class="vista">
                 <div class="placeholder-view">
-
                     <i class="fa-regular fa-star"></i>
-
-                    <h2>
-                        Favoritos
-                    </h2>
-
+                    <h2>Favoritos</h2>
                     <p>
                         Aquí aparecerán tus lugares favoritos.
                     </p>
-
                 </div>
-
             </section>
 
-
-            <!-- =================================================
-                 VISTA ACTIVIDAD
-            ================================================== -->
-
-            <section
-                id="vistaActividad"
-                class="vista"
-            >
-
+            <section id="vistaActividad" class="vista">
                 <div class="placeholder-view">
-
                     <i class="fa-solid fa-chart-column"></i>
-
-                    <h2>
-                        Actividad
-                    </h2>
-
+                    <h2>Actividad</h2>
                     <p>
                         Aquí aparecerá tu actividad reciente.
                     </p>
-
                 </div>
-
             </section>
 
         </main>
-
     </div>
 
-
-    <!-- =====================================================
-         MODAL AGREGAR LUGAR
-    ====================================================== -->
-
-    <div
-        id="add-place-modal"
-        class="modal-overlay"
-    >
-
+    <div id="add-place-modal" class="modal-overlay">
         <div class="modal">
 
             <div class="modal-header">
-
                 <div>
-
-                    <span class="modal-kicker">
-                        NUEVO LUGAR
-                    </span>
-
-                    <h2>
-                        Agregar nuevo lugar
-                    </h2>
-
+                    <span class="modal-kicker">NUEVO LUGAR</span>
+                    <h2>Agregar nuevo lugar</h2>
                 </div>
 
-                <button
-                    id="close-modal"
-                    class="modal-close"
-                    type="button"
-                >
-
+                <button id="close-modal" class="modal-close" type="button">
                     <i class="fa-solid fa-xmark"></i>
-
                 </button>
-
             </div>
 
-
             <form id="place-form">
-
                 <div class="form-group">
-
-                    <label for="place-name">
-                        Nombre del lugar
-                    </label>
-
-                    <input
-                        id="place-name"
-                        type="text"
-                        placeholder="Ej. Mercado Adolfo López"
-                        required
-                    >
-
+                    <label for="place-name">Nombre del lugar</label>
+                    <input id="place-name" type="text" placeholder="Ej. Mercado Adolfo López" required>
                 </div>
 
-
                 <div class="form-group">
-
-                    <label for="place-category">
-                        Categoría
-                    </label>
-
+                    <label for="place-category">Categoría</label>
                     <select id="place-category">
-
-                        <option value="mercado">
-                            Mercado
-                        </option>
-
-                        <option value="tienda">
-                            Tienda
-                        </option>
-
-                        <option value="parque">
-                            Parque
-                        </option>
-
-                        <option value="servicio">
-                            Servicio
-                        </option>
-
-                        <option value="otro">
-                            Otro
-                        </option>
-
+                        <option value="mercado">Mercado</option>
+                        <option value="tienda">Tienda</option>
+                        <option value="parque">Parque</option>
+                        <option value="servicio">Servicio</option>
+                        <option value="otro">Otro</option>
                     </select>
-
                 </div>
-
 
                 <div class="form-group">
-
-                    <label for="place-reference">
-                        Referencia
-                    </label>
-
-                    <input
-                        id="place-reference"
-                        type="text"
-                        placeholder="Ej. Junto al zócalo"
-                    >
-
+                    <label for="place-reference">Referencia</label>
+                    <input id="place-reference" type="text" placeholder="Ej. Junto al zócalo">
                 </div>
-
 
                 <div class="form-group">
-
-                    <label for="place-address">
-                        Dirección
-                    </label>
-
-                    <input
-                        id="place-address"
-                        type="text"
-                        placeholder="Cuernavaca, Morelos"
-                    >
-
+                    <label for="place-address">Dirección</label>
+                    <input id="place-address" type="text" placeholder="Cuernavaca, Morelos">
                 </div>
-
 
                 <div class="form-group">
-
-                    <label for="place-notes">
-                        Notas
-                    </label>
-
-                    <textarea
-                        id="place-notes"
-                        rows="4"
-                        placeholder="Información adicional..."
-                    ></textarea>
-
+                    <label for="place-notes">Notas</label>
+                    <textarea id="place-notes" rows="4" placeholder="Información adicional..."></textarea>
                 </div>
-
 
                 <div class="modal-actions">
-
-                    <button
-                        id="cancel-modal"
-                        class="secondary-button"
-                        type="button"
-                    >
-                        Cancelar
+                    <button id="cancel-modal" class="secondary-button" type="button">Cancelar</button>
+                    <button class="primary-button" type="submit">
+                        <i class="fa-solid fa-check"></i> Guardar lugar
                     </button>
-
-                    <button
-                        class="primary-button"
-                        type="submit"
-                    >
-
-                        <i class="fa-solid fa-check"></i>
-
-                        Guardar lugar
-
-                    </button>
-
                 </div>
-
             </form>
 
         </div>
-
     </div>
 
-
-    <!-- =====================================================
-         LEAFLET
-    ====================================================== -->
-
-    <script
-        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    ></script>
-
-
-    <!-- =====================================================
-         JAVASCRIPT
-    ====================================================== -->
-
+    <!-- LEAFLET -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="js/script.js"></script>
 
 </body>
