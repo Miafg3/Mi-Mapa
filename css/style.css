@@ -1210,9 +1210,9 @@ button {
 .favorite-check {
     display: flex;
     gap: 8px;
-    color: #b8c3d2;
     font-size: 10px;
     cursor: pointer;
+    color: #b8c3d2;
     margin: 10px 0 5px;
     align-items: center;
 }
@@ -1240,119 +1240,95 @@ button {
 .favorites-page {
     width: 100%;
     height: 100%;
+    padding: 35px;
     overflow-y: auto;
-    padding:
-        35px;
-    background:
-        radial-gradient(circle at top right,#102542,#071225 55%);
+    background: radial-gradient(circle at top right,#102542,#071225 55%);
 }
 
 .page-heading {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     margin-bottom: 25px;
+    justify-content: space-between;
 }
 
 .page-heading > div > span {
-    color:
-        var(--color-oro);
     font-size: 9px;
     font-weight: 700;
     letter-spacing: 1.5px;
+    color: var(--color-oro);
 }
-
 
 .page-heading h2 {
     margin-top: 5px;
     font-size: 26px;
 }
 
-
 .page-heading p {
     margin-top: 6px;
-    color: #8190a7;
     font-size: 12px;
+    color: #8190a7;
 }
 
 /* BOTONES */
 
 .primary-button {
     display: flex;
-    align-items: center;
     gap: 7px;
+    border: 0;
     height: 40px;
-    padding:
-        0 15px;
-    border:
-        0;
-    border-radius: 9px;
-    background:
-        linear-gradient
-            135deg,
-            #ffd86f,
-            #f2ad32;
-    color:
-        #172238;
     font-size: 11px;
+    padding: 0 15px;
+    color: #172238;
     font-weight: 700;
+    border-radius: 9px;
+    align-items: center;
+    background: linear-gradient 135deg, #ffd86f, #f2ad32;
 }
 
 .primary-button:disabled {
-    opacity:
-        0.55;
-    cursor:
-        wait;
+    cursor: wait;
+    opacity: 0.55;
 }
 
 .secondary-button {
-    border:
-        1px solid rgba(255, 255, 255, 0.12);
-    background:
-        transparent;
-    color:
-        #c5cfdd;
+    color: #c5cfdd;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 /* RUTAS GUARDADAS */
 
 .saved-routes-container {
     display: flex;
-    flex-direction: column;
     gap: 10px;
+    flex-direction: column;
 }
 
 .saved-route-card {
     display: flex;
-    align-items: center;
     gap: 15px;
-    padding:
-        17px;
-    border:
-        1px solid rgba(255, 255, 255, 0.07);
+    padding: 17px;
+    align-items: center;
     border-radius: 13px;
-    background:
-        rgba(12, 27, 51, 0.85);
+    background: rgba(12, 27, 51, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .saved-route-card:hover {
-    border-color:
-        rgba(255, 209, 102, 0.18);
-
+    border-color: rgba(255, 209, 102, 0.18);
 }
 
 .saved-route-icon {
     width: 43px;
     height: 43px;
-    min-width: 43px;
     display: flex;
+    min-width: 43px;
+    border-radius: 11px;
     align-items: center;
     justify-content: center;
-    border-radius: 11px;
-    background:
-        rgba(255, 209, 102, 0.12);
-    color:
-        var(--color-oro);
+    color: var(--color-oro);
+    background: rgba(255, 209, 102, 0.12);
 }
 
 .saved-route-content {
@@ -1366,12 +1342,11 @@ button {
 
 .route-address {
     display: flex;
-    align-items: center;
     gap: 7px;
-    margin-top: 5px;
-    color:
-        #7f90a7;
     font-size: 9px;
+    margin-top: 5px;
+    color: #7f90a7;
+    align-items: center;
 }
 
 .route-address span {
@@ -1381,61 +1356,51 @@ button {
 }
 
 .route-address i {
-    color:
-        #566983;
+    color: #566983;
 }
 
 .saved-route-stats {
     display: flex;
     gap: 16px;
-    margin-top: 10px;
-    color:
-        #94a3b8;
     font-size: 9px;
+    margin-top: 10px;
+    color: #94a3b8;
 }
 
 .saved-route-stats i {
+    color: #71839d;
     margin-right: 3px;
-    color:
-        #71839d;
 }
 
 .delete-button {
+    border: 0;
     width: 32px;
     height: 32px;
-    border:
-        0;
+    color: #718198;
     border-radius: 8px;
-    background:
-        transparent;
-    color:
-        #718198;
+    background: transparent;
 }
 
 .delete-button:hover {
-    background:
-        rgba(255, 70, 80, 0.1);
-    color:
-        #ff5a67;
+    color: #ff5a67;
+    background: rgba(255, 70, 80, 0.1);
 }
-
 
 /* PÁGINA VACÍA */
 
 .empty-page {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     min-height: 300px;
     text-align: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .empty-page > i {
-    margin-bottom: 15px;
-    color:
-        #536783;
     font-size: 42px;
+    color: #536783;
+    margin-bottom: 15px;
 }
 
 .empty-page h3 {
@@ -1443,54 +1408,43 @@ button {
 }
 
 .empty-page p {
-    margin:
-        7px 0 17px;
-    color:
-        #71829a;
+    color: #71829a;
     font-size: 11px;
+    margin: 7px 0 17px;
 }
 
 /* FAVORITOS */
 
 .places-grid {
     display: grid;
-    grid-template-columns:
-        repeat(
-            auto-fill,
-            minmax(250px, 1fr)
-        );
     gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 
 }
 
 .place-card {
     display: flex;
     gap: 12px;
-    padding:
-        15px;
-    border:
-        1px solid rgba(255, 255, 255, 0.07);
-    border-radius: 12px;
-    background:
-        rgba(12, 27, 51, 0.85);
+    padding: 15px;
     cursor: pointer;
+    border-radius: 12px;
+    background: rgba(12, 27, 51, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .place-card:hover {
-    border-color:
-        rgba(255, 209, 102, 0.2);
-
+    border-color: rgba(255, 209, 102, 0.2);
 }
 
 .place-card-icon {
+    display: flex;
     width: 38px;
     height: 38px;
-    min-width: 38px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
     color: white;
+    min-width: 38px;
+    align-items: center;
+    border-radius: 10px;
+    justify-content: center;
 }
 
 .place-card h3 {
@@ -1499,10 +1453,9 @@ button {
 
 .place-card span {
     display: block;
-    margin-top: 3px;
-    color:
-        #71829a;
     font-size: 9px;
+    margin-top: 3px;
+    color: #71829a;
 }
 
 .place-card p {
