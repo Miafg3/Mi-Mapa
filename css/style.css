@@ -97,12 +97,6 @@ button {
     letter-spacing: -0.5px;
 }
 
-.logo-text p {
-    margin-top: 6px;
-    font-size: 10px;
-    color: var(--color-texto-muted);
-}
-
 .menu-title {
     font-size: 10px;
     color: #71819a;
@@ -194,13 +188,13 @@ button {
     color: var(--color-oro);
 }
 
-.category-icon.entrega {
+/* .category-icon.entrega {
     color: var(--color-blue);
-}
+} */
 
-.category-icon.mercado {
+/* .category-icon.mercado {
     color: var(--color-orange);
-}
+} */
 
 .category-icon.tienda {
     color: var(--color-purple);
@@ -251,35 +245,6 @@ button {
     align-items: center;
     background: #08152a;
     border-bottom: 1px solid var(--color-borde);
-}
-
-.topbar-brand {
-    display: flex;
-    gap: 10px;
-    min-width: 195px;
-    align-items: center;
-}
-
-.topbar-logo {
-    width: 35px;
-    height: 35px;
-    display: flex;
-    font-size: 25px;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-oro);
-}
-
-.topbar-brand strong {
-    display: block;
-    font-size: 16px;
-}
-
-.topbar-brand span {
-    display: block;
-    font-size: 9px;
-    margin-top: 3px;
-    color: #71819a;
 }
 
 .search-box {
@@ -705,33 +670,7 @@ button {
     background: #f2f5f8;
 }
 
-/* ESCALA */
-
-.map-scale {
-    position: absolute;
-    left: 22px;
-    z-index: 500;
-    bottom: 18px;
-    display: flex;
-    color: #243247;
-    align-items: center;
-    flex-direction: column;
-    text-shadow: 0 1px 3px white;
-}
-
-.map-scale span {
-    width: 58px;
-    height: 4px;
-    border-top: 0;
-    border: 1px solid #27364a;
-}
-
-.map-scale small {
-    font-size: 9px;
-    margin-top: 2px;
-}
-
-   /* CATEGORÍAS SOBRE MAPA */
+/* CATEGORÍAS SOBRE MAPA */
 
 .map-categories {
     position: absolute;
@@ -791,11 +730,7 @@ button {
     color: var(--color-red);
 }
 
-.map-category.home i {
-    color: white;
-}
-
-   /* PLACEHOLDER VIEWS */
+/* PLACEHOLDER VIEWS */
 
 .placeholder-view {
     width: 100%;
@@ -957,10 +892,6 @@ button {
         min-width: 205px;
     }
 
-    .topbar-brand {
-        min-width: 155px;
-    }
-
     .action-link span {
         display: none;
     }
@@ -1007,10 +938,6 @@ button {
 
     .sidebar-menu-button {
         justify-content: center;
-    }
-
-    .topbar-brand {
-        display: none;
     }
 
     .topbar {
@@ -1283,7 +1210,7 @@ button {
     font-weight: 700;
     border-radius: 9px;
     align-items: center;
-    background: linear-gradient 135deg, #ffd86f, #f2ad32;
+    background: linear-gradient(135deg, #ffd86f, #f2ad32;
 }
 
 .primary-button:disabled {

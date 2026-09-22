@@ -1,8 +1,6 @@
 <!-- ==========================================
-NOTAS PERSONALES:
-
-- TODOS LOS ICONOS QUE OCUPE DEBEN SER DE FONT AWESOME
-- CADA SECCIÓN DEBE TENER COMENTARIOS BREVES Y ENTENDIBLES
+- TODOS LOS ICONOS DEBEN SER DE FONT AWESOME
+- CADA SECCIÓN DEBE TENER COMENTARIOS BREVES
 - LOS COMENTARIOS TIENEN QUE SER EN LETRAS MAYÚSCULAS
 ========================================== -->
 
@@ -28,11 +26,8 @@ NOTAS PERSONALES:
     <div class="app">
 
         <!-- BARRA LATERAL PRINCIPAL -->
-
         <aside class="sidebar">
-
             <!-- LOGO -->
-
             <div class="sidebar-logo">
                 <div class="logo-mark">
                     <i class="fa-solid fa-location-dot"></i>
@@ -44,9 +39,7 @@ NOTAS PERSONALES:
             </div>
 
             <!-- MENÚ -->
-
             <nav class="sidebar-menu">
-
                 <button class="menu-item active" type="button" data-view="mapa">
                     <i class="fa-solid fa-map"></i>
                     <span>Mapa</span>
@@ -71,11 +64,9 @@ NOTAS PERSONALES:
                     <i class="fa-solid fa-chart-column"></i>
                     <span>Actividad</span>
                 </button>
-
             </nav>
 
             <!-- CATEGORÍAS -->
-
             <div class="sidebar-categories">
                 <p class="menu-title">CATEGORÍAS</p>
 
@@ -86,29 +77,29 @@ NOTAS PERSONALES:
                     <span>Todos</span>
                 </button>
 
-                <button class="category-item" type="button" data-category="mercado">
-                    <span class="category-icon mercado">
+                <button class="category-item" type="button" data-category="favorito">
+                    <span class="category-icon favorito">
                         <i class="fa-solid fa-star"></i>
                     </span>
                     <span>Favoritos</span>
                 </button>
 
-                <button class="category-item" type="button" data-category="tienda">
-                    <span class="category-icon tienda">
+                <button class="category-item" type="button" data-category="parque">
+                    <span class="category-icon parque">
                         <i class="fa-solid fa-tree"></i>
                     </span>
                     <span>Parques</span>
                 </button>
 
-                <button class="category-item" type="button" data-category="parque">
-                    <span class="category-icon parque">
+                <button class="category-item" type="button" data-category="tienda">
+                    <span class="category-icon tienda">
                         <i class="fa-solid fa-bag-shopping"></i>
                     </span>
                     <span>Tiendas</span>
                 </button>
 
-                <button class="category-item" type="button" data-category="servicio">
-                    <span class="category-icon servicio">
+                <button class="category-item" type="button" data-category="restaurante">
+                    <span class="category-icon restaurante">
                         <i class="fa-solid fa-utensils"></i>
                     </span>
                     <span>Restaurantes</span>
@@ -123,26 +114,20 @@ NOTAS PERSONALES:
             </div>
 
             <!-- BOTON DE MENÚ -->
-
             <div class="sidebar-bottom">
                 <button class="sidebar-menu-button" type="button">
                     <i class="fa-solid fa-bars"></i>
                     <span>Menú</span>
                 </button>
             </div>
-
         </aside>
 
         <!-- MAIN -->
-
         <main class="main">
 
             <!-- HEADER - BARRA DE NAVEGACIÓN -->
-
             <header class="topbar">
-
                 <!-- BUSCADOR -->
-
                 <div class="search-box">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <input id="search-input" type="text" placeholder="Buscar lugar, ruta o referencia..." autocomplete="off">
@@ -152,7 +137,6 @@ NOTAS PERSONALES:
                 </div>
 
                 <!-- ACCIONES -->
-
                 <div class="topbar-actions">
                     <button class="icon-button" type="button">
                         <i class="fa-solid fa-sun"></i>
@@ -172,11 +156,9 @@ NOTAS PERSONALES:
                         <i class="fa-solid fa-plus"></i> Agregar lugar
                     </button>
                 </div>
-
             </header>
 
             <!-- AREA VISUAL DEL MAPA -->
-
             <section id="vistaMapa" class="vista activa">
                 <div class="map-area">
 
@@ -189,11 +171,9 @@ NOTAS PERSONALES:
                     </button>
 
                     <!-- PANEL DERECHO -->
-
                     <aside class="map-sidebar">
 
                         <!-- PANEL DERECHO: MIS RUTAS -->
-
                         <section class="floating-panel">
                             <div class="panel-header">
                                 <h2>
@@ -214,7 +194,6 @@ NOTAS PERSONALES:
                         </section>
 
                         <!-- PANEL DERECHO: LUGARES RECIENTES -->
-
                         <section class="floating-panel recent-panel">
                             <div class="panel-header">
                                 <h2>Lugares recientes</h2>
@@ -224,11 +203,9 @@ NOTAS PERSONALES:
                             <!-- JAVASCRIPT INSERTARÁ LOS LUGARES -->
                             <div id="recent-list" class="recent-list"></div>
                         </section>
-
                     </aside>
 
                     <!-- BOTONES PARA HACER ZOOM -->
-
                     <div class="map-zoom">
                         <button id="zoom-in" type="button">
                             <i class="fa-solid fa-plus"></i>
@@ -244,39 +221,38 @@ NOTAS PERSONALES:
                     </div>
 
                     <!-- CATEGORÍAS -->
-
                     <div class="map-categories">
-                        <button class="map-category orange" type="button" data-category="restaurante">
-                            <i class="fa-solid fa-utensils"></i> Restaurantes
+                        <button class="map-category blue" type="button" data-category="todos">
+                            <i class="fa-solid fa-layer-group"></i> Todos
                         </button>
-
-                        <button class="map-category purple" type="button" data-category="tienda">
-                            <i class="fa-solid fa-bag-shopping"></i> Tiendas
+                        
+                        <button class="map-category red" type="button" data-category="favorito">
+                            <i class="fa-solid fa-star"></i> Favoritos
                         </button>
 
                         <button class="map-category green" type="button" data-category="parque">
                             <i class="fa-solid fa-tree"></i> Parques
                         </button>
 
-                        <button class="map-category red" type="button" data-category="favoritos">
-                            <i class="fa-solid fa-star"></i> Favoritos
+                        <button class="map-category purple" type="button" data-category="tienda">
+                            <i class="fa-solid fa-bag-shopping"></i> Tiendas
                         </button>
 
-                        <button class="map-category white" type="button" data-category="otros">
+                        <button class="map-category orange" type="button" data-category="restaurante">
+                            <i class="fa-solid fa-utensils"></i> Restaurantes
+                        </button>
+
+                        <button class="map-category white" type="button" data-category="otro">
                             <i class="fa-solid fa-ellipsis"></i> Otros
                         </button>
 
-                        <button class="map-category blue" type="button" data-category="todos">
-                            <i class="fa-solid fa-layer-group"></i> Todos
-                        </button>
                     </div>
                 
                 </div>
             </section>
 
 
-            <!-- MIS RUTAS: NOS PERMITE AGREGAR UNA NUEVA RUTA Y VER LAS RUTAS QUE YA TEENEMOS GUARDADAS -->
-
+            <!-- MIS RUTAS: NOS PERMITE AGREGAR UNA NUEVA RUTA Y VER LAS RUTAS QUE YA TENEMOS GUARDADAS -->
             <section id="vistaRutas" class="vista">
                 <div class="routes-page">
                     <div class="page-heading">
@@ -294,7 +270,6 @@ NOTAS PERSONALES:
             </section>
 
             <!-- ENTREGAS -->
-
             <section id="vistaEntregas" class="vista">
                 <div class="placeholder-view">
                     <i class="fa-solid fa-truck"></i>
@@ -303,7 +278,6 @@ NOTAS PERSONALES:
             </section>
 
             <!-- FAVORITOS -->
-
             <section id="vistaFavoritos" class="vista">
                 <div class="favorites-page">
                     <div class="page-heading">
@@ -315,7 +289,6 @@ NOTAS PERSONALES:
             </section>
 
             <!-- ACTIVIDAD -->
-
             <section id="vistaActividad" class="vista">
                 <div class="placeholder-view">
                     <i class="fa-solid fa-chart-column"></i>
@@ -324,17 +297,12 @@ NOTAS PERSONALES:
             </section>
 
         </main>
-
     </div>
 
     <!-- MODAL AGREGAR LUGAR -->
-
     <div id="add-place-modal" class="modal-overlay">
-
         <div class="modal">
-
             <!-- BOTON PARA AGREGAR UN LUGAR -->
-
             <div class="modal-header">
                 <div>
                     <h2>Agregar nuevo lugar</h2>
@@ -346,9 +314,7 @@ NOTAS PERSONALES:
             </div>
 
             <!-- FORMULARIO -->
-
             <form id="place-form">
-
                 <div class="form-group">
                     <label for="place-name">Nombre del lugar</label>
                     <input id="place-name" type="text" placeholder="Ej. Centro Cultural Teopanzolco" required>
@@ -379,26 +345,20 @@ NOTAS PERSONALES:
 
                 <label class="favorite-check">
                     <input id="place-favorite" type="checkbox">
-                    Agregar a favoritos</span>
+                    Agregar a favoritos
                 </label>
 
                 <div class="modal-actions">
                     <button id="cancel-modal" class="secondary-button" type="button"> Cancelar</button>
                     <button class="primary-button" type="submit">Guardar lugar</button>
                 </div>
-
             </form>
-
         </div>
-
     </div>
 
     <!-- MODAL NUEVA RUTA -->
-
     <div id="route-modal" class="modal-overlay">
-
         <div class="modal">
-
             <div class="modal-header">
                 <div>
                     <h2>Crear nueva ruta</h2>
@@ -434,7 +394,6 @@ NOTAS PERSONALES:
                     </button>
                 </div>
             </form>
-
         </div>
     </div>
 
