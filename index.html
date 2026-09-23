@@ -27,6 +27,7 @@
 
         <!-- BARRA LATERAL PRINCIPAL -->
         <aside class="sidebar">
+
             <!-- LOGO -->
             <div class="sidebar-logo">
                 <div class="logo-mark">
@@ -113,7 +114,7 @@
                 </button>
             </div>
 
-            <!-- BOTON DE MENÚ -->
+            <!-- BOTÓN DE MENÚ -->
             <div class="sidebar-bottom">
                 <button class="sidebar-menu-button" type="button">
                     <i class="fa-solid fa-bars"></i>
@@ -122,15 +123,17 @@
             </div>
         </aside>
 
-        <!-- MAIN -->
+        <!-- CONTENIDO PRINCIPAL -->
         <main class="main">
 
             <!-- HEADER - BARRA DE NAVEGACIÓN -->
             <header class="topbar">
+
                 <!-- BUSCADOR -->
                 <div class="search-box">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <input id="search-input" type="text" placeholder="Buscar lugar, ruta o referencia..." autocomplete="off">
+
                     <button id="search-button" type="button" aria-label="Buscar">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
@@ -138,7 +141,7 @@
 
                 <!-- ACCIONES -->
                 <div class="topbar-actions">
-                    <button class="icon-button" type="button">
+                    <button class="icon-button" type="button" aria-label="Cambiar tema">
                         <i class="fa-solid fa-sun"></i>
                     </button>
 
@@ -158,15 +161,15 @@
                 </div>
             </header>
 
-            <!-- AREA VISUAL DEL MAPA -->
+            <!-- ÁREA VISUAL DEL MAPA -->
             <section id="vistaMapa" class="vista activa">
                 <div class="map-area">
 
-                    <!-- MUESTRA EL MAPA -->
+                    <!-- MAPA -->
                     <div id="map"></div>
 
-                    <!-- BOTON DE UBICACIÓN -->
-                    <button id="locate-button" class="map-control locate-control" type="button" title="Centrar mapa">
+                    <!-- BOTÓN DE UBICACIÓN -->
+                    <button id="locate-button" class="map-control locate-control" type="button" title="Centrar en mi ubicación" aria-label="Centrar en mi ubicación">
                         <i class="fa-solid fa-location-arrow"></i>
                     </button>
 
@@ -180,12 +183,12 @@
                                     <i class="fa-solid fa-route"></i> Mis rutas
                                 </h2>
 
-                                <button id="close-routes-panel" class="panel-close" type="button">
+                                <button id="close-routes-panel" class="panel-close" type="button" aria-label="Cerrar panel de rutas">
                                     <i class="fa-solid fa-xmark"></i>
                                 </button>
                             </div>
 
-                            <!-- AQUÍ JAVASCRIPT INSERTARÁ LAS RUTAS -->
+                            <!-- JAVASCRIPT INSERTARÁ LAS RUTAS -->
                             <div id="route-list" class="route-list"></div>
 
                             <button id="new-route-button" class="view-routes-button" type="button">
@@ -197,7 +200,10 @@
                         <section class="floating-panel recent-panel">
                             <div class="panel-header">
                                 <h2>Lugares recientes</h2>
-                                <button id="view-all-places" class="view-all-button" type="button">Ver todos</button>
+
+                                <button id="view-all-places" class="view-all-button" type="button">
+                                    Ver todos
+                                </button>
                             </div>
 
                             <!-- JAVASCRIPT INSERTARÁ LOS LUGARES -->
@@ -207,25 +213,25 @@
 
                     <!-- BOTONES PARA HACER ZOOM -->
                     <div class="map-zoom">
-                        <button id="zoom-in" type="button">
+                        <button id="zoom-in" type="button" aria-label="Acercar mapa">
                             <i class="fa-solid fa-plus"></i>
                         </button>
 
-                        <button id="zoom-out" type="button">
+                        <button id="zoom-out" type="button" aria-label="Alejar mapa">
                             <i class="fa-solid fa-minus"></i>
                         </button>
 
-                        <button id="map-center" type="button">
+                        <button id="map-center" type="button" aria-label="Centrar mapa">
                             <i class="fa-solid fa-crosshairs"></i>
                         </button>
                     </div>
 
-                    <!-- CATEGORÍAS -->
+                    <!-- CATEGORÍAS DEL MAPA -->
                     <div class="map-categories">
                         <button class="map-category blue" type="button" data-category="todos">
                             <i class="fa-solid fa-layer-group"></i> Todos
                         </button>
-                        
+
                         <button class="map-category red" type="button" data-category="favorito">
                             <i class="fa-solid fa-star"></i> Favoritos
                         </button>
@@ -245,16 +251,15 @@
                         <button class="map-category white" type="button" data-category="otro">
                             <i class="fa-solid fa-ellipsis"></i> Otros
                         </button>
-
                     </div>
-                
+
                 </div>
             </section>
 
-
-            <!-- MIS RUTAS: NOS PERMITE AGREGAR UNA NUEVA RUTA Y VER LAS RUTAS QUE YA TENEMOS GUARDADAS -->
+            <!-- MIS RUTAS -->
             <section id="vistaRutas" class="vista">
                 <div class="routes-page">
+
                     <div class="page-heading">
                         <div>
                             <h2>Mis rutas</h2>
@@ -265,7 +270,9 @@
                         </button>
                     </div>
 
+                    <!-- JAVASCRIPT INSERTARÁ LAS RUTAS GUARDADAS -->
                     <div id="saved-routes-container" class="saved-routes-container"></div>
+
                 </div>
             </section>
 
@@ -280,11 +287,14 @@
             <!-- FAVORITOS -->
             <section id="vistaFavoritos" class="vista">
                 <div class="favorites-page">
+
                     <div class="page-heading">
                         <h2>Favoritos</h2>
                     </div>
 
+                    <!-- JAVASCRIPT INSERTARÁ LOS FAVORITOS -->
                     <div id="favorites-container" class="places-grid"></div>
+
                 </div>
             </section>
 
@@ -302,19 +312,21 @@
     <!-- MODAL AGREGAR LUGAR -->
     <div id="add-place-modal" class="modal-overlay">
         <div class="modal">
-            <!-- BOTON PARA AGREGAR UN LUGAR -->
+
+            <!-- ENCABEZADO -->
             <div class="modal-header">
                 <div>
                     <h2>Agregar nuevo lugar</h2>
                 </div>
 
-                <button id="close-modal" class="modal-close" type="button">
+                <button id="close-modal" class="modal-close" type="button" aria-label="Cerrar">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
 
             <!-- FORMULARIO -->
             <form id="place-form">
+
                 <div class="form-group">
                     <label for="place-name">Nombre del lugar</label>
                     <input id="place-name" type="text" placeholder="Ej. Centro Cultural Teopanzolco" required>
@@ -323,12 +335,11 @@
                 <div class="form-group">
                     <label for="place-category">Categoría</label>
 
-                    <select id="place-category">
+                    <select id="place-category" required>
                         <option value="">-- Elige una opción --</option>
                         <option value="restaurante">Restaurante</option>
                         <option value="tienda">Tienda</option>
                         <option value="parque">Parque</option>
-                        <option value="favorito">Favorito</option>
                         <option value="otro">Otro</option>
                     </select>
                 </div>
@@ -348,10 +359,17 @@
                     Agregar a favoritos
                 </label>
 
+                <!-- ACCIONES DEL FORMULARIO -->
                 <div class="modal-actions">
-                    <button id="cancel-modal" class="secondary-button" type="button"> Cancelar</button>
-                    <button class="primary-button" type="submit">Guardar lugar</button>
+                    <button id="cancel-modal" class="secondary-button" type="button">
+                        Cancelar
+                    </button>
+
+                    <button class="primary-button" type="submit">
+                        <i class="fa-solid fa-floppy-disk"></i> Guardar lugar
+                    </button>
                 </div>
+
             </form>
         </div>
     </div>
@@ -359,17 +377,21 @@
     <!-- MODAL NUEVA RUTA -->
     <div id="route-modal" class="modal-overlay">
         <div class="modal">
+
+            <!-- ENCABEZADO -->
             <div class="modal-header">
                 <div>
                     <h2>Crear nueva ruta</h2>
                 </div>
 
-                <button id="close-route-modal" class="modal-close" type="button">
+                <button id="close-route-modal" class="modal-close" type="button" aria-label="Cerrar">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
 
+            <!-- FORMULARIO -->
             <form id="route-form">
+
                 <div class="form-group">
                     <label for="route-name">Nombre de la ruta</label>
                     <input id="route-name" type="text" placeholder="Ej. Ruta de compras" required>
@@ -385,22 +407,30 @@
                     <input id="route-destination" type="text" placeholder="Ej. Jiutepec, Morelos" required>
                 </div>
 
+                <!-- ESTADO DE LA RUTA -->
                 <div id="route-status" class="route-status"></div>
 
+                <!-- ACCIONES DEL FORMULARIO -->
                 <div class="modal-actions">
-                    <button id="cancel-route-modal" class="secondary-button" type="button">Cancelar</button>
+                    <button id="cancel-route-modal" class="secondary-button" type="button">
+                        Cancelar
+                    </button>
+
                     <button id="calculate-route-button" class="primary-button" type="submit">
                         <i class="fa-solid fa-route"></i> Calcular ruta
                     </button>
                 </div>
+
             </form>
         </div>
     </div>
 
     <!-- LEAFLET -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
     <!-- DATOS -->
     <script src="js/storage.js"></script>
+
     <!-- JAVASCRIPT PRINCIPAL -->
     <script src="js/script.js"></script>
 
