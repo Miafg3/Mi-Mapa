@@ -11,6 +11,8 @@ const searchButton = document.getElementById("search-button");
 const menuItems = document.querySelectorAll(".menu-item");
 const categoryItems = document.querySelectorAll(".category-item");
 const mapCategoryItems = document.querySelectorAll(".map-category");
+const sidebar = document.getElementById("sidebar");
+const sidebarMenuButton = document.getElementById("sidebar-menu-button");
 
 // MAPA
 
@@ -166,7 +168,7 @@ function showSearchResult(result) {
     .bindPopup(
       `
         <strong>${escapeHTML(result.display_name)}</strong>
-    `,
+      `,
     )
     .openPopup();
 
@@ -396,6 +398,24 @@ menuItems.forEach((item) => {
   });
 });
 
+// SIDEBAR
+
+function toggleSidebar() {
+  const isCollapsed = sidebar.classList.toggle("collapsed");
+
+  sidebarMenuButton.setAttribute("aria-expanded", String(!isCollapsed));
+  sidebarMenuButton.setAttribute(
+    "aria-label",
+    isCollapsed ? "Expandir menú" : "Colapsar menú",
+  );
+
+  setTimeout(() => {
+    map.invalidateSize();
+  }, 300);
+}
+
+sidebarMenuButton.addEventListener("click", toggleSidebar);
+
 // MODAL LUGAR
 
 const placeModal = document.getElementById("add-place-modal");
@@ -429,8 +449,6 @@ document
 
     const name = document.getElementById("place-name").value.trim();
     const category = document.getElementById("place-category").value;
-    const reference =
-      document.getElementById("place-reference")?.value.trim() || "";
     const address = document.getElementById("place-address").value.trim();
     const notes = document.getElementById("place-notes").value.trim();
     const favorite = document.getElementById("place-favorite").checked;
@@ -454,7 +472,6 @@ document
       id: Date.now(),
       name,
       category,
-      reference,
       address,
       notes,
       favorite,
@@ -568,19 +585,16 @@ document
     const route = {
       id: Date.now(),
       name,
-
       origin: {
         name: origin.name,
         latitude: origin.latitude,
         longitude: origin.longitude,
       },
-
       destination: {
         name: destination.name,
         latitude: destination.latitude,
         longitude: destination.longitude,
       },
-
       distance: mainRoute.distance,
       duration: mainRoute.duration,
       alternatives: routes.length,
@@ -681,7 +695,7 @@ function drawRoute(routes) {
       const main = feature.properties.routeIndex === 0;
 
       return {
-        color: main ? "#ffd166" : "#70839e",
+        color: main ? "#ffd21f" : "#70839e",
         weight: main ? 6 : 4,
         opacity: main ? 0.95 : 0.5,
       };
@@ -752,19 +766,19 @@ function renderRoutePanel() {
                     <span class="route-dot ${colors[index % colors.length]}"></span>
 
                     <div class="route-info">
-                        <strong>${escapeHTML(route.name)}</strong>
+                      <strong>${escapeHTML(route.name)}</strong>
 
-                        <div class="route-meta">
-                            <span>
-                                <i class="fa-regular fa-clock"></i>
-                                ${formatDuration(route.duration)}
-                            </span>
+                      <div class="route-meta">
+                        <span>
+                          <i class="fa-regular fa-clock"></i>
+                          ${formatDuration(route.duration)}
+                        </span>
 
-                            <span>
-                                <i class="fa-solid fa-location-dot"></i>
-                                2 lugares
-                            </span>
-                        </div>
+                        <span>
+                          <i class="fa-solid fa-location-dot"></i>
+                          2 lugares
+                        </span>
+                      </div>
                     </div>
 
                     <span class="route-distance">

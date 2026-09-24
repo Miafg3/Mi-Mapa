@@ -26,7 +26,7 @@
     <div class="app">
 
         <!-- BARRA LATERAL PRINCIPAL -->
-        <aside class="sidebar">
+        <aside id="sidebar" class="sidebar">
 
             <!-- LOGO -->
             <div class="sidebar-logo">
@@ -41,72 +41,74 @@
 
             <!-- MENÚ -->
             <nav class="sidebar-menu">
-                <button class="menu-item active" type="button" data-view="mapa">
-                    <i class="fa-solid fa-map"></i>
+
+                <button class="menu-item active" data-view="mapa" data-tooltip="Mapa">
+                    <i class="menu-icon mapa-icon fa-solid fa-map"></i>
                     <span>Mapa</span>
                 </button>
-
-                <button class="menu-item" type="button" data-view="rutas">
-                    <i class="fa-solid fa-route"></i>
+            
+                <button class="menu-item" data-view="rutas" data-tooltip="Mis rutas">
+                    <i class="menu-icon rutas-icon fa-solid fa-route"></i>
                     <span>Mis rutas</span>
                 </button>
-
-                <button class="menu-item" type="button" data-view="entregas">
-                    <i class="fa-solid fa-truck"></i>
+            
+                <button class="menu-item" data-view="entregas" data-tooltip="Entregas">
+                    <i class="menu-icon entregas-icon fa-solid fa-truck"></i>
                     <span>Entregas</span>
                 </button>
-
-                <button class="menu-item" type="button" data-view="favoritos">
-                    <i class="fa-regular fa-star"></i>
+            
+                <button class="menu-item" data-view="favoritos" data-tooltip="Favoritos">
+                    <i class="menu-icon favoritos-icon fa-regular fa-star"></i>
                     <span>Favoritos</span>
                 </button>
-
-                <button class="menu-item" type="button" data-view="actividad">
-                    <i class="fa-solid fa-chart-column"></i>
+            
+                <button class="menu-item" data-view="actividad" data-tooltip="Actividad">
+                    <i class="menu-icon actividad-icon fa-solid fa-chart-column"></i>
                     <span>Actividad</span>
                 </button>
+
             </nav>
 
             <!-- CATEGORÍAS -->
             <div class="sidebar-categories">
                 <p class="menu-title">CATEGORÍAS</p>
 
-                <button class="category-item active" type="button" data-category="todos">
+                <button class="category-item active" type="button" data-category="todos" data-tooltip="Todos">
                     <span class="category-icon todos">
                         <i class="fa-solid fa-layer-group"></i>
                     </span>
                     <span>Todos</span>
                 </button>
 
-                <button class="category-item" type="button" data-category="favorito">
+                <button class="category-item" type="button" data-category="favorito" data-tooltip="Favoritos">
                     <span class="category-icon favorito">
                         <i class="fa-solid fa-star"></i>
                     </span>
                     <span>Favoritos</span>
                 </button>
 
-                <button class="category-item" type="button" data-category="parque">
+                <button class="category-item" type="button" data-category="parque" data-tooltip="Parques">
                     <span class="category-icon parque">
                         <i class="fa-solid fa-tree"></i>
                     </span>
                     <span>Parques</span>
                 </button>
 
-                <button class="category-item" type="button" data-category="tienda">
+                <button class="category-item" type="button" data-category="tienda" data-tooltip="Tiendas">
                     <span class="category-icon tienda">
                         <i class="fa-solid fa-bag-shopping"></i>
                     </span>
                     <span>Tiendas</span>
                 </button>
 
-                <button class="category-item" type="button" data-category="restaurante">
+                <button class="category-item" type="button" data-category="restaurante" data-tooltip="Restaurantes">
                     <span class="category-icon restaurante">
                         <i class="fa-solid fa-utensils"></i>
                     </span>
                     <span>Restaurantes</span>
                 </button>
 
-                <button class="category-item" type="button" data-category="otro">
+                <button class="category-item" type="button" data-category="otro" data-tooltip="Otros">
                     <span class="category-icon otros">
                         <i class="fa-solid fa-ellipsis"></i>
                     </span>
@@ -116,7 +118,7 @@
 
             <!-- BOTÓN DE MENÚ -->
             <div class="sidebar-bottom">
-                <button class="sidebar-menu-button" type="button">
+                <button id="sidebar-menu-button" class="sidebar-menu-button" type="button" aria-label="Colapsar menú" aria-expanded="true" aria-controls="sidebar">
                     <i class="fa-solid fa-bars"></i>
                     <span>Menú</span>
                 </button>
