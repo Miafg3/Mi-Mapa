@@ -20,8 +20,8 @@
     --color-texto-muted: #8190a7;
     --color-texto-secundario: #cbd5e1;
     --color-borde: rgba(255, 255, 255, 0.09);
-    --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
-    --radius: 16px;
+    --shadow: 0 1.8rem 5rem rgba(0, 0, 0, 0.35);
+    --radius: 1.6rem;
 }
 
 /* RESET */
@@ -30,6 +30,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
 }
 
 html,
@@ -68,12 +72,12 @@ button {
 /* SIDEBAR */
 
 .sidebar {
-    width: 230px;
+    width: 23rem;
     height: 100vh;
     display: flex;
-    min-width: 230px;
+    min-width: 23rem;
     flex-direction: column;
-    padding: 22px 14px 14px;
+    padding: 2.2rem 1.4rem 1.4rem;
     border-right: 1px solid var(--color-borde);
     background: linear-gradient(180deg, #061225 0%, #07101f 100%);
     transition: width 0.3s ease, min-width 0.3s ease, padding 0.3s ease;
@@ -81,16 +85,16 @@ button {
 
 .sidebar-logo {
     display: flex;
-    gap: 11px;
+    gap: 1.1rem;
     align-items: center;
-    padding: 4px 10px 25px;
+    padding: 0.4rem 1rem 2.5rem;
 }
 
 .logo-mark {
-    width: 39px;
-    height: 39px;
+    width: 3.9rem;
+    height: 3.9rem;
     display: flex;
-    font-size: 24px;
+    font-size: 2.4rem;
     align-items: center;
     justify-content: center;
     color: var(--color-oro);
@@ -98,41 +102,41 @@ button {
 
 .logo-text h1 {
     line-height: 1;
-    font-size: 21px;
-    letter-spacing: -0.5px;
+    font-size: 2.1rem;
+    letter-spacing: -0.05rem;
 }
 
 .menu-title {
-    font-size: 10px;
+    font-size: 1rem;
     color: #71819a;
     font-weight: 700;
-    padding: 0 12px 8px;
-    letter-spacing: 1.3px;
+    padding: 0 1.2rem 0.8rem;
+    letter-spacing: 0.13rem;
 }
 
 .sidebar-menu {
     display: flex;
-    gap: 4px;
+    gap: 0.4rem;
     flex-direction: column;
 }
 
 .menu-item {
     display: flex;
-    gap: 14px;
+    gap: 1.4rem;
     border: 0;
     width: 100%;
     text-align: left;
-    padding: 11px 13px;
+    padding: 1.1rem 1.3rem;
     align-items: center;
-    border-radius: 10px;
+    border-radius: 1rem;
     background: transparent;
     color: var(--color-texto-secundario);
     transition: 0.2s ease;
 }
 
 .menu-item i {
-    width: 20px;
-    font-size: 12px;
+    width: 2rem;
+    font-size: 1.2rem;
     color: #9aa8bc;
     text-align: center;
 }
@@ -176,19 +180,19 @@ button {
 
 .menu-item span,
 .category-item span {
-    font-size: 14px;
+    font-size: 1.4rem;
 }
 
 /* SIDEBAR COLAPSADO */
 
 .sidebar.collapsed {
-    width: 75px;
-    min-width: 75px;
-    padding: 15px 8px;
+    width: 7.5rem;
+    min-width: 7.5rem;
+    padding: 1.5rem 0.8rem;
 }
 
 .sidebar.collapsed .sidebar-logo {
-    padding: 4px 0 20px;
+    padding: 0.4rem 0 2rem;
     justify-content: center;
 }
 
@@ -202,7 +206,7 @@ button {
 
 .sidebar.collapsed .menu-item,
 .sidebar.collapsed .category-item {
-    padding: 12px;
+    padding: 1.2rem;
     justify-content: center;
 }
 
@@ -217,20 +221,20 @@ button {
 /* CATEGORÍAS DEL SIDEBAR */
 
 .sidebar-categories {
-    margin-top: 28px;
+    margin-top: 2.8rem;
 }
 
 .category-item {
     display: flex;
-    gap: 11px;
+    gap: 1.1rem;
     border: 0;
     width: 100%;
-    font-size: 13px;
+    font-size: 1.3rem;
     text-align: left;
     color: #aab6c8;
-    padding: 8px 12px;
-    margin-bottom: 2px;
-    border-radius: 8px;
+    padding: 0.8rem 1.2rem;
+    margin-bottom: 0.2rem;
+    border-radius: 0.8rem;
     align-items: center;
     background: transparent;
 }
@@ -245,11 +249,11 @@ button {
 }
 
 .category-icon {
-    width: 22px;
-    height: 22px;
+    width: 2.2rem;
+    height: 2.2rem;
     display: flex;
-    font-size: 10px;
-    border-radius: 7px;
+    font-size: 1rem;
+    border-radius: 0.7rem;
     align-items: center;
     justify-content: center;
 }
@@ -278,12 +282,12 @@ button {
 
 .sidebar-menu-button {
     display: flex;
-    gap: 10px;
+    gap: 1rem;
     width: 100%;
     color: #d8e1ef;
-    padding: 10px 13px;
+    padding: 1rem 1.3rem;
     align-items: center;
-    border-radius: 10px;
+    border-radius: 1rem;
     background: #0d1d38;
     border: 1px solid rgba(80, 150, 255, 0.2);
 }
@@ -306,18 +310,18 @@ button {
     top: 50%;
     opacity: 0;
     z-index: 2000;
-    font-size: 11px;
+    font-size: 1.1rem;
     font-weight: 500;
-    padding: 7px 10px;
+    padding: 0.7rem 1rem;
     visibility: hidden;
-    border-radius: 7px;
+    border-radius: 0.7rem;
     white-space: nowrap;
     pointer-events: none;
     background: #0d1d38;
-    left: calc(100% + 10px);
+    left: calc(100% + 1rem);
     color: var(--color-texto);
     transform: translateY(-50%);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 210, 31, 0.25);
     transition: opacity 0.2s ease, visibility 0.2s ease;
 }
@@ -342,10 +346,10 @@ button {
 
 .topbar {
     display: flex;
-    gap: 25px;
-    height: 74px;
-    padding: 0 18px;
-    min-height: 74px;
+    gap: 2.5rem;
+    height: 7.4rem;
+    padding: 0 1.8rem;
+    min-height: 7.4rem;
     align-items: center;
     background: #08152a;
     border-bottom: 1px solid var(--color-borde);
@@ -355,16 +359,16 @@ button {
     display: flex;
     flex: 1;
     margin: auto;
-    height: 43px;
-    max-width: 570px;
+    height: 4.3rem;
+    max-width: 57rem;
     position: relative;
     align-items: center;
 }
 
 .search-box > i {
     position: absolute;
-    left: 16px;
-    font-size: 13px;
+    left: 1.6rem;
+    font-size: 1.3rem;
     color: #8090a8;
 }
 
@@ -373,9 +377,9 @@ button {
     height: 100%;
     outline: none;
     color: white;
-    border-radius: 24px;
+    border-radius: 2.4rem;
     background: #0d1d38;
-    padding: 0 48px 0 42px;
+    padding: 0 4.8rem 0 4.2rem;
     border: 1px solid rgba(91, 129, 180, 0.25);
 }
 
@@ -390,9 +394,9 @@ button {
 .search-box button {
     position: absolute;
     border: 0;
-    right: 6px;
-    width: 33px;
-    height: 33px;
+    right: 0.6rem;
+    width: 3.3rem;
+    height: 3.3rem;
     display: flex;
     color: white;
     border-radius: 50%;
@@ -403,7 +407,7 @@ button {
 
 .topbar-actions {
     display: flex;
-    gap: 14px;
+    gap: 1.4rem;
     align-items: center;
 }
 
@@ -415,15 +419,15 @@ button {
 }
 
 .icon-button {
-    width: 34px;
-    height: 34px;
+    width: 3.4rem;
+    height: 3.4rem;
     color: var(--color-oro);
 }
 
 .action-link {
     display: flex;
-    gap: 7px;
-    font-size: 12px;
+    gap: 0.7rem;
+    font-size: 1.2rem;
     align-items: center;
 }
 
@@ -433,16 +437,16 @@ button {
 
 .add-place-button {
     display: flex;
-    gap: 7px;
+    gap: 0.7rem;
     border: 0;
-    height: 38px;
-    font-size: 12px;
-    padding: 0 15px;
+    height: 3.8rem;
+    font-size: 1.2rem;
+    padding: 0 1.5rem;
     color: #172238;
     font-weight: 700;
     align-items: center;
-    border-radius: 10px;
-    box-shadow: 0 5px 18px rgba(255, 191, 65, 0.16);
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1.8rem rgba(255, 191, 65, 0.16);
     background: linear-gradient(135deg, #ffe45c, #ffb800);
 }
 
@@ -497,15 +501,15 @@ button {
 }
 
 .leaflet-popup-content {
-    font-size: 12px;
+    font-size: 1.2rem;
 }
 
 /* CONTROLES DEL MAPA */
 
 .map-control {
     position: absolute;
-    width: 42px;
-    height: 42px;
+    width: 4.2rem;
+    height: 4.2rem;
     z-index: 500;
     display: flex;
     color: #1e293b;
@@ -514,57 +518,57 @@ button {
     justify-content: center;
     border: 1px solid rgba(0, 0, 0, 0.12);
     background: rgba(255, 255, 255, 0.96);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0.4rem 1.5rem rgba(0, 0, 0, 0.15);
 }
 
 .locate-control {
-    top: 18px;
-    left: 18px;
+    top: 1.8rem;
+    left: 1.8rem;
 }
 
 .map-sidebar {
     position: absolute;
-    gap: 10px;
-    top: 10px;
-    right: 10px;
-    width: 250px;
+    gap: 1rem;
+    top: 1rem;
+    right: 1rem;
+    width: 25rem;
     z-index: 450;
     display: flex;
     flex-direction: column;
 }
 
 .floating-panel {
-    padding: 13px;
-    border-radius: 14px;
+    padding: 1.3rem;
+    border-radius: 1.4rem;
     backdrop-filter: blur(14px);
     background: rgba(7, 18, 37, 0.96);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.30);
+    box-shadow: 0 1.4rem 3.5rem rgba(0, 0, 0, 0.30);
 }
 
 .panel-header {
     display: flex;
-    margin-bottom: 8px;
+    margin-bottom: 0.8rem;
     align-items: center;
     justify-content: space-between;
 }
 
 .panel-header h2 {
     display: flex;
-    gap: 8px;
-    font-size: 14px;
+    gap: 0.8rem;
+    font-size: 1.4rem;
     align-items: center;
 }
 
 .panel-header h2 i {
-    font-size: 12px;
+    font-size: 1.2rem;
     color: var(--color-oro);
 }
 
 .panel-close {
     border: 0;
-    width: 25px;
-    height: 25px;
+    width: 2.5rem;
+    height: 2.5rem;
     color: #8998ac;
     background: transparent;
 }
@@ -577,8 +581,8 @@ button {
 
 .route-item {
     display: flex;
-    gap: 9px;
-    padding: 10px 5px;
+    gap: 0.9rem;
+    padding: 1rem 0.5rem;
     align-items: flex-start;
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
@@ -588,12 +592,12 @@ button {
 }
 
 .route-dot {
-    width: 10px;
-    height: 10px;
-    min-width: 10px;
-    margin-top: 4px;
+    width: 1rem;
+    height: 1rem;
+    min-width: 1rem;
+    margin-top: 0.4rem;
     border-radius: 50%;
-    box-shadow: 0 0 10px currentColor;
+    box-shadow: 0 0 1rem currentColor;
 }
 
 .route-dot.blue {
@@ -623,7 +627,7 @@ button {
 
 .route-info strong {
     display: block;
-    font-size: 11px;
+    font-size: 1.1rem;
     font-weight: 600;
     overflow: hidden;
     white-space: nowrap;
@@ -632,9 +636,9 @@ button {
 
 .route-meta {
     display: flex;
-    gap: 8px;
-    font-size: 8px;
-    margin-top: 5px;
+    gap: 0.8rem;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
     color: #8190a7;
 }
 
@@ -643,20 +647,20 @@ button {
 }
 
 .route-meta i {
-    margin-right: 2px;
+    margin-right: 0.2rem;
 }
 
 .route-distance {
     color: #aab7ca;
-    font-size: 10px;
+    font-size: 1rem;
 }
 
 .view-routes-button {
     width: 100%;
-    height: 31px;
-    font-size: 10px;
-    margin-top: 8px;
-    border-radius: 16px;
+    height: 3.1rem;
+    font-size: 1rem;
+    margin-top: 0.8rem;
+    border-radius: 1.6rem;
     color: var(--color-oro);
     background: rgba(255, 209, 102, 0.05);
     border: 1px solid rgba(255, 209, 102, 0.6);
@@ -669,12 +673,12 @@ button {
 /* LUGARES RECIENTES */
 
 .recent-panel {
-    padding-bottom: 8px;
+    padding-bottom: 0.8rem;
 }
 
 .view-all-button {
     border: 0;
-    font-size: 9px;
+    font-size: 0.9rem;
     color: #7e91ad;
     background: transparent;
 }
@@ -690,18 +694,18 @@ button {
 
 .recent-item {
     display: flex;
-    gap: 9px;
-    padding: 8px 3px;
+    gap: 0.9rem;
+    padding: 0.8rem 0.3rem;
     align-items: center;
 }
 
 .place-marker {
-    width: 26px;
-    height: 26px;
+    width: 2.6rem;
+    height: 2.6rem;
     display: flex;
     color: white;
-    font-size: 10px;
-    min-width: 26px;
+    font-size: 1rem;
+    min-width: 2.6rem;
     border-radius: 50%;
     align-items: center;
     justify-content: center;
@@ -714,7 +718,7 @@ button {
 
 .recent-item strong {
     display: block;
-    font-size: 10px;
+    font-size: 1rem;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -722,8 +726,8 @@ button {
 
 .recent-item span:not(.place-marker) {
     display: block;
-    font-size: 8px;
-    margin-top: 3px;
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
     color: #77879e;
 }
 
@@ -738,19 +742,19 @@ button {
 .map-zoom {
     position: absolute;
     z-index: 500;
-    right: 267px;
-    bottom: 92px;
+    right: 26.7rem;
+    bottom: 9.2rem;
     display: flex;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 1rem;
     flex-direction: column;
-    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 0.5rem 1.8rem rgba(0, 0, 0, 0.18);
 }
 
 .map-zoom button {
     border: 0;
-    width: 36px;
-    height: 36px;
+    width: 3.6rem;
+    height: 3.6rem;
     color: #27364a;
     background: white;
     border-bottom: 1px solid #e4e8ee;
@@ -768,36 +772,36 @@ button {
 
 .map-categories {
     position: absolute;
-    gap: 5px;
+    gap: 0.5rem;
     left: 50%;
     z-index: 500;
-    bottom: 12px;
+    bottom: 1.2rem;
     display: flex;
-    padding: 7px 8px;
+    padding: 0.7rem 0.8rem;
     align-items: center;
-    border-radius: 13px;
+    border-radius: 1.3rem;
     transform: translateX(-50%);
     background: rgba(7, 18, 37, 0.94);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.25);
 }
 
 .map-category {
     display: flex;
-    gap: 6px;
+    gap: 0.6rem;
     border: 0;
-    height: 30px;
-    font-size: 9px;
-    padding: 0 10px;
+    height: 3rem;
+    font-size: 0.9rem;
+    padding: 0 1rem;
     color: #d8e1ee;
     align-items: center;
-    border-radius: 15px;
+    border-radius: 1.5rem;
     white-space: nowrap;
     background: transparent;
 }
 
 .map-category i {
-    font-size: 10px;
+    font-size: 1rem;
 }
 
 .map-category:hover {
@@ -842,19 +846,19 @@ button {
 }
 
 .placeholder-view > i {
-    font-size: 48px;
-    margin-bottom: 18px;
+    font-size: 4.8rem;
+    margin-bottom: 1.8rem;
     color: var(--color-oro);
 }
 
 .placeholder-view h2 {
-    font-size: 25px;
+    font-size: 2.5rem;
 }
 
 .placeholder-view p {
-    max-width: 400px;
-    margin-top: 8px;
-    font-size: 13px;
+    max-width: 40rem;
+    margin-top: 0.8rem;
+    font-size: 1.3rem;
     color: var(--color-texto-muted);
 }
 
@@ -863,12 +867,12 @@ button {
 .modal-overlay {
     position: fixed;
     inset: 0;
-    padding: 20px;
+    padding: 2rem;
     z-index: 2000;
     display: none;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(7px);
+    backdrop-filter: blur(0.7rem);
     background: rgba(2, 7, 17, 0.72);
 }
 
@@ -878,50 +882,50 @@ button {
 
 .modal {
     width: 100%;
-    padding: 22px;
-    max-width: 470px;
-    border-radius: 18px;
+    padding: 2.2rem;
+    max-width: 47rem;
+    border-radius: 1.8rem;
     background: #0a1930;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 3rem 7rem rgba(0, 0, 0, 0.45);
 }
 
 .modal-header {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
     justify-content: space-between;
 }
 
 .modal-kicker {
-    font-size: 9px;
+    font-size: 0.9rem;
     font-weight: 700;
-    letter-spacing: 1.4px;
+    letter-spacing: 0.14rem;
     color: var(--color-oro);
 }
 
 .modal-header h2 {
-    margin-top: 5px;
-    font-size: 21px;
+    margin-top: 0.5rem;
+    font-size: 2.1rem;
 }
 
 .modal-close {
     border: 0;
-    width: 32px;
-    height: 32px;
+    width: 3.2rem;
+    height: 3.2rem;
     color: #aeb9c9;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.05);
 }
 
 .form-group {
-    margin-bottom: 14px;
+    margin-bottom: 1.4rem;
 }
 
 .form-group label {
     display: block;
-    font-size: 10px;
+    font-size: 1rem;
     color: #9eacc0;
-    margin-bottom: 6px;
+    margin-bottom: 0.6rem;
 }
 
 .form-group input,
@@ -930,20 +934,20 @@ button {
     width: 100%;
     color: #fff;
     outline: none;
-    border-radius: 8px;
+    border-radius: 0.8rem;
     background: #0d1d36;
     border: 1px solid rgba(100, 137, 184, 0.2);
 }
 
 .form-group input,
 .form-group select {
-    height: 39px;
-    padding: 0 11px;
+    height: 3.9rem;
+    padding: 0 1.1rem;
 }
 
 .form-group textarea {
-    padding: 10px;
-    min-height: 90px;
+    padding: 1rem;
+    min-height: 9rem;
     resize: vertical;
 }
 
@@ -955,8 +959,8 @@ button {
 
 .modal-actions {
     display: flex;
-    gap: 9px;
-    margin-top: 20px;
+    gap: 0.9rem;
+    margin-top: 2rem;
     justify-content: flex-end;
 }
 
@@ -964,23 +968,23 @@ button {
 
 .primary-button,
 .secondary-button {
-    height: 39px;
-    padding: 0 17px;
-    font-size: 11px;
+    height: 3.9rem;
+    padding: 0 1.7rem;
+    font-size: 1.1rem;
     font-weight: 600;
-    border-radius: 9px;
+    border-radius: 0.9rem;
 }
 
 .primary-button {
     display: flex;
-    gap: 7px;
+    gap: 0.7rem;
     border: 0;
-    height: 40px;
-    font-size: 11px;
-    padding: 0 15px;
+    height: 4rem;
+    font-size: 1.1rem;
+    padding: 0 1.5rem;
     color: #172238;
     font-weight: 700;
-    border-radius: 9px;
+    border-radius: 0.9rem;
     align-items: center;
     background: linear-gradient(135deg, #ffe45c, #ffb800);
 }
@@ -999,20 +1003,20 @@ button {
 /* MARCADORES PERSONALIZADOS */
 
 .marker-pin {
-    width: 34px;
-    height: 34px;
+    width: 3.4rem;
+    height: 3.4rem;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 3px solid white;
     transform: rotate(-45deg);
     border-radius: 50% 50% 50% 0;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 0.4rem 1.4rem rgba(0, 0, 0, 0.35);
 }
 
 .marker-pin i {
     color: white;
-    font-size: 12px;
+    font-size: 1.2rem;
     transform: rotate(45deg);
 }
 
@@ -1020,7 +1024,7 @@ button {
 
 .empty-panel {
     display: flex;
-    padding: 20px 10px;
+    padding: 2rem 1rem;
     text-align: center;
     align-items: center;
     flex-direction: column;
@@ -1028,22 +1032,22 @@ button {
 }
 
 .empty-panel > i {
-    font-size: 22px;
+    font-size: 2.2rem;
     color: #61728b;
-    margin-bottom: 8px;
+    margin-bottom: 0.8rem;
 }
 
 .empty-panel p {
-    font-size: 9px;
+    font-size: 0.9rem;
     color: #7e8da3;
     line-height: 1.5;
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
 }
 
 .empty-panel button {
-    font-size: 9px;
-    padding: 6px 10px;
-    border-radius: 7px;
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+    border-radius: 0.7rem;
     background: transparent;
     color: var(--color-oro);
     border: 1px solid rgba(255, 209, 102, 0.35);
@@ -1053,33 +1057,33 @@ button {
 
 .place-popup {
     display: flex;
-    gap: 5px;
-    min-width: 180px;
+    gap: 0.5rem;
+    min-width: 18rem;
     flex-direction: column;
 }
 
 .place-popup strong {
-    font-size: 13px;
+    font-size: 1.3rem;
 }
 
 .place-popup span {
-    font-size: 10px;
+    font-size: 1rem;
     color: #94a3b8;
 }
 
 .place-popup small {
-    font-size: 9px;
+    font-size: 0.9rem;
     color: #64748b;
 }
 
 .popup-route-button {
     border: 0;
-    font-size: 9px;
-    margin-top: 7px;
-    padding: 7px 9px;
+    font-size: 0.9rem;
+    margin-top: 0.7rem;
+    padding: 0.7rem 0.9rem;
     font-weight: 700;
     color: #172238;
-    border-radius: 7px;
+    border-radius: 0.7rem;
     background: var(--color-oro);
 }
 
@@ -1087,11 +1091,11 @@ button {
 
 .favorite-check {
     display: flex;
-    gap: 8px;
-    font-size: 10px;
+    gap: 0.8rem;
+    font-size: 1rem;
     cursor: pointer;
     color: #b8c3d2;
-    margin: 10px 0 5px;
+    margin: 1rem 0 0.5rem;
     align-items: center;
 }
 
@@ -1106,10 +1110,10 @@ button {
 /* STATUS DE RUTA */
 
 .route-status {
-    margin-top: 4px;
-    font-size: 10px;
+    margin-top: 0.4rem;
+    font-size: 1rem;
     color: #8fa0b6;
-    min-height: 18px;
+    min-height: 1.8rem;
 }
 
 /* PÁGINAS */
@@ -1118,7 +1122,7 @@ button {
 .favorites-page {
     width: 100%;
     height: 100%;
-    padding: 35px;
+    padding: 3.5rem;
     overflow-y: auto;
     background: radial-gradient(circle at top right, #102542, #071225 55%);
 }
@@ -1126,25 +1130,25 @@ button {
 .page-heading {
     display: flex;
     align-items: center;
-    margin-bottom: 25px;
+    margin-bottom: 2.5rem;
     justify-content: space-between;
 }
 
 .page-heading > div > span {
-    font-size: 9px;
+    font-size: 0.9rem;
     font-weight: 700;
-    letter-spacing: 1.5px;
+    letter-spacing: 0.15rem;
     color: var(--color-oro);
 }
 
 .page-heading h2 {
-    margin-top: 5px;
-    font-size: 26px;
+    margin-top: 0.5rem;
+    font-size: 2.6rem;
 }
 
 .page-heading p {
-    margin-top: 6px;
-    font-size: 12px;
+    margin-top: 0.6rem;
+    font-size: 1.2rem;
     color: #8190a7;
 }
 
@@ -1152,16 +1156,16 @@ button {
 
 .saved-routes-container {
     display: flex;
-    gap: 10px;
+    gap: 1rem;
     flex-direction: column;
 }
 
 .saved-route-card {
     display: flex;
-    gap: 15px;
-    padding: 17px;
+    gap: 1.5rem;
+    padding: 1.7rem;
     align-items: center;
-    border-radius: 13px;
+    border-radius: 1.3rem;
     background: rgba(12, 27, 51, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.07);
 }
@@ -1171,11 +1175,11 @@ button {
 }
 
 .saved-route-icon {
-    width: 43px;
-    height: 43px;
+    width: 4.3rem;
+    height: 4.3rem;
     display: flex;
-    min-width: 43px;
-    border-radius: 11px;
+    min-width: 4.3rem;
+    border-radius: 1.1rem;
     align-items: center;
     justify-content: center;
     color: var(--color-oro);
@@ -1188,14 +1192,14 @@ button {
 }
 
 .saved-route-content h3 {
-    font-size: 13px;
+    font-size: 1.3rem;
 }
 
 .route-address {
     display: flex;
-    gap: 7px;
-    font-size: 9px;
-    margin-top: 5px;
+    gap: 0.7rem;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
     color: #7f90a7;
     align-items: center;
 }
@@ -1212,23 +1216,23 @@ button {
 
 .saved-route-stats {
     display: flex;
-    gap: 16px;
-    font-size: 9px;
-    margin-top: 10px;
+    gap: 1.6rem;
+    font-size: 0.9rem;
+    margin-top: 1rem;
     color: #94a3b8;
 }
 
 .saved-route-stats i {
     color: #71839d;
-    margin-right: 3px;
+    margin-right: 0.3rem;
 }
 
 .delete-button {
     border: 0;
-    width: 32px;
-    height: 32px;
+    width: 3.2rem;
+    height: 3.2rem;
     color: #718198;
-    border-radius: 8px;
+    border-radius: 0.8rem;
     background: transparent;
 }
 
@@ -1241,7 +1245,7 @@ button {
 
 .empty-page {
     display: flex;
-    min-height: 300px;
+    min-height: 30rem;
     text-align: center;
     align-items: center;
     flex-direction: column;
@@ -1249,35 +1253,35 @@ button {
 }
 
 .empty-page > i {
-    font-size: 42px;
+    font-size: 4.2rem;
     color: #536783;
-    margin-bottom: 15px;
+    margin-bottom: 1.5rem;
 }
 
 .empty-page h3 {
-    font-size: 17px;
+    font-size: 1.7rem;
 }
 
 .empty-page p {
     color: #71829a;
-    font-size: 11px;
-    margin: 7px 0 17px;
+    font-size: 1.1rem;
+    margin: 0.7rem 0 1.7rem;
 }
 
 /* FAVORITOS */
 
 .places-grid {
     display: grid;
-    gap: 12px;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.2rem;
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
 }
 
 .place-card {
     display: flex;
-    gap: 12px;
-    padding: 15px;
+    gap: 1.2rem;
+    padding: 1.5rem;
     cursor: pointer;
-    border-radius: 12px;
+    border-radius: 1.2rem;
     background: rgba(12, 27, 51, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.07);
 }
@@ -1288,29 +1292,29 @@ button {
 
 .place-card-icon {
     display: flex;
-    width: 38px;
-    height: 38px;
+    width: 3.8rem;
+    height: 3.8rem;
     color: white;
-    min-width: 38px;
+    min-width: 3.8rem;
     align-items: center;
-    border-radius: 10px;
+    border-radius: 1rem;
     justify-content: center;
 }
 
 .place-card h3 {
-    font-size: 12px;
+    font-size: 1.2rem;
 }
 
 .place-card span {
     display: block;
-    font-size: 9px;
-    margin-top: 3px;
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
     color: #71829a;
 }
 
 .place-card p {
-    font-size: 9px;
-    margin-top: 6px;
+    font-size: 0.9rem;
+    margin-top: 0.6rem;
     color: #8b9ab0;
 }
 
@@ -1319,13 +1323,13 @@ button {
 @media (max-width: 1200px) {
 
     .sidebar {
-        width: 205px;
-        min-width: 205px;
+        width: 20.5rem;
+        min-width: 20.5rem;
     }
 
     .sidebar.collapsed {
-        width: 75px;
-        min-width: 75px;
+        width: 7.5rem;
+        min-width: 7.5rem;
     }
 
     .action-link span {
@@ -1333,30 +1337,30 @@ button {
     }
 
     .map-sidebar {
-        width: 225px;
+        width: 22.5rem;
     }
 
     .map-zoom {
-        right: 240px;
+        right: 24rem;
     }
 }
 
 @media (max-width: 950px) {
 
     .sidebar {
-        width: 75px;
-        min-width: 75px;
-        padding: 15px 8px;
+        width: 7.5rem;
+        min-width: 7.5rem;
+        padding: 1.5rem 0.8rem;
     }
 
     .sidebar.collapsed {
-        width: 75px;
-        min-width: 75px;
-        padding: 15px 8px;
+        width: 7.5rem;
+        min-width: 7.5rem;
+        padding: 1.5rem 0.8rem;
     }
 
     .sidebar-logo {
-        padding: 4px 0 20px;
+        padding: 0.4rem 0 2rem;
         justify-content: center;
     }
 
@@ -1370,7 +1374,7 @@ button {
 
     .menu-item,
     .category-item {
-        padding: 12px;
+        padding: 1.2rem;
         justify-content: center;
     }
 
@@ -1383,11 +1387,11 @@ button {
     }
 
     .topbar {
-        gap: 10px;
+        gap: 1rem;
     }
 
     .map-sidebar {
-        width: 220px;
+        width: 22rem;
     }
 }
 
@@ -1402,8 +1406,8 @@ button {
     }
 
     .add-place-button {
-        padding: 0 11px;
-        font-size: 10px;
+        padding: 0 1.1rem;
+        font-size: 1rem;
     }
 
     .search-box {
@@ -1413,7 +1417,7 @@ button {
     .map-categories {
         overflow-x: auto;
         justify-content: flex-start;
-        max-width: calc(100% - 20px);
+        max-width: calc(100% - 2rem);
     }
 
     .map-category {
@@ -1421,17 +1425,17 @@ button {
     }
 
     .map-zoom {
-        right: 12px;
-        bottom: 75px;
+        right: 1.2rem;
+        bottom: 7.5rem;
     }
 
     .routes-page,
     .favorites-page {
-        padding: 20px;
+        padding: 2rem;
     }
 
     .page-heading {
-        gap: 15px;
+        gap: 1.5rem;
         flex-direction: column;
         align-items: flex-start;
     }
@@ -1441,7 +1445,7 @@ button {
     }
 
     .saved-route-stats {
-        gap: 5px;
+        gap: 0.5rem;
         flex-direction: column;
     }
 }
@@ -1453,9 +1457,9 @@ button {
         left: 0;
         bottom: 0;
         width: 100%;
-        height: 62px;
+        height: 6.2rem;
         min-width: 0;
-        padding: 5px;
+        padding: 0.5rem;
         z-index: 1000;
         border-right: 0;
         flex-direction: row;
@@ -1466,7 +1470,7 @@ button {
     .sidebar.collapsed {
         width: 100%;
         min-width: 0;
-        padding: 5px;
+        padding: 0.5rem;
     }
 
     .sidebar-logo,
@@ -1484,48 +1488,48 @@ button {
 
     .menu-item {
         width: auto;
-        padding: 10px 14px;
+        padding: 1rem 1.4rem;
     }
 
     .menu-item i {
-        font-size: 16px;
+        font-size: 1.6rem;
     }
 
     .main {
-        height: calc(100vh - 62px);
+        height: calc(100vh - 6.2rem);
     }
 
     .topbar {
-        height: 65px;
-        padding: 0 10px;
-        min-height: 65px;
+        height: 6.5rem;
+        padding: 0 1rem;
+        min-height: 6.5rem;
     }
 
     .add-place-button {
         padding: 0;
-        width: 40px;
+        width: 4rem;
         font-size: 0;
         justify-content: center;
     }
 
     .add-place-button i {
-        font-size: 14px;
+        font-size: 1.4rem;
     }
 
     .modal-overlay {
-        padding: 12px;
+        padding: 1.2rem;
     }
 
     .modal {
-        padding: 18px;
+        padding: 1.8rem;
     }
 
     .routes-page,
     .favorites-page {
-        padding: 15px;
+        padding: 1.5rem;
     }
 
     .page-heading h2 {
-        font-size: 22px;
+        font-size: 2.2rem;
     }
 }
