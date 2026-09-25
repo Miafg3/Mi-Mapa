@@ -30,6 +30,7 @@
 
             <!-- LOGO -->
             <div class="sidebar-logo">
+
                 <div class="logo-mark">
                     <i class="fa-solid fa-location-dot"></i>
                 </div>
@@ -37,6 +38,7 @@
                 <div class="logo-text">
                     <h1>Mi Mapa</h1>
                 </div>
+
             </div>
 
             <!-- MENÚ -->
@@ -46,22 +48,22 @@
                     <i class="menu-icon mapa-icon fa-solid fa-map"></i>
                     <span>Mapa</span>
                 </button>
-            
+
                 <button class="menu-item" data-view="rutas" data-tooltip="Mis rutas">
                     <i class="menu-icon rutas-icon fa-solid fa-route"></i>
                     <span>Mis rutas</span>
                 </button>
-            
+
                 <button class="menu-item" data-view="entregas" data-tooltip="Entregas">
                     <i class="menu-icon entregas-icon fa-solid fa-truck"></i>
                     <span>Entregas</span>
                 </button>
-            
+
                 <button class="menu-item" data-view="favoritos" data-tooltip="Favoritos">
                     <i class="menu-icon favoritos-icon fa-regular fa-star"></i>
                     <span>Favoritos</span>
                 </button>
-            
+
                 <button class="menu-item" data-view="actividad" data-tooltip="Actividad">
                     <i class="menu-icon actividad-icon fa-solid fa-chart-column"></i>
                     <span>Actividad</span>
@@ -71,6 +73,7 @@
 
             <!-- CATEGORÍAS -->
             <div class="sidebar-categories">
+
                 <p class="menu-title">CATEGORÍAS</p>
 
                 <button class="category-item active" type="button" data-category="todos" data-tooltip="Todos">
@@ -114,15 +117,19 @@
                     </span>
                     <span>Otros</span>
                 </button>
+
             </div>
 
             <!-- BOTÓN DE MENÚ -->
             <div class="sidebar-bottom">
+
                 <button id="sidebar-menu-button" class="sidebar-menu-button" type="button" aria-label="Colapsar menú" aria-expanded="true" aria-controls="sidebar">
                     <i class="fa-solid fa-bars"></i>
                     <span>Menú</span>
                 </button>
+
             </div>
+
         </aside>
 
         <!-- CONTENIDO PRINCIPAL -->
@@ -143,6 +150,7 @@
 
                 <!-- ACCIONES -->
                 <div class="topbar-actions">
+
                     <button class="icon-button" type="button" aria-label="Cambiar tema">
                         <i class="fa-solid fa-sun"></i>
                     </button>
@@ -160,13 +168,15 @@
                     <button id="add-place-button" class="add-place-button" type="button">
                         <i class="fa-solid fa-plus"></i> Agregar lugar
                     </button>
+
                 </div>
+
             </header>
 
             <!-- ÁREA VISUAL DEL MAPA -->
             <section id="vistaMapa" class="vista activa">
-                <div class="map-area">
 
+                <div class="map-area">
                     <!-- MAPA -->
                     <div id="map"></div>
 
@@ -202,7 +212,6 @@
                         <section class="floating-panel recent-panel">
                             <div class="panel-header">
                                 <h2>Lugares recientes</h2>
-
                                 <button id="view-all-places" class="view-all-button" type="button">
                                     Ver todos
                                 </button>
@@ -211,6 +220,7 @@
                             <!-- JAVASCRIPT INSERTARÁ LOS LUGARES -->
                             <div id="recent-list" class="recent-list"></div>
                         </section>
+
                     </aside>
 
                     <!-- BOTONES PARA HACER ZOOM -->
@@ -261,7 +271,6 @@
             <!-- MIS RUTAS -->
             <section id="vistaRutas" class="vista">
                 <div class="routes-page">
-
                     <div class="page-heading">
                         <div>
                             <h2>Mis rutas</h2>
@@ -274,7 +283,6 @@
 
                     <!-- JAVASCRIPT INSERTARÁ LAS RUTAS GUARDADAS -->
                     <div id="saved-routes-container" class="saved-routes-container"></div>
-
                 </div>
             </section>
 
@@ -289,14 +297,12 @@
             <!-- FAVORITOS -->
             <section id="vistaFavoritos" class="vista">
                 <div class="favorites-page">
-
                     <div class="page-heading">
                         <h2>Favoritos</h2>
                     </div>
 
                     <!-- JAVASCRIPT INSERTARÁ LOS FAVORITOS -->
                     <div id="favorites-container" class="places-grid"></div>
-
                 </div>
             </section>
 
@@ -312,63 +318,161 @@
     </div>
 
     <!-- MODAL AGREGAR LUGAR -->
+
     <div id="add-place-modal" class="modal-overlay">
-        <div class="modal">
+
+        <div class="place-modal">
 
             <!-- ENCABEZADO -->
-            <div class="modal-header">
-                <div>
+            <header class="place-modal-header">
+                <button id="close-modal" class="modal-back-button" type="button" aria-label="Cerrar">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+
+                <div class="place-modal-title">
+                    <span class="modal-eyebrow">NUEVO LUGAR</span>
                     <h2>Agregar nuevo lugar</h2>
                 </div>
 
-                <button id="close-modal" class="modal-close" type="button" aria-label="Cerrar">
-                    <i class="fa-solid fa-xmark"></i>
+                <button class="modal-menu-button" type="button" aria-label="Más opciones">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
                 </button>
-            </div>
+            </header>
 
             <!-- FORMULARIO -->
-            <form id="place-form">
+            <form id="place-form" class="place-form">
 
-                <div class="form-group">
-                    <label for="place-name">Nombre del lugar</label>
-                    <input id="place-name" type="text" placeholder="Ej. Centro Cultural Teopanzolco" required>
+                <!-- COLUMNA IZQUIERDA -->
+                <div class="place-form-left">
+
+                    <!-- NOMBRE -->
+                    <div class="form-group">
+                        <label for="place-name">Nombre del lugar</label>
+                        <input id="place-name" type="text" placeholder="Ej. Mercado Adolfo López" autocomplete="off" required>
+                    </div>
+
+                    <!-- CATEGORÍA -->
+                    <div class="form-group">
+                        <label for="place-category">Categoría</label>
+
+                        <div class="select-wrapper">
+                            <span id="category-preview-icon" class="select-icon">
+                                <i class="fa-solid fa-store"></i>
+                            </span>
+
+                            <select id="place-category" required>
+                                <option value="">Selecciona una categoría</option>
+                                <option value="mercado">Mercado</option>
+                                <option value="restaurante">Restaurante</option>
+                                <option value="tienda">Tienda</option>
+                                <option value="parque">Parque</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- REFERENCIA -->
+                    <div class="form-group">
+                        <label for="place-reference">Referencia</label>
+                        <input id="place-reference" type="text" placeholder="Ej. Junto al zócalo" autocomplete="off">
+                    </div>
+
+                    <!-- DIRECCIÓN -->
+                    <div class="form-group">
+                        <label for="place-address">Dirección</label>
+
+                        <div class="address-input-wrapper">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <input id="place-address" type="text" placeholder="Ej. Cuernavaca, Morelos" autocomplete="street-address" required>
+
+                            <span id="address-loading" class="address-loading" aria-hidden="true">
+                                <i class="fa-solid fa-spinner fa-spin"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- NOTAS -->
+                    <div class="form-group notes-group">
+                        <label for="place-notes">Notas</label>
+                        <textarea id="place-notes" rows="4" placeholder="Escribe alguna nota sobre este lugar..."></textarea>
+                    </div>
+
                 </div>
 
-                <div class="form-group">
-                    <label for="place-category">Categoría</label>
+                <!-- COLUMNA DERECHA -->
+                <div class="place-form-right">
 
-                    <select id="place-category" required>
-                        <option value="">-- Elige una opción --</option>
-                        <option value="restaurante">Restaurante</option>
-                        <option value="tienda">Tienda</option>
-                        <option value="parque">Parque</option>
-                        <option value="otro">Otro</option>
-                    </select>
+                    <!-- MAPA DE PREVISUALIZACIÓN -->
+                    <div class="place-preview-map-wrapper">
+                        <div id="place-preview-map" class="place-preview-map"></div>
+
+                        <div class="preview-map-label">
+                            <i class="fa-solid fa-location-dot"></i>
+                            Vista previa
+                        </div>
+                    </div>
+
+                    <!-- SELECTOR DE MARCADOR -->
+                    <div class="marker-selector">
+                        <label>Elegir color y marcador</label>
+
+                        <div id="marker-options" class="marker-options">
+                            <button class="marker-option active" type="button" data-color="#ff334f" data-icon="fa-utensils" title="Restaurante" aria-label="Marcador de restaurante">
+                                <i class="fa-solid fa-utensils"></i>
+                            </button>
+
+                            <button class="marker-option" type="button" data-color="#ff8a00" data-icon="fa-cart-shopping" title="Compras" aria-label="Marcador de compras">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+
+                            <button class="marker-option" type="button" data-color="#ffbd17" data-icon="fa-star" title="Favorito" aria-label="Marcador de favorito">
+                                <i class="fa-solid fa-star"></i>
+                            </button>
+
+                            <button class="marker-option" type="button" data-color="#16c765" data-icon="fa-tree" title="Parque" aria-label="Marcador de parque">
+                                <i class="fa-solid fa-tree"></i>
+                            </button>
+
+                            <button class="marker-option" type="button" data-color="#00a9e8" data-icon="fa-bag-shopping" title="Tienda" aria-label="Marcador de tienda">
+                                <i class="fa-solid fa-bag-shopping"></i>
+                            </button>
+
+                            <button class="marker-option" type="button" data-color="#216cff" data-icon="fa-store" title="Mercado" aria-label="Marcador de mercado">
+                                <i class="fa-solid fa-store"></i>
+                            </button>
+
+                            <button class="marker-option" type="button" data-color="#a72cff" data-icon="fa-shop" title="Otro" aria-label="Otro marcador">
+                                <i class="fa-solid fa-shop"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- FAVORITO -->
+                    <label class="favorite-toggle-row" for="place-favorite">
+                        <div class="favorite-toggle-info">
+                            <i class="fa-regular fa-star"></i>
+                            <span>Agregar a favoritos</span>
+                        </div>
+
+                        <div class="switch">
+                            <input id="place-favorite" type="checkbox">
+                            <span class="switch-slider"></span>
+                        </div>
+                    </label>
+
+                    <!-- MENSAJE DE ESTADO -->
+                    <div id="place-status" class="place-status" aria-live="polite"></div>
                 </div>
 
-                <div class="form-group">
-                    <label for="place-address">Dirección</label>
-                    <input id="place-address" type="text" placeholder="Ej. Cuernavaca, Morelos" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="place-notes">Notas</label>
-                    <textarea id="place-notes" rows="4" placeholder="Información adicional ..."></textarea>
-                </div>
-
-                <label class="favorite-check">
-                    <input id="place-favorite" type="checkbox">
-                    Agregar a favoritos
-                </label>
-
-                <!-- ACCIONES DEL FORMULARIO -->
-                <div class="modal-actions">
+                <!-- ACCIONES -->
+                <div class="place-form-actions">
                     <button id="cancel-modal" class="secondary-button" type="button">
                         Cancelar
                     </button>
 
-                    <button class="primary-button" type="submit">
-                        <i class="fa-solid fa-floppy-disk"></i> Guardar lugar
+                    <button class="primary-button save-place-button" type="submit">
+                        <i class="fa-solid fa-check"></i>
+                        Guardar lugar
                     </button>
                 </div>
 
@@ -376,10 +480,13 @@
         </div>
     </div>
 
-    <!-- MODAL NUEVA RUTA -->
-    <div id="route-modal" class="modal-overlay">
-        <div class="modal">
+    <!-- ==========================================
+         MODAL NUEVA RUTA
+    =========================================== -->
 
+    <div id="route-modal" class="modal-overlay">
+
+        <div class="modal">
             <!-- ENCABEZADO -->
             <div class="modal-header">
                 <div>
@@ -393,7 +500,6 @@
 
             <!-- FORMULARIO -->
             <form id="route-form">
-
                 <div class="form-group">
                     <label for="route-name">Nombre de la ruta</label>
                     <input id="route-name" type="text" placeholder="Ej. Ruta de compras" required>
@@ -422,7 +528,6 @@
                         <i class="fa-solid fa-route"></i> Calcular ruta
                     </button>
                 </div>
-
             </form>
         </div>
     </div>
