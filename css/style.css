@@ -110,8 +110,8 @@ button {
     font-size: 1rem;
     color: #71819a;
     font-weight: 700;
-    padding: 0 1.2rem 0.8rem;
     letter-spacing: 0.13rem;
+    padding: 0 1.2rem 0.8rem;
 }
 
 .sidebar-menu {
@@ -122,13 +122,13 @@ button {
 
 .menu-item {
     display: flex;
-    gap: 1.4rem;
     border: 0;
     width: 100%;
+    gap: 1.4rem;
     text-align: left;
-    padding: 1.1rem 1.3rem;
     align-items: center;
     border-radius: 1rem;
+    padding: 1.1rem 1.3rem;
     background: transparent;
     color: var(--color-texto-secundario);
     transition: 0.2s ease;
@@ -136,8 +136,8 @@ button {
 
 .menu-item i {
     width: 2rem;
-    font-size: 1.2rem;
     color: #9aa8bc;
+    font-size: 1.2rem;
     text-align: center;
 }
 
@@ -548,8 +548,8 @@ button {
 
 .panel-header {
     display: flex;
-    margin-bottom: 0.8rem;
     align-items: center;
+    margin-bottom: 0.8rem;
     justify-content: space-between;
 }
 
@@ -577,7 +577,7 @@ button {
     color: white;
 }
 
-/* RUTAS */
+/* RUTAS DEL PANEL DEL MAPA */
 
 .route-item {
     display: flex;
@@ -955,13 +955,6 @@ button {
 .form-group select:focus,
 .form-group textarea:focus {
     border-color: rgba(255, 210, 31, 0.55);
-}
-
-.modal-actions {
-    display: flex;
-    gap: 0.9rem;
-    margin-top: 2rem;
-    justify-content: flex-end;
 }
 
 /* BOTONES */
@@ -1375,7 +1368,7 @@ button {
     color: var(--color-oro);
 }
 
-/* ACCIONES DEL FORMULARIO */
+/* ACCIONES DEL FORMULARIO */ 
 
 .place-form-actions {
     grid-column: 1 / -1;
@@ -1445,7 +1438,7 @@ button {
     border: 1px solid rgba(255, 209, 102, 0.35);
 }
 
-/* POPUP DEL LUGAR */
+/* POPUP DEL LUGAR*/
 
 .place-popup {
     display: flex;
@@ -1508,10 +1501,9 @@ button {
     margin-top: 0.4rem;
 }
 
-/* PÁGINAS */
+/* PÁGINA MIS RUTAS */
 
-.routes-page,
-.favorites-page {
+.routes-page {
     width: 100%;
     height: 100%;
     padding: 3.5rem;
@@ -1519,37 +1511,144 @@ button {
     background: radial-gradient(circle at top right, #102542, #071225 55%);
 }
 
-.page-heading {
+/* ENCABEZADO */
+
+.routes-page-header {
     display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem;
     align-items: center;
-    margin-bottom: 2.5rem;
     justify-content: space-between;
 }
 
-.page-heading > div > span {
-    font-size: 0.9rem;
-    font-weight: 700;
-    letter-spacing: 0.15rem;
+.routes-page-title {
+    display: flex;
+    gap: 1.4rem;
+    align-items: center;
+}
+
+.back-page-button {
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    flex-shrink: 0;
+    color: #aeb9c9;
+    border-radius: 1rem;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.back-page-button:hover {
+    color: var(--color-oro);
+    background: rgba(255, 210, 31, 0.06);
+    border-color: rgba(255, 210, 31, 0.3);
+}
+
+.back-page-button i {
     color: var(--color-oro);
 }
 
-.page-heading h2 {
+.page-eyebrow {
+    display: block;
+    color: var(--color-oro);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.15rem;
+}
+
+.routes-page-title h2 {
     font-size: 2.6rem;
     margin-top: 0.5rem;
 }
 
-.page-heading p {
+/* ACCIONES */
+
+.routes-page-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* BUSCAR RUTA */
+
+.routes-search {
+    position: relative;
+    width: 24rem;
+    height: 4rem;
+}
+
+.routes-search > i {
+    position: absolute;
+    top: 50%;
+    left: 1.3rem;
+    z-index: 2;
+    color: #71829a;
+    font-size: 1.1rem;
+    pointer-events: none;
+    transform: translateY(-50%);
+}
+
+.routes-search input {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    color: white;
+    border-radius: 1rem;
+    background: #0d1d38;
+    padding: 0 1.2rem 0 3.8rem;
+    border: 1px solid rgba(91, 129, 180, 0.25);
+}
+
+.routes-search input::placeholder {
+    color: #74839b;
+}
+
+.routes-search input:focus {
+    border-color: rgba(255, 210, 31, 0.45);
+}
+
+/* CONTENIDO */
+
+.routes-content {
+    width: 100%;
+}
+
+.routes-content-header {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.routes-content-header h3 {
+    font-size: 1.7rem;
+}
+
+.routes-content-header p {
     color: #8190a7;
-    font-size: 1.2rem;
-    margin-top: 0.6rem;
+    font-size: 1.1rem;
+    margin-top: 0.4rem;
+}
+
+.routes-count {
+    color: #9aa8bc;
+    font-size: 1rem;
+    white-space: nowrap;
+    padding: 0.6rem 1rem;
+    border-radius: 0.8rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 /* RUTAS GUARDADAS */
 
 .saved-routes-container {
-    display: flex;
+    display: grid;
     gap: 1rem;
-    flex-direction: column;
+    grid-template-columns: repeat(auto-fill, minmax(32rem, 1fr));
 }
 
 .saved-route-card {
@@ -1660,7 +1759,15 @@ button {
     margin: 0.7rem 0 1.7rem;
 }
 
-/* FAVORITOS */
+/* FAVORITOS - PÁGINA */
+
+.favorites-page {
+    width: 100%;
+    height: 100%;
+    padding: 3.5rem;
+    overflow-y: auto;
+    background: radial-gradient(circle at top right, #102542, #071225 55%);
+}
 
 .places-grid {
     display: grid;
@@ -1710,7 +1817,7 @@ button {
     color: #8b9ab0;
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE 1200PX */
 
 @media (max-width: 1200px) {
 
@@ -1743,7 +1850,13 @@ button {
     .place-form {
         gap: 1.8rem;
     }
+
+    .routes-page {
+        padding: 3rem;
+    }
 }
+
+/* RESPONSIVE 950PX */
 
 @media (max-width: 950px) {
 
@@ -1825,7 +1938,24 @@ button {
     .place-status {
         grid-column: 2;
     }
+
+    .routes-page-header {
+        gap: 1.5rem;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .routes-page-actions {
+        width: 100%;
+    }
+
+    .routes-search {
+        flex: 1;
+        width: auto;
+    }
 }
+
+/* RESPONSIVE 720PX */
 
 @media (max-width: 720px) {
 
@@ -1861,15 +1991,33 @@ button {
         bottom: 7.5rem;
     }
 
-    .routes-page,
-    .favorites-page {
+    /* MIS RUTAS */
+
+    .routes-page {
         padding: 2rem;
     }
 
-    .page-heading {
+    .routes-page-header {
         gap: 1.5rem;
-        flex-direction: column;
         align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .routes-page-actions {
+        width: 100%;
+    }
+
+    .routes-search {
+        flex: 1;
+        width: auto;
+    }
+
+    .routes-content-header {
+        align-items: flex-start;
+    }
+
+    .saved-routes-container {
+        grid-template-columns: 1fr;
     }
 
     .saved-route-card {
@@ -1879,6 +2027,12 @@ button {
     .saved-route-stats {
         gap: 0.5rem;
         flex-direction: column;
+    }
+
+    /* FAVORITOS */
+
+    .favorites-page {
+        padding: 2rem;
     }
 
     /* MODAL AGREGAR LUGAR */
@@ -1941,6 +2095,8 @@ button {
         justify-content: center;
     }
 }
+
+/* RESPONSIVE 500PX */
 
 @media (max-width: 500px) {
 
@@ -2008,6 +2164,43 @@ button {
         font-size: 1.4rem;
     }
 
+    /* MIS RUTAS */
+
+    .routes-page {
+        padding: 1.5rem;
+    }
+
+    .routes-page-title h2 {
+        font-size: 2.2rem;
+    }
+
+    .routes-page-actions {
+        width: 100%;
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .routes-search {
+        width: 100%;
+    }
+
+    .routes-page-actions .primary-button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .routes-content-header {
+        gap: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .saved-route-card {
+        padding: 1.3rem;
+    }
+
+    /* MODALES */
+
     .modal-overlay {
         padding: 0.8rem;
     }
@@ -2061,13 +2254,8 @@ button {
         height: 3.8rem;
     }
 
-    .routes-page,
     .favorites-page {
         padding: 1.5rem;
-    }
-
-    .page-heading h2 {
-        font-size: 2.2rem;
     }
 
     .modal {

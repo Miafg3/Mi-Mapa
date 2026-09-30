@@ -271,18 +271,53 @@
             <!-- MIS RUTAS -->
             <section id="vistaRutas" class="vista">
                 <div class="routes-page">
-                    <div class="page-heading">
-                        <div>
-                            <h2>Mis rutas</h2>
+            
+                    <!-- ENCABEZADO -->
+                    <header class="routes-page-header">
+                        <div class="routes-page-title">
+                            <button id="back-to-map-button" class="back-page-button" type="button" aria-label="Volver al mapa">
+                                <i class="fa-solid fa-arrow-left"></i>
+                            </button>
+            
+                            <div>
+                                <span class="page-eyebrow">GESTIÓN DE RUTAS</span>
+                                <h2>Mis rutas</h2>
+                            </div>
                         </div>
-
-                        <button id="new-route-page-button" class="primary-button" type="button">
-                            <i class="fa-solid fa-plus"></i> Nueva ruta
-                        </button>
+            
+                        <div class="routes-page-actions">
+            
+                            <!-- BUSCAR RUTA -->
+                            <div class="routes-search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input id="route-search-input" type="text" placeholder="Buscar ruta..." autocomplete="off">
+                            </div>
+            
+                            <!-- NUEVA RUTA -->
+                            <button id="new-route-page-button" class="primary-button" type="button">
+                                <i class="fa-solid fa-plus"></i>
+                                Nueva ruta
+                            </button>
+            
+                        </div>
+                    </header>
+            
+                    <!-- CONTENIDO -->
+                    <div class="routes-content">
+                        <div class="routes-content-header">
+                            <div>
+                                <h3>Tus rutas</h3>
+                                <p>Administra y consulta tus rutas guardadas.</p>
+                            </div>
+            
+                            <span id="routes-count" class="routes-count">
+                                0 rutas
+                            </span>
+                        </div>
+            
+                        <!-- JAVASCRIPT INSERTARÁ LAS RUTAS GUARDADAS -->
+                        <div id="saved-routes-container" class="saved-routes-container"></div>
                     </div>
-
-                    <!-- JAVASCRIPT INSERTARÁ LAS RUTAS GUARDADAS -->
-                    <div id="saved-routes-container" class="saved-routes-container"></div>
                 </div>
             </section>
 
