@@ -33,7 +33,7 @@ let routeLayer = null;
 let placeMarkers = [];
 let selectedCategory = "todos";
 
-// MAPA DE VISTA PREVIA DEL LUGAR
+// MAPA DE VISTA PREVIA
 
 let placePreviewMap = null;
 let placePreviewMarker = null;
@@ -88,6 +88,7 @@ const CATEGORY_CONFIG = {
 
 function createMarkerIcon(category, customColor = null, customIcon = null) {
   const config = CATEGORY_CONFIG[category] || CATEGORY_CONFIG.otro;
+
   const color = customColor || config.color;
   const icon = customIcon || config.icon;
 
@@ -96,7 +97,7 @@ function createMarkerIcon(category, customColor = null, customIcon = null) {
 
     html: `
             <div class="marker-pin" style="background: ${color};">
-              <i class="fa-solid ${icon}"></i>
+                <i class="fa-solid ${icon}"></i>
             </div>
         `,
 
@@ -151,6 +152,7 @@ async function performSearch() {
   }
 
   searchButton.disabled = true;
+
   searchButton.innerHTML = `
         <i class="fa-solid fa-spinner fa-spin"></i>
     `;
@@ -158,6 +160,7 @@ async function performSearch() {
   const results = await geocodeAddress(query);
 
   searchButton.disabled = false;
+
   searchButton.innerHTML = `
         <i class="fa-solid fa-magnifying-glass"></i>
     `;
@@ -196,8 +199,8 @@ function showSearchResult(result) {
   searchMarker
     .bindPopup(
       `
-          <strong>${escapeHTML(result.display_name)}</strong>
-        `,
+        <strong>${escapeHTML(result.display_name)}</strong>
+      `,
     )
     .openPopup();
 
@@ -252,68 +255,76 @@ function renderPlaceMarkers() {
 // POPUP DE LUGAR
 
 function createPlacePopup(place) {
-  const favoriteText = place.favorite ? "⭐ Favorito" : "";
+  const favoriteText = place.favorite ? "Favorito" : "";
 
   const referenceText = place.reference
     ? `
           <small>
             ${escapeHTML(place.reference)}
           </small>
-        `
+      `
     : "";
 
   return `
-        <div class="place-popup">
-            <strong>
-                ${escapeHTML(place.name)}
-            </strong>
+    <div class="place-popup">
 
-            <span>
-                ${escapeHTML(place.category)}
-            </span>
+        <strong>
+            ${escapeHTML(place.name)}
+        </strong>
 
-            ${
-              place.address
-                ? `
-                      <small>
-                        ${escapeHTML(place.address)}
-                      </small>
-                    `
-                : ""
-            }
+        <span>
+            ${escapeHTML(place.category)}
+        </span>
 
-            ${referenceText}
+        ${
+          place.address
+            ? `
+                <small>
+                    ${escapeHTML(place.address)}
+                </small>
+              `
+            : ""
+        }
 
-            ${
-              favoriteText
-                ? `
-                      <small>
-                        ${favoriteText}
-                      </small>
-                    `
-                : ""
-            }
+        ${referenceText}
 
-            <button class="popup-route-button" onclick="createRouteFromPlace('${place.id}')" type="button">
-                <i class="fa-solid fa-route"></i>
-                Crear ruta desde aquí
-            </button>
-        </div>
-    `;
+        ${
+          favoriteText
+            ? `
+                  <small>
+                    ${favoriteText}
+                  </small>
+                `
+            : ""
+        }
+
+        <button class="popup-route-button" onclick="createRouteFromPlace('${place.id}')" type="button">
+            <i class="fa-solid fa-route"></i>
+            Crear ruta desde aquí
+        </button>
+
+    </div>
+  `;
 }
 
 // ESCAPAR HTML
 
 function escapeHTML(value) {
   const div = document.createElement("div");
+
   div.textContent = value || "";
+
   return div.innerHTML;
 }
 
-// RENDERIZAR LUGARES RECIENTES
+// LUGARES RECIENTES
 
 function renderRecentPlaces() {
   const container = document.getElementById("recent-list");
+
+  if (!container) {
+    return;
+  }
 
   const places = getPlaces();
 
@@ -343,26 +354,30 @@ function renderRecentPlaces() {
       const icon = place.markerIcon || config.icon;
 
       return `
-                <article class="recent-item" data-place-id="${place.id}">
-                    <span class="place-marker" style="background: ${color};">
-                        <i class="fa-solid ${icon}"></i>
-                    </span>
+          <article class="recent-item" data-place-id="${place.id}">
 
-                    <div>
-                        <strong>
-                            ${escapeHTML(place.name)}
-                        </strong>
+              <span class="place-marker" style="background: ${color};">
+                  <i class="fa-solid ${icon}"></i>
+              </span>
 
-                        <span>
-                            ${escapeHTML(place.category)}
-                        </span>
-                    </div>
+              <div>
 
-                    <button type="button" onclick="focusPlace('${place.id}')">
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
-                    </button>
-                </article>
-            `;
+                  <strong>
+                      ${escapeHTML(place.name)}
+                  </strong>
+
+                  <span>
+                      ${escapeHTML(place.category)}
+                  </span>
+
+              </div>
+
+              <button type="button" onclick="focusPlace('${place.id}')">
+                  <i class="fa-solid fa-ellipsis-vertical"></i>
+              </button>
+
+          </article>
+      `;
     })
     .join("");
 }
@@ -371,6 +386,7 @@ function renderRecentPlaces() {
 
 function focusPlace(placeId) {
   const places = getPlaces();
+
   const place = places.find((item) => String(item.id) === String(placeId));
 
   if (!place || !place.coordinates) {
@@ -445,7 +461,7 @@ function changeView(viewName) {
   }
 
   if (viewName === "rutas") {
-    renderSavedRoutes();
+    renderSavedRoutes(routeSearchInput ? routeSearchInput.value : "");
   }
 
   if (viewName === "favoritos") {
@@ -458,6 +474,16 @@ menuItems.forEach((item) => {
     changeView(item.dataset.view);
   });
 });
+
+// VOLVER AL MAPA DESDE MIS RUTAS
+
+const backToMapButton = document.getElementById("back-to-map-button");
+
+if (backToMapButton) {
+  backToMapButton.addEventListener("click", () => {
+    changeView("mapa");
+  });
+}
 
 // SIDEBAR
 
@@ -476,11 +502,11 @@ function toggleSidebar() {
   }, 300);
 }
 
-sidebarMenuButton.addEventListener("click", toggleSidebar);
+if (sidebarMenuButton) {
+  sidebarMenuButton.addEventListener("click", toggleSidebar);
+}
 
-// ==========================================================
 // MODAL AGREGAR LUGAR
-// ==========================================================
 
 const placeModal = document.getElementById("add-place-modal");
 const placeForm = document.getElementById("place-form");
@@ -603,7 +629,7 @@ function updatePreviewMarker() {
   );
 }
 
-// MOSTRAR UBICACIÓN EN MAPA DE VISTA PREVIA
+// MOSTRAR UBICACIÓN EN VISTA PREVIA
 
 function showPlacePreview(result) {
   const latitude = parseFloat(result.lat);
@@ -714,11 +740,11 @@ function closePlaceModal() {
 
 function resetPlaceForm() {
   placeForm.reset();
-
   placePreviewCoordinates = null;
 
   if (placePreviewMarker) {
     placePreviewMap.removeLayer(placePreviewMarker);
+
     placePreviewMarker = null;
   }
 
@@ -734,7 +760,6 @@ function resetPlaceForm() {
   selectedMarkerIcon = null;
 
   updateCategoryPreviewIcon();
-
   updateSelectedMarker(placeCategoryInput.value);
 
   if (placePreviewMap) {
@@ -750,17 +775,17 @@ document
 
 // BOTÓN CERRAR
 
-document.getElementById("close-modal").addEventListener("click", () => {
-  closePlaceModal();
-});
+document
+  .getElementById("close-modal")
+  .addEventListener("click", closePlaceModal);
 
 // BOTÓN CANCELAR
 
-document.getElementById("cancel-modal").addEventListener("click", () => {
-  closePlaceModal();
-});
+document
+  .getElementById("cancel-modal")
+  .addEventListener("click", closePlaceModal);
 
-// CERRAR HACIENDO CLICK FUERA DEL MODAL
+// CERRAR FUERA DEL MODAL
 
 placeModal.addEventListener("click", (event) => {
   if (event.target === placeModal) {
@@ -787,14 +812,15 @@ placeForm.addEventListener("submit", async (event) => {
   const address = placeAddressInput.value.trim();
   const notes = placeNotesInput.value.trim();
   const favorite = placeFavoriteInput.checked;
+
   const submitButton = event.target.querySelector('button[type="submit"]');
 
   submitButton.disabled = true;
 
   submitButton.innerHTML = `
-            <i class="fa-solid fa-spinner fa-spin"></i>
-            Guardando...
-        `;
+        <i class="fa-solid fa-spinner fa-spin"></i>
+        Guardando...
+    `;
 
   if (placeStatus) {
     placeStatus.textContent = "Buscando la ubicación...";
@@ -815,9 +841,9 @@ placeForm.addEventListener("submit", async (event) => {
       submitButton.disabled = false;
 
       submitButton.innerHTML = `
-                  <i class="fa-solid fa-check"></i>
-                  Guardar lugar
-                `;
+                <i class="fa-solid fa-check"></i>
+                Guardar lugar
+          `;
 
       return;
     }
@@ -828,26 +854,19 @@ placeForm.addEventListener("submit", async (event) => {
     };
   }
 
+  const config = CATEGORY_CONFIG[category] || CATEGORY_CONFIG.otro;
+
   const place = {
     id: Date.now(),
-
     name,
     category,
     reference,
     address,
     notes,
     favorite,
-
-    markerColor:
-      selectedMarkerColor ||
-      (CATEGORY_CONFIG[category] || CATEGORY_CONFIG.otro).color,
-
-    markerIcon:
-      selectedMarkerIcon ||
-      (CATEGORY_CONFIG[category] || CATEGORY_CONFIG.otro).icon,
-
+    markerColor: selectedMarkerColor || config.color,
+    markerIcon: selectedMarkerIcon || config.icon,
     coordinates,
-
     createdAt: new Date().toISOString(),
   };
 
@@ -855,7 +874,7 @@ placeForm.addEventListener("submit", async (event) => {
 
   addPlace(place);
 
-  // REGISTRAR ACTIVIDAD
+  // ACTIVIDAD
 
   addActivity({
     id: Date.now(),
@@ -870,7 +889,7 @@ placeForm.addEventListener("submit", async (event) => {
   renderRecentPlaces();
   renderFavorites();
 
-  // CENTRAR MAPA PRINCIPAL
+  // CENTRAR MAPA
 
   map.setView([coordinates.latitude, coordinates.longitude], 16);
 
@@ -884,34 +903,50 @@ placeForm.addEventListener("submit", async (event) => {
   submitButton.disabled = false;
 
   submitButton.innerHTML = `
-            <i class="fa-solid fa-check"></i>
-            Guardar lugar
-        `;
+        <i class="fa-solid fa-check"></i>
+        Guardar lugar
+    `;
 });
 
 // INICIALIZAR OPCIONES DE MARCADOR
 
 initializeMarkerOptions();
 
-// MODAL RUTA
+// MODAL DE RUTA
 
 const routeModal = document.getElementById("route-modal");
+const routeForm = document.getElementById("route-form");
+const routeNameInput = document.getElementById("route-name");
+const routeOriginInput = document.getElementById("route-origin");
+const routeDestinationInput = document.getElementById("route-destination");
+const routeStatus = document.getElementById("route-status");
+const calculateRouteButton = document.getElementById("calculate-route-button");
+
+// ABRIR MODAL DE RUTA
 
 function openRouteModal() {
   routeModal.classList.add("visible");
 }
 
+// CERRAR MODAL DE RUTA
+
 function closeRouteModal() {
   routeModal.classList.remove("visible");
 }
+
+// BOTÓN NUEVA RUTA - PANEL MAPA
 
 document
   .getElementById("new-route-button")
   .addEventListener("click", openRouteModal);
 
+// BOTÓN NUEVA RUTA - PÁGINA
+
 document
   .getElementById("new-route-page-button")
   .addEventListener("click", openRouteModal);
+
+// CERRAR MODAL DE RUTA
 
 document
   .getElementById("close-route-modal")
@@ -923,109 +958,168 @@ document
 
 // CREAR RUTA
 
-document
-  .getElementById("route-form")
-  .addEventListener("submit", async (event) => {
-    event.preventDefault();
+routeForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
 
-    const name = document.getElementById("route-name").value.trim();
-    const originText = document.getElementById("route-origin").value.trim();
+  const name = routeNameInput.value.trim();
+  const originText = routeOriginInput.value.trim();
+  const destinationText = routeDestinationInput.value.trim();
 
-    const destinationText = document
-      .getElementById("route-destination")
-      .value.trim();
+  if (!name) {
+    routeStatus.textContent = "Escribe un nombre para la ruta.";
 
-    const status = document.getElementById("route-status");
-    const button = document.getElementById("calculate-route-button");
+    return;
+  }
 
-    status.textContent = "Buscando las ubicaciones...";
+  if (!originText) {
+    routeStatus.textContent = "Escribe el origen.";
 
-    button.disabled = true;
+    return;
+  }
 
-    const origin = await getCoordinates(originText);
+  if (!destinationText) {
+    routeStatus.textContent = "Escribe el destino.";
 
-    if (!origin) {
-      status.textContent = "No se encontró el origen.";
+    return;
+  }
 
-      button.disabled = false;
+  routeStatus.textContent = "Buscando las ubicaciones...";
 
-      return;
-    }
+  calculateRouteButton.disabled = true;
 
-    const destination = await getCoordinates(destinationText);
+  calculateRouteButton.innerHTML = `
+        <i class="fa-solid fa-spinner fa-spin"></i>
+        Calculando...
+    `;
 
-    if (!destination) {
-      status.textContent = "No se encontró el destino.";
+  const origin = await getCoordinates(originText);
 
-      button.disabled = false;
+  if (!origin) {
+    routeStatus.textContent = "No se encontró el origen.";
 
-      return;
-    }
+    calculateRouteButton.disabled = false;
 
-    status.textContent = "Calculando ruta...";
+    calculateRouteButton.innerHTML = `
+            <i class="fa-solid fa-route"></i>
+            Calcular ruta
+      `;
 
-    const routes = await getRoute(origin, destination);
+    return;
+  }
 
-    if (!routes || !routes.length) {
-      status.textContent = "No se pudo calcular una ruta.";
+  const destination = await getCoordinates(destinationText);
 
-      button.disabled = false;
+  if (!destination) {
+    routeStatus.textContent = "No se encontró el destino.";
 
-      return;
-    }
+    calculateRouteButton.disabled = false;
 
-    const mainRoute = routes[0];
+    calculateRouteButton.innerHTML = `
+            <i class="fa-solid fa-route"></i>
+            Calcular ruta
+        `;
 
-    // DIBUJAR
+    return;
+  }
 
-    drawRoute(routes);
+  routeStatus.textContent = "Calculando ruta...";
 
-    // GUARDAR
+  const routes = await getRoute(origin, destination);
 
-    const route = {
-      id: Date.now(),
+  if (!routes || !routes.length) {
+    routeStatus.textContent = "No se pudo calcular una ruta.";
 
-      name,
+    calculateRouteButton.disabled = false;
 
-      origin: {
-        name: origin.name,
-        latitude: origin.latitude,
-        longitude: origin.longitude,
-      },
+    calculateRouteButton.innerHTML = `
+            <i class="fa-solid fa-route"></i>
+            Calcular ruta
+        `;
 
-      destination: {
-        name: destination.name,
-        latitude: destination.latitude,
-        longitude: destination.longitude,
-      },
+    return;
+  }
 
-      distance: mainRoute.distance,
-      duration: mainRoute.duration,
-      alternatives: routes.length,
-      geometry: mainRoute.geometry,
-      createdAt: new Date().toISOString(),
-    };
+  const mainRoute = routes[0];
 
-    addRoute(route);
+  // DIBUJAR RUTA
 
-    addActivity({
-      id: Date.now(),
-      type: "route_created",
-      text: `Creaste la ruta "${name}".`,
-      date: new Date().toISOString(),
-    });
+  drawRoute(routes);
 
-    renderRoutePanel();
-    renderSavedRoutes();
+  // CREAR OBJETO
 
-    status.textContent = "Ruta guardada correctamente.";
+  const route = {
+    id: Date.now(),
 
-    setTimeout(() => {
-      closeRouteModal();
-    }, 700);
+    name,
 
-    button.disabled = false;
+    origin: {
+      name: origin.name,
+      latitude: origin.latitude,
+      longitude: origin.longitude,
+    },
+
+    destination: {
+      name: destination.name,
+      latitude: destination.latitude,
+      longitude: destination.longitude,
+    },
+
+    distance: mainRoute.distance,
+    duration: mainRoute.duration,
+    alternatives: routes.length,
+    geometry: mainRoute.geometry,
+    createdAt: new Date().toISOString(),
+  };
+
+  // GUARDAR
+
+  addRoute(route);
+
+  // ACTIVIDAD
+
+  addActivity({
+    id: Date.now(),
+    type: "route_created",
+    text: `Creaste la ruta "${name}".`,
+    date: new Date().toISOString(),
   });
+
+  // ACTUALIZAR INTERFAZ
+
+  renderRoutePanel();
+  renderSavedRoutes();
+
+  routeStatus.textContent = "Ruta guardada correctamente.";
+
+  // CERRAR
+
+  setTimeout(() => {
+    closeRouteModal();
+    resetRouteForm();
+  }, 700);
+
+  calculateRouteButton.disabled = false;
+
+  calculateRouteButton.innerHTML = `
+        <i class="fa-solid fa-route"></i>
+        Calcular ruta
+    `;
+});
+
+// LIMPIAR FORMULARIO DE RUTA
+
+function resetRouteForm() {
+  routeForm.reset();
+
+  routeStatus.textContent = "";
+
+  calculateRouteButton.disabled = false;
+
+  calculateRouteButton.innerHTML = `
+        <i class="fa-solid fa-route"></i>
+        Calcular ruta
+    `;
+}
 
 // COORDENADAS
 
@@ -1048,7 +1142,6 @@ async function getCoordinates(query) {
 async function getRoute(origin, destination) {
   const coordinates = [
     `${origin.longitude},${origin.latitude}`,
-
     `${destination.longitude},${destination.latitude}`,
   ].join(";");
 
@@ -1145,21 +1238,27 @@ function formatDuration(duration) {
   return `${hours} h ${remaining} min`;
 }
 
-// PANEL DE RUTAS
+// PANEL DE RUTAS DEL MAPA
 
 function renderRoutePanel() {
   const container = document.getElementById("route-list");
+
+  if (!container) {
+    return;
+  }
+
   const routes = getRoutes();
 
   if (!routes.length) {
     container.innerHTML = `
-          <div class="empty-panel">
-            <i class="fa-solid fa-route"></i>
-            <p>
-                Todavía no tienes rutas guardadas.
-            </p>
-          </div>
-        `;
+            <div class="empty-panel">
+                <i class="fa-solid fa-route"></i>
+
+                <p>
+                    Todavía no tienes rutas guardadas.
+                </p>
+            </div>
+      `;
 
     return;
   }
@@ -1170,32 +1269,35 @@ function renderRoutePanel() {
       const colors = ["blue", "orange", "purple", "green"];
 
       return `
-                    <article class="route-item" onclick="focusRoute('${route.id}')">
-                        <span class="route-dot ${colors[index % colors.length]}"></span>
+            <article class="route-item" onclick="focusRoute('${route.id}')">
 
-                        <div class="route-info">
-                            <strong>
-                                ${escapeHTML(route.name)}
-                            </strong>
+                <span class="route-dot ${colors[index % colors.length]}"></span>
 
-                            <div class="route-meta">
-                                <span>
-                                    <i class="fa-regular fa-clock"></i>
-                                    ${formatDuration(route.duration)}
-                                </span>
+                <div class="route-info">
+                    <strong>
+                        ${escapeHTML(route.name)}
+                    </strong>
 
-                                <span>
-                                    <i class="fa-solid fa-location-dot"></i>
-                                    2 lugares
-                                </span>
-                            </div>
-                        </div>
-
-                        <span class="route-distance">
-                            ${formatDistance(route.distance)}
+                    <div class="route-meta">
+                        <span>
+                            <i class="fa-regular fa-clock"></i>
+                            ${formatDuration(route.duration)}
                         </span>
-                    </article>
-                `;
+
+                        <span>
+                            <i class="fa-solid fa-location-dot"></i>
+                            2 lugares
+                        </span>
+                    </div>
+
+                </div>
+
+                <span class="route-distance">
+                    ${formatDistance(route.distance)}
+                </span>
+
+            </article>
+        `;
     })
     .join("");
 }
@@ -1204,12 +1306,13 @@ function renderRoutePanel() {
 
 function focusRoute(routeId) {
   const routes = getRoutes();
-
   const route = routes.find((item) => String(item.id) === String(routeId));
 
   if (!route || !route.geometry) {
     return;
   }
+
+  changeView("mapa");
 
   drawRoute([
     {
@@ -1218,85 +1321,148 @@ function focusRoute(routeId) {
   ]);
 }
 
+// BUSCADOR DE MIS RUTAS
+
+const routeSearchInput = document.getElementById("route-search-input");
+
+if (routeSearchInput) {
+  routeSearchInput.addEventListener("input", () => {
+    renderSavedRoutes(routeSearchInput.value);
+  });
+}
+
+// CONTADOR DE RUTAS
+
+function updateRoutesCount(count) {
+  const routesCount = document.getElementById("routes-count");
+
+  if (!routesCount) {
+    return;
+  }
+
+  routesCount.textContent = count === 1 ? "1 ruta" : `${count} rutas`;
+}
+
 // RUTAS GUARDADAS
 
-function renderSavedRoutes() {
+function renderSavedRoutes(searchTerm = "") {
   const container = document.getElementById("saved-routes-container");
-  const routes = getRoutes();
 
-  if (!routes.length) {
-    container.innerHTML = `
+  if (!container) {
+    return;
+  }
+
+  const routes = getRoutes();
+  const normalizedSearch = searchTerm.trim().toLowerCase();
+
+  const filteredRoutes = normalizedSearch
+    ? routes.filter((route) => {
+        const name = String(route.name || "").toLowerCase();
+        const origin = String(route.origin?.name || "").toLowerCase();
+        const destination = String(route.destination?.name || "").toLowerCase();
+
+        return (
+          name.includes(normalizedSearch) ||
+          origin.includes(normalizedSearch) ||
+          destination.includes(normalizedSearch)
+        );
+      })
+    : routes;
+
+  updateRoutesCount(filteredRoutes.length);
+
+  if (!filteredRoutes.length) {
+    if (normalizedSearch) {
+      container.innerHTML = `
             <div class="empty-page">
-                <i class="fa-solid fa-route"></i>
+                <i class="fa-solid fa-magnifying-glass"></i>
 
                 <h3>
-                    Todavía no tienes rutas
+                    No encontramos esa ruta
                 </h3>
 
                 <p>
-                    Calcula tu primera ruta para verla aquí.
+                    Prueba con otro nombre, origen o destino.
                 </p>
-
-                <button class="primary-button" onclick="openRouteModal()" type="button">
-                    <i class="fa-solid fa-plus"></i>
-                    Crear primera ruta
-                </button>
             </div>
         `;
+
+      return;
+    }
+
+    container.innerHTML = `
+          <div class="empty-page">
+              <i class="fa-solid fa-route"></i>
+
+              <h3>
+                  Todavía no tienes rutas
+              </h3>
+
+              <p>
+                  Calcula tu primera ruta para verla aquí.
+              </p>
+
+              <button class="primary-button" onclick="openRouteModal()" type="button">
+                  <i class="fa-solid fa-plus"></i>
+                  Crear primera ruta
+              </button>
+          </div>
+      `;
 
     return;
   }
 
-  container.innerHTML = routes
+  container.innerHTML = filteredRoutes
     .map((route) => {
       return `
-                        <article class="saved-route-card">
-                            <div class="saved-route-icon">
-                                <i class="fa-solid fa-route"></i>
-                            </div>
+            <article class="saved-route-card">
 
-                            <div class="saved-route-content">
+                <div class="saved-route-icon">
+                    <i class="fa-solid fa-route"></i>
+                </div>
 
-                                <h3>
-                                    ${escapeHTML(route.name)}
-                                </h3>
+                <div class="saved-route-content">
+                    <h3>
+                        ${escapeHTML(route.name)}
+                    </h3>
 
-                                <div class="route-address">
-                                    <span>
-                                        ${escapeHTML(route.origin.name)}
-                                    </span>
+                    <div class="route-address">
+                        <span>
+                            ${escapeHTML(route.origin?.name || "")}
+                        </span>
 
-                                    <i class="fa-solid fa-arrow-right"></i>
+                        <i class="fa-solid fa-arrow-right"></i>
 
-                                    <span>
-                                        ${escapeHTML(route.destination.name)}
-                                    </span>
-                                </div>
+                        <span>
+                            ${escapeHTML(route.destination?.name || "")}
+                        </span>
+                    </div>
 
-                                <div class="saved-route-stats">
-                                    <span>
-                                        <i class="fa-solid fa-road"></i>
-                                        ${formatDistance(route.distance)}
-                                    </span>
+                    <div class="saved-route-stats">
+                        <span>
+                            <i class="fa-solid fa-road"></i>
+                            ${formatDistance(route.distance)}
+                        </span>
 
-                                    <span>
-                                        <i class="fa-regular fa-clock"></i>
-                                        ${formatDuration(route.duration)}
-                                    </span>
+                        <span>
+                            <i class="fa-regular fa-clock"></i>
+                            ${formatDuration(route.duration)}
+                        </span>
 
-                                    <span>
-                                        <i class="fa-solid fa-route"></i>
-                                        ${route.alternatives}
-                                        opción(es)
-                                    </span>
-                                </div>
-                            </div>
+                        <span>
+                            <i class="fa-solid fa-route"></i>
+                            ${route.alternatives || 1}
+                            opción(es)
+                        </span>
+                    </div>
+                </div>
 
-                            <button class="delete-button" onclick="removeRoute('${route.id}')" type="button" title="Eliminar ruta">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                        </article>
-                    `;
+                <button class="delete-button" onclick="removeRoute('${route.id}')" type="button" title="Eliminar ruta">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+
+            </article>
+        `;
     })
     .join("");
 }
@@ -1311,26 +1477,42 @@ function removeRoute(routeId) {
   }
 
   deleteRoute(Number(routeId));
+
+  // QUITAR RUTA DEL MAPA
+
+  if (routeLayer) {
+    map.removeLayer(routeLayer);
+
+    routeLayer = null;
+  }
+
+  // ACTUALIZAR INTERFAZ
+
   renderRoutePanel();
-  renderSavedRoutes();
+  renderSavedRoutes(routeSearchInput ? routeSearchInput.value : "");
 }
 
 // FAVORITOS
 
 function renderFavorites() {
   const container = document.getElementById("favorites-container");
+
+  if (!container) {
+    return;
+  }
+
   const places = getPlaces().filter((place) => place.favorite);
 
   if (!places.length) {
     container.innerHTML = `
-            <div class="empty-page">
-                <i class="fa-regular fa-star"></i>
+          <div class="empty-page">
+              <i class="fa-regular fa-star"></i>
 
-                <h3>
-                    No tienes favoritos
-                </h3>
-            </div>
-        `;
+              <h3>
+                  No tienes favoritos
+              </h3>
+          </div>
+      `;
 
     return;
   }
@@ -1342,26 +1524,28 @@ function renderFavorites() {
       const icon = place.markerIcon || config.icon;
 
       return `
-                    <article class="place-card" onclick="focusPlace('${place.id}')">
-                        <div class="place-card-icon" style="background: ${color};">
-                            <i class="fa-solid ${icon}"></i>
-                        </div>
+              <article class="place-card" onclick="focusPlace('${place.id}')">
 
-                        <div>
-                            <h3>
-                                ${escapeHTML(place.name)}
-                            </h3>
+                  <div class="place-card-icon" style="background: ${color};">
+                      <i class="fa-solid ${icon}"></i>
+                  </div>
 
-                            <span>
-                                ${escapeHTML(place.category)}
-                            </span>
+                  <div>
+                      <h3>
+                          ${escapeHTML(place.name)}
+                      </h3>
 
-                            <p>
-                                ${escapeHTML(place.address)}
-                            </p>
-                        </div>
-                    </article>
-                `;
+                      <span>
+                          ${escapeHTML(place.category)}
+                      </span>
+
+                      <p>
+                          ${escapeHTML(place.address)}
+                      </p>
+                  </div>
+                  
+              </article>
+        `;
     })
     .join("");
 }
@@ -1377,22 +1561,22 @@ function createRouteFromPlace(placeId) {
     return;
   }
 
-  document.getElementById("route-name").value = `Ruta desde ${place.name}`;
-  document.getElementById("route-origin").value = place.address;
-  document.getElementById("route-destination").value = "";
+  routeNameInput.value = `Ruta desde ${place.name}`;
+  routeOriginInput.value = place.address;
+  routeDestinationInput.value = "";
 
   openRouteModal();
 }
 
 // CONTROLES DEL MAPA
 
-document
-  .getElementById("zoom-in")
-  .addEventListener("click", () => map.zoomIn());
+document.getElementById("zoom-in").addEventListener("click", () => {
+  map.zoomIn();
+});
 
-document
-  .getElementById("zoom-out")
-  .addEventListener("click", () => map.zoomOut());
+document.getElementById("zoom-out").addEventListener("click", () => {
+  map.zoomOut();
+});
 
 document.getElementById("map-center").addEventListener("click", () => {
   map.setView([18.6813, -99.1013], 10);

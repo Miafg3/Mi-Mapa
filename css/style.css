@@ -450,6 +450,12 @@ button {
     background: linear-gradient(135deg, #ffe45c, #ffb800);
 }
 
+.add-place-button:hover,
+.primary-button:hover {
+    filter: brightness(1.05);
+    transform: translateY(-0.1rem);
+}
+
 /* VISTAS */
 
 .vista {
@@ -737,6 +743,10 @@ button {
     background: transparent;
 }
 
+.recent-item button:hover {
+    color: var(--color-oro);
+}
+
 /* ZOOM */
 
 .map-zoom {
@@ -882,8 +892,10 @@ button {
 
 .modal {
     width: 100%;
-    padding: 2.2rem;
+    padding: 2.4rem;
     max-width: 47rem;
+    max-height: 92vh;
+    overflow-y: auto;
     border-radius: 1.8rem;
     background: #0a1930;
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -893,6 +905,7 @@ button {
 .modal-header {
     display: flex;
     margin-bottom: 2rem;
+    align-items: flex-start;
     justify-content: space-between;
 }
 
@@ -912,9 +925,15 @@ button {
     border: 0;
     width: 3.2rem;
     height: 3.2rem;
+    flex-shrink: 0;
     color: #aeb9c9;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.05);
+}
+
+.modal-close:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .form-group {
@@ -961,36 +980,45 @@ button {
 
 .primary-button,
 .secondary-button {
-    height: 3.9rem;
+    min-width: 12rem;
+    height: 4rem;
+    display: inline-flex;
     padding: 0 1.7rem;
     font-size: 1.1rem;
     font-weight: 600;
+    align-items: center;
+    justify-content: center;
     border-radius: 0.9rem;
 }
 
 .primary-button {
-    display: flex;
+    display: inline-flex;
     gap: 0.7rem;
     border: 0;
-    height: 4rem;
     color: #172238;
     font-weight: 700;
     padding: 0 1.5rem;
-    font-size: 1.1rem;
-    align-items: center;
-    border-radius: 0.9rem;
     background: linear-gradient(135deg, #ffe45c, #ffb800);
+    transition: filter 0.2s ease, transform 0.2s ease;
 }
 
 .primary-button:disabled {
     cursor: wait;
     opacity: 0.55;
+    transform: none;
 }
 
 .secondary-button {
     color: #c5cfdd;
     background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.12);
+    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.secondary-button:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 /* MODAL AGREGAR LUGAR */
@@ -1048,7 +1076,7 @@ button {
     color: #fff;
     font-size: 2.5rem;
     margin-top: 0.4rem;
-    font-weight: lighter;
+    font-weight: 400;
 }
 
 .place-form {
@@ -1368,21 +1396,52 @@ button {
     color: var(--color-oro);
 }
 
-/* ACCIONES DEL FORMULARIO */ 
+/* ACCIONES DEL FORMULARIO */
 
 .place-form-actions {
     grid-column: 1 / -1;
     display: flex;
     gap: 1rem;
-    padding-top: 0.5rem;
+    min-height: 5.2rem;
+    padding-top: 1.6rem;
     align-items: center;
     justify-content: flex-end;
     border-top: 1px solid rgba(255, 255, 255, 0.07);
 }
 
+.place-form-actions .primary-button,
+.place-form-actions .secondary-button {
+    width: auto;
+    min-width: 13rem;
+    flex-shrink: 0;
+}
+
 .save-place-button {
-    min-width: 15rem;
+    min-width: 15rem !important;
     justify-content: center;
+}
+
+/* ACCIONES DEL MODAL DE RUTA */
+
+.route-form-actions,
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    min-height: 5.2rem;
+    margin-top: 1.8rem;
+    padding-top: 1.6rem;
+    align-items: center;
+    justify-content: flex-end;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.route-form-actions .primary-button,
+.route-form-actions .secondary-button,
+.modal-actions .primary-button,
+.modal-actions .secondary-button {
+    width: auto;
+    min-width: 13rem;
+    flex-shrink: 0;
 }
 
 /* MARCADORES PERSONALIZADOS */
@@ -1438,7 +1497,7 @@ button {
     border: 1px solid rgba(255, 209, 102, 0.35);
 }
 
-/* POPUP DEL LUGAR*/
+/* POPUP DEL LUGAR */
 
 .place-popup {
     display: flex;
@@ -1501,6 +1560,18 @@ button {
     margin-top: 0.4rem;
 }
 
+.route-status.success {
+    color: var(--color-green);
+}
+
+.route-status.error {
+    color: var(--color-red);
+}
+
+.route-status.loading {
+    color: var(--color-oro);
+}
+
 /* PÁGINA MIS RUTAS */
 
 .routes-page {
@@ -1510,8 +1581,6 @@ button {
     overflow-y: auto;
     background: radial-gradient(circle at top right, #102542, #071225 55%);
 }
-
-/* ENCABEZADO */
 
 .routes-page-header {
     display: flex;
@@ -1524,6 +1593,7 @@ button {
 .routes-page-title {
     display: flex;
     gap: 1.4rem;
+    min-width: 0;
     align-items: center;
 }
 
@@ -1563,15 +1633,12 @@ button {
     margin-top: 0.5rem;
 }
 
-/* ACCIONES */
-
 .routes-page-actions {
     display: flex;
     gap: 1rem;
+    flex-shrink: 0;
     align-items: center;
 }
-
-/* BUSCAR RUTA */
 
 .routes-search {
     position: relative;
@@ -1609,8 +1676,6 @@ button {
     border-color: rgba(255, 210, 31, 0.45);
 }
 
-/* CONTENIDO */
-
 .routes-content {
     width: 100%;
 }
@@ -1643,8 +1708,6 @@ button {
     border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-/* RUTAS GUARDADAS */
-
 .saved-routes-container {
     display: grid;
     gap: 1rem;
@@ -1655,14 +1718,18 @@ button {
     display: flex;
     gap: 1.5rem;
     padding: 1.7rem;
+    min-width: 0;
     align-items: center;
     border-radius: 1.3rem;
     background: rgba(12, 27, 51, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.07);
+    transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
 }
 
 .saved-route-card:hover {
+    transform: translateY(-0.1rem);
     border-color: rgba(255, 209, 102, 0.18);
+    background: rgba(15, 32, 59, 0.92);
 }
 
 .saved-route-icon {
@@ -1683,12 +1750,16 @@ button {
 }
 
 .saved-route-content h3 {
+    overflow: hidden;
     font-size: 1.3rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .route-address {
     display: flex;
     gap: 0.7rem;
+    min-width: 0;
     color: #7f90a7;
     font-size: 0.9rem;
     margin-top: 0.5rem;
@@ -1697,11 +1768,13 @@ button {
 
 .route-address span {
     overflow: hidden;
+    min-width: 0;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
 .route-address i {
+    flex-shrink: 0;
     color: #566983;
 }
 
@@ -1711,6 +1784,7 @@ button {
     margin-top: 1rem;
     color: #94a3b8;
     font-size: 0.9rem;
+    flex-wrap: wrap;
 }
 
 .saved-route-stats i {
@@ -1722,6 +1796,7 @@ button {
     border: 0;
     width: 3.2rem;
     height: 3.2rem;
+    flex-shrink: 0;
     color: #718198;
     border-radius: 0.8rem;
     background: transparent;
@@ -1780,12 +1855,15 @@ button {
     gap: 1.2rem;
     padding: 1.5rem;
     cursor: pointer;
+    min-width: 0;
     border-radius: 1.2rem;
     background: rgba(12, 27, 51, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.07);
+    transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
 .place-card:hover {
+    transform: translateY(-0.1rem);
     border-color: rgba(255, 209, 102, 0.2);
 }
 
@@ -1801,17 +1879,24 @@ button {
 }
 
 .place-card h3 {
+    overflow: hidden;
     font-size: 1.2rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .place-card span {
     display: block;
+    overflow: hidden;
     font-size: 0.9rem;
     margin-top: 0.3rem;
     color: #71829a;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .place-card p {
+    overflow: hidden;
     font-size: 0.9rem;
     margin-top: 0.6rem;
     color: #8b9ab0;
@@ -1853,6 +1938,45 @@ button {
 
     .routes-page {
         padding: 3rem;
+    }
+
+    .routes-page-header {
+        gap: 1.5rem;
+    }
+
+    .routes-search {
+        width: 21rem;
+    }
+
+    .saved-routes-container {
+        grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
+    }
+}
+
+/* RESPONSIVE 1050PX */
+
+@media (max-width: 1050px) {
+
+    .topbar {
+        gap: 1.5rem;
+    }
+
+    .topbar-actions {
+        gap: 0.8rem;
+    }
+
+    .routes-page-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .routes-page-actions {
+        width: 100%;
+    }
+
+    .routes-search {
+        flex: 1;
+        width: auto;
     }
 }
 
@@ -1939,6 +2063,10 @@ button {
         grid-column: 2;
     }
 
+    .routes-page {
+        padding: 2.5rem;
+    }
+
     .routes-page-header {
         gap: 1.5rem;
         align-items: flex-start;
@@ -1952,6 +2080,10 @@ button {
     .routes-search {
         flex: 1;
         width: auto;
+    }
+
+    .saved-routes-container {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -1980,6 +2112,11 @@ button {
         overflow-x: auto;
         justify-content: flex-start;
         max-width: calc(100% - 2rem);
+        scrollbar-width: none;
+    }
+
+    .map-categories::-webkit-scrollbar {
+        display: none;
     }
 
     .map-category {
@@ -2001,6 +2138,10 @@ button {
         gap: 1.5rem;
         align-items: flex-start;
         flex-direction: column;
+    }
+
+    .routes-page-title {
+        width: 100%;
     }
 
     .routes-page-actions {
@@ -2025,14 +2166,7 @@ button {
     }
 
     .saved-route-stats {
-        gap: 0.5rem;
-        flex-direction: column;
-    }
-
-    /* FAVORITOS */
-
-    .favorites-page {
-        padding: 2rem;
+        gap: 0.7rem 1.2rem;
     }
 
     /* MODAL AGREGAR LUGAR */
@@ -2083,16 +2217,29 @@ button {
         grid-column: auto;
     }
 
-    .place-form-actions {
+    .place-form-actions,
+    .route-form-actions,
+    .modal-actions {
         gap: 0.8rem;
-        flex-direction: column-reverse;
-        align-items: stretch;
+        flex-direction: row;
+        align-items: center;
     }
 
     .place-form-actions .primary-button,
-    .place-form-actions .secondary-button {
-        width: 100%;
-        justify-content: center;
+    .place-form-actions .secondary-button,
+    .route-form-actions .primary-button,
+    .route-form-actions .secondary-button,
+    .modal-actions .primary-button,
+    .modal-actions .secondary-button {
+        flex: 1;
+        min-width: 0;
+        width: auto;
+    }
+
+    /* MODAL RUTA */
+
+    .modal {
+        max-height: 92vh;
     }
 }
 
@@ -2153,6 +2300,10 @@ button {
         min-height: 6.5rem;
     }
 
+    .search-box {
+        height: 3.9rem;
+    }
+
     .add-place-button {
         padding: 0;
         width: 4rem;
@@ -2168,6 +2319,23 @@ button {
 
     .routes-page {
         padding: 1.5rem;
+    }
+
+    .routes-page-header {
+        margin-bottom: 2rem;
+    }
+
+    .routes-page-title {
+        gap: 1rem;
+    }
+
+    .back-page-button {
+        width: 3.6rem;
+        height: 3.6rem;
+    }
+
+    .page-eyebrow {
+        font-size: 0.75rem;
     }
 
     .routes-page-title h2 {
@@ -2195,8 +2363,42 @@ button {
         align-items: flex-start;
     }
 
+    .routes-content-header h3 {
+        font-size: 1.5rem;
+    }
+
+    .routes-content-header p {
+        font-size: 1rem;
+    }
+
     .saved-route-card {
+        gap: 1rem;
         padding: 1.3rem;
+    }
+
+    .saved-route-icon {
+        width: 3.8rem;
+        height: 3.8rem;
+        min-width: 3.8rem;
+    }
+
+    .saved-route-content h3 {
+        font-size: 1.2rem;
+    }
+
+    .route-address {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.2rem;
+    }
+
+    .route-address i {
+        display: none;
+    }
+
+    .saved-route-stats {
+        gap: 0.5rem;
+        flex-direction: column;
     }
 
     /* MODALES */
@@ -2254,11 +2456,85 @@ button {
         height: 3.8rem;
     }
 
+    .place-form-actions,
+    .route-form-actions,
+    .modal-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .place-form-actions .primary-button,
+    .place-form-actions .secondary-button,
+    .route-form-actions .primary-button,
+    .route-form-actions .secondary-button,
+    .modal-actions .primary-button,
+    .modal-actions .secondary-button {
+        width: 100%;
+        flex: none;
+    }
+
     .favorites-page {
         padding: 1.5rem;
     }
 
     .modal {
         padding: 1.8rem;
+    }
+}
+
+/* RESPONSIVE 380PX */
+
+@media (max-width: 380px) {
+
+    .topbar {
+        gap: 0.6rem;
+        padding: 0 0.7rem;
+    }
+
+    .search-box input {
+        padding-left: 3.5rem;
+        padding-right: 3.8rem;
+    }
+
+    .search-box > i {
+        left: 1.2rem;
+    }
+
+    .add-place-button {
+        width: 3.7rem;
+        min-width: 3.7rem;
+    }
+
+    .menu-item {
+        padding: 1rem;
+    }
+
+    .routes-page {
+        padding: 1.2rem;
+    }
+
+    .routes-page-title h2 {
+        font-size: 2rem;
+    }
+
+    .back-page-button {
+        width: 3.4rem;
+        height: 3.4rem;
+    }
+
+    .saved-route-card {
+        gap: 0.8rem;
+        padding: 1.1rem;
+    }
+
+    .saved-route-icon {
+        width: 3.5rem;
+        height: 3.5rem;
+        min-width: 3.5rem;
+    }
+
+    .delete-button {
+        width: 2.8rem;
+        height: 2.8rem;
     }
 }
