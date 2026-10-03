@@ -13,6 +13,7 @@ const categoryItems = document.querySelectorAll(".category-item");
 const mapCategoryItems = document.querySelectorAll(".map-category");
 const sidebar = document.getElementById("sidebar");
 const sidebarMenuButton = document.getElementById("sidebar-menu-button");
+const favoritesSearchInput = document.getElementById("favorites-search-input");
 
 // MAPA PRINCIPAL
 
@@ -88,19 +89,16 @@ const CATEGORY_CONFIG = {
 
 function createMarkerIcon(category, customColor = null, customIcon = null) {
   const config = CATEGORY_CONFIG[category] || CATEGORY_CONFIG.otro;
-
   const color = customColor || config.color;
   const icon = customIcon || config.icon;
 
   return L.divIcon({
     className: "custom-map-marker",
-
     html: `
-            <div class="marker-pin" style="background: ${color};">
-                <i class="fa-solid ${icon}"></i>
-            </div>
-        `,
-
+        <div class="marker-pin" style="background: ${color};">
+            <i class="fa-solid ${icon}"></i>
+        </div>
+    `,
     iconSize: [34, 34],
     iconAnchor: [17, 34],
     popupAnchor: [0, -34],
@@ -137,7 +135,6 @@ async function geocodeAddress(query) {
     return results;
   } catch (error) {
     console.error("Error de geocodificación:", error);
-
     return null;
   }
 }
@@ -167,7 +164,6 @@ async function performSearch() {
 
   if (!results) {
     alert("No se encontró ninguna ubicación.");
-
     return;
   }
 
@@ -200,7 +196,7 @@ function showSearchResult(result) {
     .bindPopup(
       `
         <strong>${escapeHTML(result.display_name)}</strong>
-      `,
+    `,
     )
     .openPopup();
 
@@ -311,9 +307,7 @@ function createPlacePopup(place) {
 
 function escapeHTML(value) {
   const div = document.createElement("div");
-
   div.textContent = value || "";
-
   return div.innerHTML;
 }
 
@@ -330,18 +324,18 @@ function renderRecentPlaces() {
 
   if (!places.length) {
     container.innerHTML = `
-            <div class="empty-panel">
-                <i class="fa-solid fa-location-dot"></i>
+          <div class="empty-panel">
+              <i class="fa-solid fa-location-dot"></i>
 
-                <p>
-                    Todavía no tienes lugares guardados.
-                </p>
+              <p>
+                  Todavía no tienes lugares guardados.
+              </p>
 
-                <button type="button" onclick="openPlaceModal()">
-                    Agregar primer lugar
-                </button>
-            </div>
-        `;
+              <button type="button" onclick="openPlaceModal()">
+                  Agregar primer lugar
+              </button>
+          </div>
+      `;
 
     return;
   }
@@ -386,7 +380,6 @@ function renderRecentPlaces() {
 
 function focusPlace(placeId) {
   const places = getPlaces();
-
   const place = places.find((item) => String(item.id) === String(placeId));
 
   if (!place || !place.coordinates) {
@@ -465,7 +458,7 @@ function changeView(viewName) {
   }
 
   if (viewName === "favoritos") {
-    renderFavorites();
+    renderFavorites(favoritesSearchInput ? favoritesSearchInput.value : "");
   }
 }
 
@@ -653,7 +646,6 @@ async function updatePlaceAddressPreview() {
 
     if (placePreviewMarker) {
       placePreviewMap.removeLayer(placePreviewMarker);
-
       placePreviewMarker = null;
     }
 
@@ -683,7 +675,6 @@ async function updatePlaceAddressPreview() {
 
     if (placePreviewMarker) {
       placePreviewMap.removeLayer(placePreviewMarker);
-
       placePreviewMarker = null;
     }
 
@@ -744,7 +735,6 @@ function resetPlaceForm() {
 
   if (placePreviewMarker) {
     placePreviewMap.removeLayer(placePreviewMarker);
-
     placePreviewMarker = null;
   }
 
@@ -887,7 +877,7 @@ placeForm.addEventListener("submit", async (event) => {
 
   renderPlaceMarkers();
   renderRecentPlaces();
-  renderFavorites();
+  renderFavorites(favoritesSearchInput ? favoritesSearchInput.value : "");
 
   // CENTRAR MAPA
 
@@ -967,19 +957,16 @@ routeForm.addEventListener("submit", async (event) => {
 
   if (!name) {
     routeStatus.textContent = "Escribe un nombre para la ruta.";
-
     return;
   }
 
   if (!originText) {
     routeStatus.textContent = "Escribe el origen.";
-
     return;
   }
 
   if (!destinationText) {
     routeStatus.textContent = "Escribe el destino.";
-
     return;
   }
 
@@ -1110,11 +1097,8 @@ routeForm.addEventListener("submit", async (event) => {
 
 function resetRouteForm() {
   routeForm.reset();
-
   routeStatus.textContent = "";
-
   calculateRouteButton.disabled = false;
-
   calculateRouteButton.innerHTML = `
         <i class="fa-solid fa-route"></i>
         Calcular ruta
@@ -1270,7 +1254,6 @@ function renderRoutePanel() {
 
       return `
             <article class="route-item" onclick="focusRoute('${route.id}')">
-
                 <span class="route-dot ${colors[index % colors.length]}"></span>
 
                 <div class="route-info">
@@ -1289,13 +1272,11 @@ function renderRoutePanel() {
                             2 lugares
                         </span>
                     </div>
-
                 </div>
 
                 <span class="route-distance">
                     ${formatDistance(route.distance)}
                 </span>
-
             </article>
         `;
     })
@@ -1482,7 +1463,6 @@ function removeRoute(routeId) {
 
   if (routeLayer) {
     map.removeLayer(routeLayer);
-
     routeLayer = null;
   }
 
@@ -1494,7 +1474,17 @@ function removeRoute(routeId) {
 
 // FAVORITOS
 
-function renderFavorites() {
+function updateFavoritesCount(count) {
+  const favoritesCount = document.getElementById("favorites-count");
+
+  if (!favoritesCount) {
+    return;
+  }
+
+  favoritesCount.textContent = count === 1 ? "1 lugar" : `${count} lugares`;
+}
+
+function renderFavorites(searchTerm = "") {
   const container = document.getElementById("favorites-container");
 
   if (!container) {
@@ -1502,59 +1492,184 @@ function renderFavorites() {
   }
 
   const places = getPlaces().filter((place) => place.favorite);
+  const normalizedSearch = searchTerm.trim().toLowerCase();
 
-  if (!places.length) {
-    container.innerHTML = `
-          <div class="empty-page">
-              <i class="fa-regular fa-star"></i>
+  const filteredPlaces = normalizedSearch
+    ? places.filter((place) => {
+        const name = String(place.name || "").toLowerCase();
+        const category = String(place.category || "").toLowerCase();
+        const address = String(place.address || "").toLowerCase();
 
-              <h3>
-                  No tienes favoritos
-              </h3>
-          </div>
+        return (
+          name.includes(normalizedSearch) ||
+          category.includes(normalizedSearch) ||
+          address.includes(normalizedSearch)
+        );
+      })
+    : places;
+
+  updateFavoritesCount(filteredPlaces.length);
+
+  if (!filteredPlaces.length) {
+    if (normalizedSearch) {
+      container.innerHTML = `
+        <div class="empty-page">
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <h3>
+                No encontramos ese favorito
+            </h3>
+
+            <p>
+                Prueba con otro nombre, categoría o dirección.
+            </p>
+        </div>
       `;
+
+      return;
+    }
+
+    container.innerHTML = `
+      <div class="empty-page">
+          <i class="fa-regular fa-star"></i>
+
+          <h3>
+              No tienes favoritos
+          </h3>
+
+          <p>
+              Marca un lugar como favorito para verlo aquí.
+          </p>
+
+          <button class="primary-button" onclick="changeView('mapa')" type="button">
+              <i class="fa-solid fa-map"></i>
+              Ir al mapa
+          </button>
+      </div>
+    `;
 
     return;
   }
 
-  container.innerHTML = places
+  container.innerHTML = filteredPlaces
     .map((place) => {
       const config = CATEGORY_CONFIG[place.category] || CATEGORY_CONFIG.otro;
       const color = place.markerColor || config.color;
       const icon = place.markerIcon || config.icon;
 
       return `
-              <article class="place-card" onclick="focusPlace('${place.id}')">
+        <article class="favorite-card" data-place-id="${place.id}">
 
-                  <div class="place-card-icon" style="background: ${color};">
-                      <i class="fa-solid ${icon}"></i>
-                  </div>
+            <div class="favorite-card-header">
 
-                  <div>
-                      <h3>
-                          ${escapeHTML(place.name)}
-                      </h3>
+                <div class="favorite-place-info">
 
-                      <span>
-                          ${escapeHTML(place.category)}
-                      </span>
+                    <div class="favorite-place-icon" style="background: ${color};">
+                        <i class="fa-solid ${icon}"></i>
+                    </div>
 
-                      <p>
-                          ${escapeHTML(place.address)}
-                      </p>
-                  </div>
-                  
-              </article>
-        `;
+                    <div>
+                        <h3>
+                            ${escapeHTML(place.name)}
+                        </h3>
+
+                        <span>
+                            ${escapeHTML(place.category)}
+                        </span>
+
+                        <p>
+                            ${escapeHTML(place.address || "Sin dirección")}
+                        </p>
+                    </div>
+
+                </div>
+
+                <button class="favorite-button" onclick="toggleFavorite('${place.id}')" type="button" aria-label="Quitar de favoritos" title="Quitar de favoritos">
+                    <i class="fa-solid fa-star"></i>
+                </button>
+
+            </div>
+
+            <div class="favorite-card-actions">
+
+                <button class="favorite-action" onclick="createRouteFromPlace('${place.id}')" type="button">
+                    <i class="fa-solid fa-route"></i>
+                    Crear ruta
+                </button>
+
+                <button class="favorite-action" onclick="focusPlace('${place.id}')" type="button">
+                    <i class="fa-solid fa-map"></i>
+                    Ver en mapa
+                </button>
+
+                <button class="favorite-menu-button" onclick="showFavoriteOptions('${place.id}')" type="button" aria-label="Más opciones" title="Más opciones">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </button>
+
+            </div>
+
+        </article>
+      `;
     })
     .join("");
+}
+
+// BUSCAR FAVORITOS
+
+if (favoritesSearchInput) {
+  favoritesSearchInput.addEventListener("input", () => {
+    renderFavorites(favoritesSearchInput.value);
+  });
+}
+
+// CAMBIAR ESTADO DE FAVORITO
+
+function toggleFavorite(placeId) {
+  const places = getPlaces();
+  const place = places.find((item) => String(item.id) === String(placeId));
+
+  if (!place) {
+    return;
+  }
+
+  place.favorite = !place.favorite;
+
+  savePlaces(places);
+
+  renderFavorites(favoritesSearchInput ? favoritesSearchInput.value : "");
+  renderPlaceMarkers();
+  renderRecentPlaces();
+}
+
+// OPCIONES DE FAVORITO
+
+function showFavoriteOptions(placeId) {
+  const places = getPlaces();
+  const place = places.find((item) => String(item.id) === String(placeId));
+
+  if (!place) {
+    return;
+  }
+
+  const action = confirm(
+    `¿Quieres eliminar "${place.name}" de tus lugares guardados?`,
+  );
+
+  if (!action) {
+    return;
+  }
+
+  deletePlace(place.id);
+
+  renderFavorites(favoritesSearchInput ? favoritesSearchInput.value : "");
+  renderPlaceMarkers();
+  renderRecentPlaces();
 }
 
 // CREAR RUTA DESDE UN LUGAR
 
 function createRouteFromPlace(placeId) {
   const places = getPlaces();
-
   const place = places.find((item) => String(item.id) === String(placeId));
 
   if (!place) {

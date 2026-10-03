@@ -306,11 +306,37 @@
             <!-- FAVORITOS -->
             <section id="vistaFavoritos" class="vista">
                 <div class="favorites-page">
-                    <div class="page-heading">
-                        <h2>Favoritos</h2>
+
+                    <!-- ENCABEZADO -->
+                    <header class="favorites-page-header">
+                        <div class="favorites-page-title">
+                            <span class="page-eyebrow">LUGARES GUARDADOS</span>
+                            <h2><i class="fa-solid fa-star"></i> Mis favoritos</h2>
+                        </div>
+                
+                        <!-- BUSCADOR -->
+                        <div class="favorites-search">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input id="favorites-search-input" type="text" placeholder="Buscar favorito..." autocomplete="off">
+                        </div>
+                    </header>
+                
+                    <!-- CONTENIDO -->
+                    <div class="favorites-content">
+                
+                        <!-- ENCABEZADO DE LA LISTA -->
+                        <div class="favorites-content-header">
+                            <div>
+                                <h3>Mis favoritos</h3>
+                                <p>Lugares que has marcado como favoritos.</p>
+                            </div>
+
+                            <span id="favorites-count" class="favorites-count">0 lugares</span>
+                        </div>
+                
+                        <!-- JAVASCRIPT INSERTARÁ LOS FAVORITOS -->
+                        <div id="favorites-container" class="favorites-list"></div>
                     </div>
-                    <!-- JAVASCRIPT INSERTARÁ LOS FAVORITOS -->
-                    <div id="favorites-container" class="places-grid"></div>
                 </div>
             </section>
 
